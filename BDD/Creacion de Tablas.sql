@@ -109,8 +109,3 @@ SaldosEstablecidos
 where TipoMovimiento = 'GastoPermitido'
 and FechaRealizada >= Fecha
 
-select *
-from Movimientos
-where Importe = '" + movimientos.Importe + "'
-and TipoMovimiento = '" + movimientos.TipoMovimiento + "'
-and Observaciones = '" + movimientos.Observaciones + "'
