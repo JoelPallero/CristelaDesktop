@@ -109,3 +109,16 @@ SaldosEstablecidos
 where TipoMovimiento = 'GastoPermitido'
 and FechaRealizada >= Fecha
 
+create proc sp_GastoPermitido
+as
+declare @SumaTotal Decimal(18,2)
+set @SumaTotal = (select sum(Importe) from Movimientos
+where TipoMovimiento = 'Gasto Permitido')
+if @SumaTotal is null
+begin
+set @SumaTotal = 0
+end
+select @SumaTotal as SumaTotal
+
+execute sp_GastoPermitido
+
