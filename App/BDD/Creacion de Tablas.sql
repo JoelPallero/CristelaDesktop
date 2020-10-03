@@ -10,8 +10,7 @@ FechaRealizada DateTime not null,
 NumCuotaPaga int not null,
 CantCuotas int not null,
 Observaciones nvarchar (200) null,
-PagoAgendado varchar(2) not null,
-PagoFinalizado varchar(2) not null,
+CodMovimiento int null,--acá se registra el Id_Mov para identificar los pagos divididos que provienen del mismo movimiento
 check (TipoMovimiento in ('Agua', 
 'Cobro', 
 'Comida',
@@ -122,3 +121,13 @@ select @SumaTotal as SumaTotal
 
 execute sp_GastoPermitido
 
+
+select * from Movimientos 
+
+
+--usar  distintc para traer los movimientos con el Numcuota paga más alto y quitar los duplicados
+
+select * from Movimientos where NumCuotaPaga < CantCuotas
+and NumCuotaPaga like (select max(distinct NumCuotaPaga) from Movimientos where NumCuotaPaga < CantCuotas)
+
+truncate table Movimientos
