@@ -125,9 +125,36 @@ execute sp_GastoPermitido
 select * from Movimientos 
 
 
---usar  distintc para traer los movimientos con el Numcuota paga más alto y quitar los duplicados
+-- usar  distintc para traer los movimientos con el Numcuota paga más alto y quitar los duplicados
+-- Traer los pagos en los que el NumCuotaPaga sea menos a CantCuotas y cuando haya una igualdad, no lo muestre
 
-select * from Movimientos where NumCuotaPaga < CantCuotas
-and NumCuotaPaga like (select max(distinct NumCuotaPaga) from Movimientos where NumCuotaPaga < CantCuotas)
+create procedure sp_PagosAgendados
+as
+begin
+--declare @NumDeCuotasPagas int;
+--set @NumDeCuotasPagas = (select max (NumCuotaPaga) From Movimientos)
+--Select * From Movimientos
+--where CodMovimiento = (select distinct CodMovimiento From Movimientos)
+--and NumCuotaPaga != CantCuotas
+--and NumCuotaPaga = @NumDeCuotasPagas
+--and PagoFinalizado = 'No' or PagoFinalizado is null
 
-truncate table Movimientos
+
+declare @NumDeCuotasPagas int;
+set @NumDeCuotasPagas = (select max (NumCuotaPaga) From Movimientos)
+select distinct CodMovimiento, Id_Mov, Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, Observaciones, PagoFinalizado
+From Movimientos
+where NumCuotaPaga < CantCuotas
+and NumCuotaPaga = @NumDeCuotasPagas
+and PagoFinalizado = 'No' or PagoFinalizado is null
+
+Select * From Movimientos 
+where NumCuotaPaga = (select max (NumCuotaPaga) From Movimientos)
+and NumCuotaPaga < CantCuotas
+
+Select * From Movimientos 
+select * from Movimientos 
+where NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
+and NumCuotaPaga < CantCuotas 
+and PagoFinalizado = 'No'
+order by FechaRealizada desc
