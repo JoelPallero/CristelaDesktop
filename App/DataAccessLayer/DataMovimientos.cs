@@ -360,7 +360,7 @@ namespace DataAccessLayer
         public Movimientos ConsultarSaldo(Movimientos movimientos)
         {
 
-            string query = @"sp_SaldoActualizado";
+            string query = @"sp_SaldoActual";
             SqlCommand cmd = new SqlCommand(query, conexion);
 
             try

@@ -1,0 +1,10 @@
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\bin\Debug\CristellaDesktop.exe.config
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\bin\Debug\CristellaDesktop.exe
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\bin\Debug\CristellaDesktop.pdb
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.csprojAssemblyReference.cache
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.Properties.Resources.resources
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.csproj.GenerateResource.cache
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.csproj.CoreCompileInputs.cache
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.exe
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.pdb
+F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.FormPrincipal.resources
