@@ -17,14 +17,14 @@ namespace DataAccessLayer
                                                      NumCuotaPaga, 
                                                      CantCuotas, 
                                                      Observaciones,
-                                                     PagoAgendado)       
+                                                     PagoFinalizado)       
                             values (@Importe, 
                                     @TipoMovimiento,   
                                     @FechaRealizada, 
                                     @NumCuotaPaga, 
                                     @CantCuotas, 
                                     @Observaciones,
-                                    @PagoAgendado)"
+                                    @PagoFinalizado)"
             ;
 
             SqlParameter importe = new SqlParameter("@Importe", movimientos.Importe);
@@ -33,7 +33,7 @@ namespace DataAccessLayer
             SqlParameter numCuotaPaga = new SqlParameter("@NumCuotaPaga", movimientos.NumCuotaPaga);
             SqlParameter cantCuotas = new SqlParameter("@CantCuotas", movimientos.CantCuotas);
             SqlParameter observaciones = new SqlParameter("@Observaciones", movimientos.Observaciones);
-            SqlParameter pagoAgendado = new SqlParameter("@PagoAgendado", movimientos.PagoFinalizado);
+            SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             cmd.Parameters.Add(importe);
@@ -42,7 +42,7 @@ namespace DataAccessLayer
             cmd.Parameters.Add(numCuotaPaga);
             cmd.Parameters.Add(cantCuotas);
             cmd.Parameters.Add(observaciones);
-            cmd.Parameters.Add(pagoAgendado);
+            cmd.Parameters.Add(pagoFinalizado);
 
             try
             {
@@ -100,7 +100,7 @@ namespace DataAccessLayer
                                                      NumCuotaPaga = @NumCuotaPaga,
                                                      CantCuotas = @CantCuotas, 
                                                      Observaciones = @Observaciones,
-                                                     PagoAgendado = @PagoAgendado                             
+                                                     PagoFinalizado = @PagoFinalizado                             
                              Where Id_Mov = @Id_Mov"
             ;
 
@@ -111,7 +111,7 @@ namespace DataAccessLayer
             SqlParameter numCuotaPaga = new SqlParameter("@NumCuotaPaga", movimientos.NumCuotaPaga);
             SqlParameter cantCuotas = new SqlParameter("@CantCuotas", movimientos.CantCuotas);
             SqlParameter observaciones = new SqlParameter("@Observaciones", movimientos.Observaciones);
-            SqlParameter pagoFinalizado = new SqlParameter("@PagoAgendado", movimientos.PagoFinalizado);
+            SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             cmd.Parameters.Add(id_Mov);

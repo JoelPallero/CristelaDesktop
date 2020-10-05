@@ -40,3 +40,4 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\FrontEndLayer
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\FrontEndLayer.csproj.CopyComplete
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\UIForms.exe
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\UIForms.pdb
+F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\FrontEndLayer.FormPagosAgendados.resources
