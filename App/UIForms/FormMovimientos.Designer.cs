@@ -153,7 +153,7 @@
             this.DtgMovFinal.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DtgMovFinal.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DtgMovFinal.RowTemplate.ReadOnly = true;
-            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DtgMovFinal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DtgMovFinal.Size = new System.Drawing.Size(816, 256);
             this.DtgMovFinal.TabIndex = 33;
