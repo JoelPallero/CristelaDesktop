@@ -13,7 +13,7 @@ namespace Entities
         private int numCuotaPaga;
         private int cantCuotas;
         private string observaciones;
-        private string pagoAgendado;
+        private string pagoFinalizado;
         private decimal saldoActual;
         private decimal gastoPermitido;
 
@@ -28,7 +28,7 @@ namespace Entities
         public int NumCuotaPaga { get => numCuotaPaga; set => numCuotaPaga = value; }
         public int CantCuotas { get => cantCuotas; set => cantCuotas = value; }
         public string Observaciones { get => observaciones; set => observaciones = value; }
-        public string PagoAgendado { get => pagoAgendado; set => pagoAgendado = value; }
+        public string PagoFinalizado { get => pagoFinalizado; set => pagoFinalizado = value; }
         public decimal SaldoActual { get => saldoActual; set => saldoActual = value; }
         public decimal GastoPermitido { get => gastoPermitido; set => gastoPermitido = value; }
 

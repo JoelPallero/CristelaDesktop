@@ -38,7 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GroupDTGV = new System.Windows.Forms.GroupBox();
-            this.BtnModificar = new System.Windows.Forms.Button();
             this.PicFiltro = new System.Windows.Forms.PictureBox();
             this.TxtFiltro = new System.Windows.Forms.TextBox();
             this.DtgMovFinal = new System.Windows.Forms.DataGridView();
@@ -48,6 +47,9 @@
             this.NumCuotaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuEdicion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.EditarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
+            this.EliminarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupMovimientos = new System.Windows.Forms.GroupBox();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
@@ -65,20 +67,16 @@
             this.TxtObservaciones = new System.Windows.Forms.TextBox();
             this.TxtImporte = new System.Windows.Forms.TextBox();
             this.notifyMovement = new System.Windows.Forms.NotifyIcon(this.components);
-            this.MenuEdicion = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.EditarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
-            this.EliminarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupDTGV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).BeginInit();
-            this.GroupMovimientos.SuspendLayout();
             this.MenuEdicion.SuspendLayout();
+            this.GroupMovimientos.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupDTGV
             // 
             this.GroupDTGV.BackColor = System.Drawing.SystemColors.Control;
-            this.GroupDTGV.Controls.Add(this.BtnModificar);
             this.GroupDTGV.Controls.Add(this.PicFiltro);
             this.GroupDTGV.Controls.Add(this.TxtFiltro);
             this.GroupDTGV.Controls.Add(this.DtgMovFinal);
@@ -89,20 +87,6 @@
             this.GroupDTGV.TabIndex = 48;
             this.GroupDTGV.TabStop = false;
             this.GroupDTGV.Text = "Vista Previa";
-            // 
-            // BtnModificar
-            // 
-            this.BtnModificar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.BtnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnModificar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.BtnModificar.Location = new System.Drawing.Point(699, 12);
-            this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(121, 34);
-            this.BtnModificar.TabIndex = 63;
-            this.BtnModificar.Text = "Modificar";
-            this.BtnModificar.UseVisualStyleBackColor = false;
-            this.BtnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // PicFiltro
             // 
@@ -251,6 +235,28 @@
             this.Observaciones.ReadOnly = true;
             this.Observaciones.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Observaciones.Width = 254;
+            // 
+            // MenuEdicion
+            // 
+            this.MenuEdicion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditarMovimiento,
+            this.EliminarMovimiento});
+            this.MenuEdicion.Name = "MenuEdicion";
+            this.MenuEdicion.Size = new System.Drawing.Size(118, 48);
+            // 
+            // EditarMovimiento
+            // 
+            this.EditarMovimiento.Name = "EditarMovimiento";
+            this.EditarMovimiento.Size = new System.Drawing.Size(117, 22);
+            this.EditarMovimiento.Text = "Editar";
+            this.EditarMovimiento.Click += new System.EventHandler(this.EditarMovimiento_Click);
+            // 
+            // EliminarMovimiento
+            // 
+            this.EliminarMovimiento.Name = "EliminarMovimiento";
+            this.EliminarMovimiento.Size = new System.Drawing.Size(117, 22);
+            this.EliminarMovimiento.Text = "Eliminar";
+            this.EliminarMovimiento.Click += new System.EventHandler(this.EliminarMovimiento_Click);
             // 
             // GroupMovimientos
             // 
@@ -474,28 +480,6 @@
             this.notifyMovement.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyMovement.BalloonTipTitle = "Registro exitoso";
             // 
-            // MenuEdicion
-            // 
-            this.MenuEdicion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditarMovimiento,
-            this.EliminarMovimiento});
-            this.MenuEdicion.Name = "MenuEdicion";
-            this.MenuEdicion.Size = new System.Drawing.Size(118, 48);
-            // 
-            // EditarMovimiento
-            // 
-            this.EditarMovimiento.Name = "EditarMovimiento";
-            this.EditarMovimiento.Size = new System.Drawing.Size(117, 22);
-            this.EditarMovimiento.Text = "Editar";
-            this.EditarMovimiento.Click += new System.EventHandler(this.EditarMovimiento_Click);
-            // 
-            // EliminarMovimiento
-            // 
-            this.EliminarMovimiento.Name = "EliminarMovimiento";
-            this.EliminarMovimiento.Size = new System.Drawing.Size(117, 22);
-            this.EliminarMovimiento.Text = "Eliminar";
-            this.EliminarMovimiento.Click += new System.EventHandler(this.EliminarMovimiento_Click);
-            // 
             // FormMovimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,9 +498,9 @@
             this.GroupDTGV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).EndInit();
+            this.MenuEdicion.ResumeLayout(false);
             this.GroupMovimientos.ResumeLayout(false);
             this.GroupMovimientos.PerformLayout();
-            this.MenuEdicion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -544,7 +528,6 @@
         private System.Windows.Forms.PictureBox PicFiltro;
         private System.Windows.Forms.TextBox TxtFiltro;
         private System.Windows.Forms.NotifyIcon notifyMovement;
-        private System.Windows.Forms.Button BtnModificar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;

@@ -172,12 +172,12 @@ namespace FrontEndLayer
                 if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
                 {
                     _objMovimientos.NumCuotaPaga = Convert.ToInt32(cmbCuotas.SelectedItem) - (Convert.ToInt32(cmbCuotas.SelectedItem) - 1);
-                    _objMovimientos.PagoAgendado = Convert.ToString("Si");
+                    _objMovimientos.PagoFinalizado = Convert.ToString("No");
                 }
                 else
                 {
                     _objMovimientos.NumCuotaPaga = Convert.ToInt32(cmbCuotas.SelectedItem);
-                    _objMovimientos.PagoAgendado = "No";
+                    _objMovimientos.PagoFinalizado = "Si";
                 }
 
                 _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
@@ -294,11 +294,11 @@ namespace FrontEndLayer
 
                 if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
                 {
-                    _objMovimientos.PagoAgendado = "Si";
+                    _objMovimientos.PagoFinalizado = "Si";
                 }
                 else
                 {
-                    _objMovimientos.PagoAgendado = "No";
+                    _objMovimientos.PagoFinalizado = "No";
                 }
 
                 _objMovimientos.NumCuotaPaga = NumDeCuota;
@@ -364,10 +364,6 @@ namespace FrontEndLayer
         }
         #endregion
 
-        private void BtnModificar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void DtgMovFinal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -408,7 +404,7 @@ namespace FrontEndLayer
             _objMovimientos.Importe = Convert.ToDecimal(DtgMovFinal.CurrentRow.Cells[0].Value);
             _objMovimientos.TipoMovimiento = Convert.ToString(DtgMovFinal.CurrentRow.Cells[1].Value);
             _objMovimientos.FechaRealizada = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[2].Value);
-            _objMovimientos.PagoAgendado = Convert.ToString(DtgMovFinal.CurrentRow.Cells[3].Value);
+            _objMovimientos.PagoFinalizado = Convert.ToString(DtgMovFinal.CurrentRow.Cells[3].Value);
             _objMovimientos.CantCuotas = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[4].Value);
             _objMovimientos.Observaciones = Convert.ToString(DtgMovFinal.CurrentRow.Cells[5].Value);
 
