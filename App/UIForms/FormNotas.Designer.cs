@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.DTGVNotas = new System.Windows.Forms.DataGridView();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtNota = new System.Windows.Forms.RichTextBox();
             this.TxtTitulo = new System.Windows.Forms.TextBox();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.LblNota = new System.Windows.Forms.Label();
             this.BtnSave = new System.Windows.Forms.Button();
             this.PicFiltro = new System.Windows.Forms.PictureBox();
             this.TxtFiltro = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
             this.SuspendLayout();
@@ -61,36 +61,6 @@
             this.DTGVNotas.RowHeadersVisible = false;
             this.DTGVNotas.Size = new System.Drawing.Size(460, 229);
             this.DTGVNotas.TabIndex = 0;
-            // 
-            // Titulo
-            // 
-            this.Titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Titulo.Frozen = true;
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            this.Titulo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Titulo.Width = 58;
-            // 
-            // Nota
-            // 
-            this.Nota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Nota.Frozen = true;
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            this.Nota.ReadOnly = true;
-            this.Nota.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nota.Width = 55;
-            // 
-            // TxtNota
-            // 
-            this.TxtNota.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNota.Location = new System.Drawing.Point(12, 77);
-            this.TxtNota.Name = "TxtNota";
-            this.TxtNota.Size = new System.Drawing.Size(460, 58);
-            this.TxtNota.TabIndex = 1;
-            this.TxtNota.Text = "";
             // 
             // TxtTitulo
             // 
@@ -161,6 +131,37 @@
             this.TxtFiltro.TabIndex = 33;
             this.TxtFiltro.Text = "Buscar notas";
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(13, 77);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(459, 58);
+            this.textBox1.TabIndex = 35;
+            // 
+            // Titulo
+            // 
+            this.Titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Titulo.Frozen = true;
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            this.Titulo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Titulo.Width = 150;
+            // 
+            // Nota
+            // 
+            this.Nota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Nota.Frozen = true;
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            this.Nota.ReadOnly = true;
+            this.Nota.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nota.Width = 305;
+            // 
             // FormNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,13 +170,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(484, 411);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.PicFiltro);
             this.Controls.Add(this.TxtFiltro);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.LblNota);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.TxtTitulo);
-            this.Controls.Add(this.TxtNota);
             this.Controls.Add(this.DTGVNotas);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -194,13 +195,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DTGVNotas;
-        private System.Windows.Forms.RichTextBox TxtNota;
         private System.Windows.Forms.TextBox TxtTitulo;
         private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Label LblNota;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.PictureBox PicFiltro;
         private System.Windows.Forms.TextBox TxtFiltro;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
     }

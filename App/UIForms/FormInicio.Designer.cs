@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -75,7 +76,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DtgMovFinal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DtgMovFinal.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DtgMovFinal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.DtgMovFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DtgMovFinal.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -105,15 +107,19 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DtgMovFinal.DefaultCellStyle = dataGridViewCellStyle8;
             this.DtgMovFinal.EnableHeadersVisualStyles = false;
+            this.DtgMovFinal.GridColor = System.Drawing.SystemColors.Control;
             this.DtgMovFinal.Location = new System.Drawing.Point(256, 96);
             this.DtgMovFinal.MultiSelect = false;
             this.DtgMovFinal.Name = "DtgMovFinal";
             this.DtgMovFinal.ReadOnly = true;
+            this.DtgMovFinal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DtgMovFinal.RowHeadersVisible = false;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgMovFinal.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DtgMovFinal.RowTemplate.ReadOnly = true;
             this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DtgMovFinal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgMovFinal.Size = new System.Drawing.Size(822, 458);
+            this.DtgMovFinal.Size = new System.Drawing.Size(822, 452);
             this.DtgMovFinal.TabIndex = 18;
             this.DtgMovFinal.TabStop = false;
             // 
@@ -373,7 +379,7 @@
             // pnlForms
             // 
             this.pnlForms.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlForms.BackColor = System.Drawing.Color.Transparent;
+            this.pnlForms.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pnlForms.Location = new System.Drawing.Point(250, 50);
             this.pnlForms.Name = "pnlForms";
             this.pnlForms.Size = new System.Drawing.Size(834, 510);
@@ -434,7 +440,7 @@
             // 
             // TxtFiltro
             // 
-            this.TxtFiltro.BackColor = System.Drawing.SystemColors.Control;
+            this.TxtFiltro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TxtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtFiltro.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -453,7 +459,7 @@
             // FormInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1084, 560);
             this.Controls.Add(this.TxtFiltro);
             this.Controls.Add(this.PicFiltro);

@@ -6,8 +6,9 @@
         private string tituloNota;
         private string msjNota;
 
-        public int Id { get => Id; set => Id = value; }
-        public string TituloNota { get => TituloNota; set => TituloNota = value; }
-        public string MsjNota { get => MsjNota; set => MsjNota = value; }
+        public int Id => id;
+
+        public string TituloNota { get => tituloNota; set => tituloNota = value; }
+        public string MsjNota { get => msjNota; set => msjNota = value; }
     }
 }

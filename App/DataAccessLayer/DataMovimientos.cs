@@ -159,7 +159,7 @@ namespace DataAccessLayer
                                  CantCuotas, 
                                  Observaciones
                         from Movimientos
-                        Order by Id_Mov asc"
+                        Order by Id_Mov desc"
                 ;
             }
             else
