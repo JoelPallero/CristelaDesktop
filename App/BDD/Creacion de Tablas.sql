@@ -135,3 +135,16 @@ and NumCuotaPaga < CantCuotas
 and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
 Group by Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, NumCuotaPaga, Observaciones 
 Order by FechaRealizada desc
+
+WITH siguiente_cuota AS(
+    SELECT *, ROW_NUMBER() OVER( PARTITION BY ISNULL( CodMovimiento, Id_Mov) ORDER BY NumCuotaPaga DESC) rn
+    FROM Movimientos
+    WHERE PagoFinalizado = 'No'
+    AND NumCuotaPaga < CantCuotas
+)
+SELECT *
+FROM Movimientos
+WHERE rn = 1;
+
+
+delete movimientos where Id_Mov = 1010
