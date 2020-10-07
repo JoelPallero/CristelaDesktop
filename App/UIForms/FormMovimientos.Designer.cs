@@ -111,6 +111,11 @@
             this.TxtFiltro.Size = new System.Drawing.Size(234, 15);
             this.TxtFiltro.TabIndex = 38;
             this.TxtFiltro.Text = "Buscar";
+            this.TxtFiltro.Enter += new System.EventHandler(this.TxtFiltro_Enter);
+            this.TxtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFiltro_KeyPress);
+            this.TxtFiltro.Leave += new System.EventHandler(this.TxtFiltro_MouseLeave);
+            this.TxtFiltro.MouseEnter += new System.EventHandler(this.TxtFiltro_MouseEnter);
+            this.TxtFiltro.MouseLeave += new System.EventHandler(this.TxtFiltro_MouseLeave);
             // 
             // DtgMovFinal
             // 
@@ -147,16 +152,16 @@
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DtgMovFinal.DefaultCellStyle = dataGridViewCellStyle16;
             this.DtgMovFinal.EnableHeadersVisualStyles = false;
-            this.DtgMovFinal.Location = new System.Drawing.Point(3, 50);
+            this.DtgMovFinal.Location = new System.Drawing.Point(7, 50);
             this.DtgMovFinal.Name = "DtgMovFinal";
             this.DtgMovFinal.ReadOnly = true;
             this.DtgMovFinal.RowHeadersVisible = false;
             this.DtgMovFinal.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DtgMovFinal.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DtgMovFinal.RowTemplate.ReadOnly = true;
-            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DtgMovFinal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgMovFinal.Size = new System.Drawing.Size(816, 256);
+            this.DtgMovFinal.Size = new System.Drawing.Size(810, 256);
             this.DtgMovFinal.TabIndex = 33;
             this.DtgMovFinal.TabStop = false;
             this.DtgMovFinal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgMovFinal_CellDoubleClick);
