@@ -30,21 +30,14 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             this.DtgMovFinal = new System.Windows.Forms.DataGridView();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Transaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaDeCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.lblTextGastoPermitido = new System.Windows.Forms.Label();
             this.LblGastoPermitido = new System.Windows.Forms.Label();
@@ -61,6 +54,12 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.TxtFiltro = new System.Windows.Forms.TextBox();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Transaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaDeCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).BeginInit();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
@@ -76,8 +75,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DtgMovFinal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DtgMovFinal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.DtgMovFinal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DtgMovFinal.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtgMovFinal.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -107,95 +105,17 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DtgMovFinal.DefaultCellStyle = dataGridViewCellStyle8;
             this.DtgMovFinal.EnableHeadersVisualStyles = false;
-            this.DtgMovFinal.GridColor = System.Drawing.SystemColors.Control;
             this.DtgMovFinal.Location = new System.Drawing.Point(256, 96);
             this.DtgMovFinal.MultiSelect = false;
             this.DtgMovFinal.Name = "DtgMovFinal";
             this.DtgMovFinal.ReadOnly = true;
-            this.DtgMovFinal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DtgMovFinal.RowHeadersVisible = false;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtgMovFinal.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.DtgMovFinal.RowTemplate.ReadOnly = true;
-            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DtgMovFinal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.DtgMovFinal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DtgMovFinal.Size = new System.Drawing.Size(822, 452);
+            this.DtgMovFinal.Size = new System.Drawing.Size(822, 458);
             this.DtgMovFinal.TabIndex = 18;
             this.DtgMovFinal.TabStop = false;
-            // 
-            // Importe
-            // 
-            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Importe.HeaderText = "      $ Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            this.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Importe.Width = 130;
-            // 
-            // Transaccion
-            // 
-            this.Transaccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.NullValue = "Otros";
-            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Transaccion.HeaderText = "      Transacción";
-            this.Transaccion.Name = "Transaccion";
-            this.Transaccion.ReadOnly = true;
-            this.Transaccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Transaccion.Width = 130;
-            // 
-            // FechaDeCreacion
-            // 
-            this.FechaDeCreacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle4.Format = "d";
-            this.FechaDeCreacion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.FechaDeCreacion.HeaderText = "Realizado";
-            this.FechaDeCreacion.Name = "FechaDeCreacion";
-            this.FechaDeCreacion.ReadOnly = true;
-            this.FechaDeCreacion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FechaDeCreacion.Width = 120;
-            // 
-            // NumCuota
-            // 
-            this.NumCuota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.NullValue = "No";
-            this.NumCuota.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NumCuota.HeaderText = "Cuotas Pagas";
-            this.NumCuota.Name = "NumCuota";
-            this.NumCuota.ReadOnly = true;
-            this.NumCuota.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.NumCuota.Width = 110;
-            // 
-            // Cuotas
-            // 
-            this.Cuotas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = "1";
-            this.Cuotas.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Cuotas.HeaderText = "Cuotas Totales";
-            this.Cuotas.Name = "Cuotas";
-            this.Cuotas.ReadOnly = true;
-            this.Cuotas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cuotas.Width = 110;
-            // 
-            // Observaciones
-            // 
-            this.Observaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle7.NullValue = "-----";
-            this.Observaciones.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Observaciones.HeaderText = "     Observaciones";
-            this.Observaciones.Name = "Observaciones";
-            this.Observaciones.ReadOnly = true;
-            this.Observaciones.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Observaciones.Width = 220;
             // 
             // pnlMenu
             // 
@@ -379,7 +299,7 @@
             // pnlForms
             // 
             this.pnlForms.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlForms.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnlForms.BackColor = System.Drawing.Color.Transparent;
             this.pnlForms.Location = new System.Drawing.Point(250, 50);
             this.pnlForms.Name = "pnlForms";
             this.pnlForms.Size = new System.Drawing.Size(834, 510);
@@ -440,7 +360,7 @@
             // 
             // TxtFiltro
             // 
-            this.TxtFiltro.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TxtFiltro.BackColor = System.Drawing.SystemColors.Control;
             this.TxtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtFiltro.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -456,10 +376,84 @@
             this.TxtFiltro.MouseEnter += new System.EventHandler(this.TxtFiltro_MouseEnter);
             this.TxtFiltro.MouseLeave += new System.EventHandler(this.TxtFiltro_MouseLeave);
             // 
+            // Importe
+            // 
+            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Importe.HeaderText = "      $ Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            this.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Importe.Width = 130;
+            // 
+            // Transaccion
+            // 
+            this.Transaccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.NullValue = "Otros";
+            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Transaccion.HeaderText = "      Transacción";
+            this.Transaccion.Name = "Transaccion";
+            this.Transaccion.ReadOnly = true;
+            this.Transaccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Transaccion.Width = 130;
+            // 
+            // FechaDeCreacion
+            // 
+            this.FechaDeCreacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.Format = "d";
+            this.FechaDeCreacion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.FechaDeCreacion.HeaderText = "Fecha";
+            this.FechaDeCreacion.Name = "FechaDeCreacion";
+            this.FechaDeCreacion.ReadOnly = true;
+            this.FechaDeCreacion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FechaDeCreacion.Width = 120;
+            // 
+            // NumCuota
+            // 
+            this.NumCuota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.NullValue = "No";
+            this.NumCuota.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NumCuota.HeaderText = "Cuotas Pagas";
+            this.NumCuota.Name = "NumCuota";
+            this.NumCuota.ReadOnly = true;
+            this.NumCuota.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NumCuota.Width = 110;
+            // 
+            // Cuotas
+            // 
+            this.Cuotas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = "1";
+            this.Cuotas.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Cuotas.HeaderText = "Cuotas Totales";
+            this.Cuotas.Name = "Cuotas";
+            this.Cuotas.ReadOnly = true;
+            this.Cuotas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cuotas.Width = 110;
+            // 
+            // Observaciones
+            // 
+            this.Observaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle7.NullValue = "-----";
+            this.Observaciones.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Observaciones.HeaderText = "     Observaciones";
+            this.Observaciones.Name = "Observaciones";
+            this.Observaciones.ReadOnly = true;
+            this.Observaciones.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Observaciones.Width = 220;
+            // 
             // FormInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1084, 560);
             this.Controls.Add(this.TxtFiltro);
             this.Controls.Add(this.PicFiltro);

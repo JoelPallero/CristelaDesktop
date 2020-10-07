@@ -31,7 +31,7 @@ namespace FrontEndLayer
             _objSaldosEstablecidos = new SaldosEstablecidos();
             _objMovimientos = new Movimientos();
             _objNegMovimientos = new NegMovimientos();
-
+            CargaDeSaldo();
             ClickInicio();
         }
 
@@ -128,10 +128,6 @@ namespace FrontEndLayer
 
                 lblTitulo.Text = "Movimientos Registrados";
             }
-            else
-            {
-                //lblTitulo.Text = "No hay movimientos guardados";
-            }
         }
 
         public void ClickInicio()
@@ -218,7 +214,6 @@ namespace FrontEndLayer
             pnlForms.Visible = false;
         }
 
-
         #endregion
 
         #region Menú
@@ -237,14 +232,13 @@ namespace FrontEndLayer
         private void BtnAgenda_Click(object sender, EventArgs e)
         {
             ClickAgenda();
+            AbrirFormHijo(formHijo: new FormPagosAgendados());
         }
 
         private void BtnNotas_Click(object sender, EventArgs e)
         {
-            //FormNotas _formNotas = new FormNotas();
-            //_formNotas.ShowDialog();
-
-            AbrirFormHijo(formHijo: new FormNotas());
+            FormNotas _formNotas = new FormNotas();
+            _formNotas.Show();
         }
 
         private void BtnAjustes_Click(object sender, EventArgs e)
@@ -301,5 +295,6 @@ namespace FrontEndLayer
 
 
         #endregion
+
     }
 }

@@ -86,21 +86,25 @@ namespace FrontEndLayer
         private void ClearFormAndVaraibles()
         {
             TxtImporte.Clear();
-            cmbTransaccion.Text = string.Empty;
+            cmbTransaccion.SelectedItem = null;
             TxtObservaciones.Clear();
 
             IdMovimiento = 0;
             NumDeCuota = 0;
             IngresoSaldo = 0;
+
+            RbAgendaN.Checked = true;
         }
         private void TxtImporte_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Para obligar a que sólo se introduzcan números
+            //Solo se teclean los digitos
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
             }
-            else if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+
+            //permitir teclas de control como retroceso
+            else if (Char.IsControl(e.KeyChar)) 
             {
                 e.Handled = false;
             }
@@ -117,7 +121,7 @@ namespace FrontEndLayer
             }
             else
             {
-                //el resto de teclas pulsadas se desactivan
+                //con esto se desactivan todas las otras teclas no contempladas en las líneas anteriores
                 e.Handled = true;
             }
         }
@@ -171,8 +175,9 @@ namespace FrontEndLayer
 
                 if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
                 {
-                    _objMovimientos.NumCuotaPaga = Convert.ToInt32(cmbCuotas.SelectedItem) - (Convert.ToInt32(cmbCuotas.SelectedItem) - 1);
-                    _objMovimientos.PagoFinalizado = Convert.ToString("No");
+                    _objMovimientos.NumCuotaPaga = 1;
+                    //Convert.ToInt32(cmbCuotas.SelectedItem) - (Convert.ToInt32(cmbCuotas.SelectedItem) - 1);
+                    _objMovimientos.PagoFinalizado = "No";
                 }
                 else
                 {
@@ -285,30 +290,39 @@ namespace FrontEndLayer
             }
             else
             {
-                CalcularSaldoActual(); //para saber si el importe va con - o si con +
-
-                _objMovimientos.Importe = Convert.ToDecimal(TxtImporte.Text);
-
-                _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
-                _objMovimientos.FechaRealizada = Convert.ToDateTime(dtpFecha.Value);
-
-                if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
+                if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) < 2)
                 {
-                    _objMovimientos.PagoFinalizado = "Si";
+                    MessageBox.Show("Para agendar pago debe seleccionar cuotas mayores a 1", "Agendar Pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
                 else
                 {
-                    _objMovimientos.PagoFinalizado = "No";
+                    CalcularSaldoActual(); //para saber si el importe va con - o si con +
+
+                    _objMovimientos.Importe = Convert.ToDecimal(TxtImporte.Text);
+                    _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
+                    _objMovimientos.FechaRealizada = Convert.ToDateTime(dtpFecha.Value);
+                    _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
+                    _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
+
+                    if (Convert.ToInt32(cmbCuotas.SelectedItem) == 1)
+                    {
+                        _objMovimientos.PagoFinalizado = "Si";
+                        _objMovimientos.NumCuotaPaga = 1;
+                    }
+                    else
+                    {
+                        _objMovimientos.PagoFinalizado = "No";
+                        _objMovimientos.NumCuotaPaga = NumDeCuota;
+                    }
+
+                    _objNegMovimientos.UpdateMovement(_objMovimientos);
                 }
-
-                _objMovimientos.NumCuotaPaga = NumDeCuota;
-                _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
-                _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
-
-                _objNegMovimientos.UpdateMovement(_objMovimientos);
             }
-
-
+        }
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            ClearFormAndVaraibles();
         }
 
         #endregion
@@ -364,7 +378,7 @@ namespace FrontEndLayer
         }
         #endregion
 
-
+        #region Editar Movimiento
         private void DtgMovFinal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ConsultarDatosDeMovimiento();
@@ -404,7 +418,7 @@ namespace FrontEndLayer
             _objMovimientos.Importe = Convert.ToDecimal(DtgMovFinal.CurrentRow.Cells[0].Value);
             _objMovimientos.TipoMovimiento = Convert.ToString(DtgMovFinal.CurrentRow.Cells[1].Value);
             _objMovimientos.FechaRealizada = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[2].Value);
-            _objMovimientos.PagoFinalizado = Convert.ToString(DtgMovFinal.CurrentRow.Cells[3].Value);
+            _objMovimientos.NumCuotaPaga = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[3].Value);
             _objMovimientos.CantCuotas = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[4].Value);
             _objMovimientos.Observaciones = Convert.ToString(DtgMovFinal.CurrentRow.Cells[5].Value);
 
@@ -416,14 +430,18 @@ namespace FrontEndLayer
             ConsultarDatosDeMovimiento();
             CargaDeDatosOnLine();
         }
+        #endregion
 
+        #region Eliminar Movimiento
         private void EliminarMovimiento_Click(object sender, EventArgs e)
         {
             ConsultarDatosDeMovimiento();
             _objNegMovimientos.DeleteMovement(_objMovimientos);
             EnlistadoDTGV();
         }
+        #endregion
 
+        #region Capturar Click derecho del mouse en el dtgv
         private void DtgMovFinal_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -433,5 +451,7 @@ namespace FrontEndLayer
                 DtgMovFinal.Focus();
             }
         }
+
+        #endregion        
     }
 } 

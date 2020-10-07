@@ -10,14 +10,16 @@ namespace DataAccessLayer
         public int SaveNota(Notas notas)
         {
             int resultado = -1;
-            string query = "Insert Into Notas (TituloNota, MsjNota) values (@TituloNota, @MsjNota)";
+            string query = "Insert Into Notas (TituloNota, MsjNota, FechaNota) values (@TituloNota, @MsjNota, @FechaNota)";
 
             SqlParameter tituloNota = new SqlParameter("@TituloNota", notas.TituloNota);
             SqlParameter msjNota = new SqlParameter("@MsjNota", notas.MsjNota);
+            SqlParameter fechaNota = new SqlParameter("@FechaNota", notas.FechaNota);
 
             SqlCommand cmd = new SqlCommand(query, conexion);
             cmd.Parameters.Add(tituloNota);
             cmd.Parameters.Add(msjNota);
+            cmd.Parameters.Add(fechaNota);
 
             try
             {
@@ -44,18 +46,18 @@ namespace DataAccessLayer
 
             if (string.IsNullOrEmpty(accion))
             {
-                query = "Select * from Notas where Id = (select max (Id) from Notas)";
+                query = "Select * from Notas order by FechaNota desc";
                 ;
             }
             else
             {
-                query = @"select Id,
+                query = @"select Id_Nota,
                                  TituloNota,
                                  MsjNota,
                         from Notas
                         where TituloNota LIKE @query 
                         or MsjNota LIKE @query
-                        Order by Id Desc"
+                        order by FechaNota desc"
                 ;
             }
 

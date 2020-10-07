@@ -28,10 +28,10 @@ namespace BusinessLogicLayer
             return _dataMovimientos.UpdateMovement(movimientos);
         }
 
-        //public DataSet DateTimeFilter(string accion1, string accion2, bool busqueda)
-        //{
-        //    return _dataMovimientos.DateTimeFilter(accion1, accion2, busqueda);
-        //}
+        public DataSet MovAgendadosList(Movimientos movimientos)
+        {
+            return _dataMovimientos.MovAgendadosList(movimientos);
+        }
 
         public DataSet MovementsList(string accion)
         {
@@ -52,6 +52,11 @@ namespace BusinessLogicLayer
         public Movimientos ConsultarDatosDeMovimiento(Movimientos movimientos)
         {
             return _dataMovimientos.ConsultarDatosDeMovimiento(movimientos);
+        }
+
+        public int RegistrarPagoAgendado(Movimientos movimientos)
+        {
+            return _dataMovimientos.RegistrarPagoAgendado(movimientos);
         }
 
     }

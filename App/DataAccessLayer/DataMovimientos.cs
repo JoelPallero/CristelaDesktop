@@ -100,7 +100,7 @@ namespace DataAccessLayer
                                                      NumCuotaPaga = @NumCuotaPaga,
                                                      CantCuotas = @CantCuotas, 
                                                      Observaciones = @Observaciones,
-                                                     PagoFinalizado = @PagoFinalizado                             
+                                                     PagoFinalizado = @pagoFinalizado
                              Where Id_Mov = @Id_Mov"
             ;
 
@@ -157,7 +157,8 @@ namespace DataAccessLayer
                                  FechaRealizada, 
                                  NumCuotaPaga, 
                                  CantCuotas, 
-                                 Observaciones
+                                 Observaciones,
+                                 PagoFinalizado
                         from Movimientos
                         Order by Id_Mov desc"
                 ;
@@ -171,7 +172,8 @@ namespace DataAccessLayer
                                  FechaRealizada,
                                  NumCuotaPaga,
                                  CantCuotas,
-                                 Observaciones
+                                 Observaciones,
+                                 PagoFinalizado
                         from Movimientos
                         where Importe LIKE @query 
                         or TipoMovimiento LIKE @query
@@ -179,6 +181,7 @@ namespace DataAccessLayer
                         or NumCuotaPaga LIKE @query
                         or CantCuotas LIKE @query
                         or Observaciones LIKE @query
+                        or PagoFinalizado LIKE @query
                         Order by Id_Mov Desc"
                 ;
             }
@@ -283,7 +286,6 @@ namespace DataAccessLayer
 
         #endregion
 
-
         #region Traer el último movimiento
 
         public Movimientos ConsultarDatosDeMovimiento(Movimientos movimientos)
@@ -325,33 +327,33 @@ namespace DataAccessLayer
 
         public Movimientos ConsultarGastoPermitidoActual(Movimientos movimientos)
         {
-            //string query = "execute sp_SaldoActualizado";
+            string query = "execute sp_GastoPermitido";
 
-            //SqlCommand cmd = new SqlCommand(query, conexion);
+            SqlCommand cmd = new SqlCommand(query, conexion);
 
-            //try
-            //{
-            //    Abrirconexion();
+            try
+            {
+                Abrirconexion();
 
-            //    SqlDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            //    if (reader.Read())
-            //    {
-            //        movimientos.SaldoActual = decimal.Parse(reader["SumaTotal"].ToString());
-            //    }
-            //    reader.Close();
-            //    cmd.ExecuteReader();
-            //}
-            //catch (Exception e)
-            //{
+                if (reader.Read())
+                {
+                    movimientos.GastoPermitido = decimal.Parse(reader["SumaTotal"].ToString());
+                }
+                reader.Close();
+                cmd.ExecuteReader();
+            }
+            catch (Exception e)
+            {
 
-            //    throw new Exception("No se pudo traer el Saldo Atualizado", e);
-            //}
-            //finally
-            //{
-            //    Cerrarconexion();
-            //    cmd.Dispose();
-            //}
+                throw new Exception("No se pudo traer el Saldo Atualizado", e);
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
             return movimientos;
         }
 
@@ -388,6 +390,146 @@ namespace DataAccessLayer
         }
 
 
+        #endregion
+
+        #region Movimientos Agendados
+        public DataSet MovAgendadosList(Movimientos movimientos)
+        {
+            string orden = @"select * from Movimientos 
+                            where NumCuotaPaga < CantCuotas
+                            and NumCuotaPaga = (select max(distinct NumCuotaPaga) from Movimientos) 
+                            order by FechaRealizada asc";
+
+            SqlCommand cmd = new SqlCommand(orden, conexion);            
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+
+            try
+            {
+                Abrirconexion();
+                cmd.ExecuteNonQuery();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al listar Movimientos", e);
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+            return ds;
+        }
+
+        public int RegistrarPagoAgendado(Movimientos movimientos)
+        {
+            int resultado = -1;
+            string orden = @"Insert into Movimientos (Importe, 
+                                                     TipoMovimiento,   
+                                                     FechaRealizada, 
+                                                     NumCuotaPaga, 
+                                                     CantCuotas, 
+                                                     Observaciones,
+                                                     CodMovimiento,
+                                                     PagoFinalizado)       
+                            values (@Importe, 
+                                    @TipoMovimiento,   
+                                    @FechaRealizada, 
+                                    @NumCuotaPaga, 
+                                    @CantCuotas, 
+                                    @Observaciones,
+                                    @CodMovimiento,
+                                    @PagoFinalizado)"
+            ;
+
+            SqlParameter importe = new SqlParameter("@Importe", movimientos.Importe);
+            SqlParameter tipoMovimiento = new SqlParameter("@TipoMovimiento", movimientos.TipoMovimiento);
+            SqlParameter fechaRealizada = new SqlParameter("@FechaRealizada", movimientos.FechaRealizada);
+            SqlParameter numCuotaPaga = new SqlParameter("@NumCuotaPaga", movimientos.NumCuotaPaga);
+            SqlParameter cantCuotas = new SqlParameter("@CantCuotas", movimientos.CantCuotas);
+            SqlParameter observaciones = new SqlParameter("@Observaciones", movimientos.Observaciones);
+            SqlParameter codMovimiento = new SqlParameter("@CodMovimiento", movimientos.CodMovimiento);
+            SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
+
+            SqlCommand cmd = new SqlCommand(orden, conexion);
+            cmd.Parameters.Add(importe);
+            cmd.Parameters.Add(tipoMovimiento);
+            cmd.Parameters.Add(fechaRealizada);
+            cmd.Parameters.Add(numCuotaPaga);
+            cmd.Parameters.Add(cantCuotas);
+            cmd.Parameters.Add(observaciones);
+            cmd.Parameters.Add(codMovimiento);
+            cmd.Parameters.Add(pagoFinalizado);
+
+            try
+            {
+                Abrirconexion();
+                resultado = cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al tratar de guardar Movimientos", e);
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+            return resultado;
+        }
+
+        public int FinalizarCuotasDePagos(Movimientos movimientos)
+        {
+            int resultado = -1;
+
+            string query = @"update set Movimientos PagoFinalizado = @PagoFinalizado) where Id_Mov = @Id_Mov";
+
+            SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
+            SqlCommand cmd = new SqlCommand(query, conexion);
+            cmd.Parameters.Add(pagoFinalizado);
+
+            try
+            {
+                Abrirconexion();
+                resultado = cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+
+            return resultado;
+        }
+
+        private Movimientos ConsultaId(int IdMovimiento, Movimientos movimientos)
+        {
+            string query = "select Id_Mov From Movimientos where CodMovimiento = '" + IdMovimiento + "'";
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                Cerrarconexion();
+                //cmd.Dispose()
+            }
+
+            return movimientos;
+        }
         #endregion
     }
 }

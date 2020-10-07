@@ -10,7 +10,8 @@ FechaRealizada DateTime not null,
 NumCuotaPaga int not null,
 CantCuotas int not null,
 Observaciones nvarchar (200) null,
-CodMovimiento int null,--acá se registra el Id_Mov para identificar los pagos divididos que provienen del mismo movimiento
+PagoAgendado varchar(2) not null,
+PagoFinalizado varchar(2) not null,
 check (TipoMovimiento in ('Agua', 
 'Cobro', 
 'Comida',
@@ -108,53 +109,8 @@ SaldosEstablecidos
 where TipoMovimiento = 'GastoPermitido'
 and FechaRealizada >= Fecha
 
-create proc sp_GastoPermitido
-as
-declare @SumaTotal Decimal(18,2)
-set @SumaTotal = (select sum(Importe) from Movimientos
-where TipoMovimiento = 'Gasto Permitido')
-if @SumaTotal is null
-begin
-set @SumaTotal = 0
-end
-select @SumaTotal as SumaTotal
-
-execute sp_GastoPermitido
-
-
-select * from Movimientos 
-
-
--- usar  distintc para traer los movimientos con el Numcuota paga más alto y quitar los duplicados
--- Traer los pagos en los que el NumCuotaPaga sea menos a CantCuotas y cuando haya una igualdad, no lo muestre
-
-create procedure sp_PagosAgendados
-as
-begin
---declare @NumDeCuotasPagas int;
---set @NumDeCuotasPagas = (select max (NumCuotaPaga) From Movimientos)
---Select * From Movimientos
---where CodMovimiento = (select distinct CodMovimiento From Movimientos)
---and NumCuotaPaga != CantCuotas
---and NumCuotaPaga = @NumDeCuotasPagas
---and PagoFinalizado = 'No' or PagoFinalizado is null
-
-
-declare @NumDeCuotasPagas int;
-set @NumDeCuotasPagas = (select max (NumCuotaPaga) From Movimientos)
-select distinct CodMovimiento, Id_Mov, Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, Observaciones, PagoFinalizado
-From Movimientos
-where NumCuotaPaga < CantCuotas
-and NumCuotaPaga = @NumDeCuotasPagas
-and PagoFinalizado = 'No' or PagoFinalizado is null
-
-Select * From Movimientos 
-where NumCuotaPaga = (select max (NumCuotaPaga) From Movimientos)
-and NumCuotaPaga < CantCuotas
-
-Select * From Movimientos 
-select * from Movimientos 
-where NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
-and NumCuotaPaga < CantCuotas 
-and PagoFinalizado = 'No'
-order by FechaRealizada desc
+select *
+from Movimientos
+where Importe = '" + movimientos.Importe + "'
+and TipoMovimiento = '" + movimientos.TipoMovimiento + "'
+and Observaciones = '" + movimientos.Observaciones + "'

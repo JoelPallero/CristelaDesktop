@@ -28,49 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DTGVNotas = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TxtTitulo = new System.Windows.Forms.TextBox();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.LblNota = new System.Windows.Forms.Label();
             this.BtnSave = new System.Windows.Forms.Button();
             this.PicFiltro = new System.Windows.Forms.PictureBox();
             this.TxtFiltro = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).BeginInit();
+            this.DTGVNotas = new System.Windows.Forms.DataGridView();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Transaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtNota = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DTGVNotas
-            // 
-            this.DTGVNotas.AllowUserToAddRows = false;
-            this.DTGVNotas.AllowUserToDeleteRows = false;
-            this.DTGVNotas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DTGVNotas.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DTGVNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DTGVNotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Titulo,
-            this.Nota});
-            this.DTGVNotas.GridColor = System.Drawing.SystemColors.Control;
-            this.DTGVNotas.Location = new System.Drawing.Point(12, 170);
-            this.DTGVNotas.Name = "DTGVNotas";
-            this.DTGVNotas.ReadOnly = true;
-            this.DTGVNotas.RowHeadersVisible = false;
-            this.DTGVNotas.Size = new System.Drawing.Size(460, 229);
-            this.DTGVNotas.TabIndex = 0;
             // 
             // TxtTitulo
             // 
             this.TxtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtTitulo.Location = new System.Drawing.Point(13, 31);
+            this.TxtTitulo.Location = new System.Drawing.Point(14, 31);
             this.TxtTitulo.Name = "TxtTitulo";
             this.TxtTitulo.Size = new System.Drawing.Size(378, 20);
-            this.TxtTitulo.TabIndex = 2;
+            this.TxtTitulo.TabIndex = 0;
             // 
             // LblTitulo
             // 
@@ -98,9 +82,10 @@
             this.BtnSave.Location = new System.Drawing.Point(397, 29);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(75, 40);
-            this.BtnSave.TabIndex = 27;
+            this.BtnSave.TabIndex = 2;
             this.BtnSave.Text = "Guardar";
             this.BtnSave.UseVisualStyleBackColor = false;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // PicFiltro
             // 
@@ -128,39 +113,95 @@
             this.TxtFiltro.MinimumSize = new System.Drawing.Size(230, 20);
             this.TxtFiltro.Name = "TxtFiltro";
             this.TxtFiltro.Size = new System.Drawing.Size(230, 15);
-            this.TxtFiltro.TabIndex = 33;
+            this.TxtFiltro.TabIndex = 3;
             this.TxtFiltro.Text = "Buscar notas";
+            this.TxtFiltro.Enter += new System.EventHandler(this.TxtFiltro_Enter);
+            this.TxtFiltro.Leave += new System.EventHandler(this.TxtFiltro_Leave);
+            this.TxtFiltro.MouseEnter += new System.EventHandler(this.TxtFiltro_MouseEnter);
+            this.TxtFiltro.MouseLeave += new System.EventHandler(this.TxtFiltro_MouseLeave);
             // 
-            // textBox1
+            // DTGVNotas
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DTGVNotas.AllowUserToAddRows = false;
+            this.DTGVNotas.AllowUserToDeleteRows = false;
+            this.DTGVNotas.AllowUserToResizeRows = false;
+            this.DTGVNotas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(13, 77);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(459, 58);
-            this.textBox1.TabIndex = 35;
+            this.DTGVNotas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DTGVNotas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DTGVNotas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "C1";
+            dataGridViewCellStyle1.NullValue = "0";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DTGVNotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DTGVNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DTGVNotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Importe,
+            this.Transaccion});
+            this.DTGVNotas.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DTGVNotas.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DTGVNotas.EnableHeadersVisualStyles = false;
+            this.DTGVNotas.Location = new System.Drawing.Point(12, 171);
+            this.DTGVNotas.MultiSelect = false;
+            this.DTGVNotas.Name = "DTGVNotas";
+            this.DTGVNotas.ReadOnly = true;
+            this.DTGVNotas.RowHeadersVisible = false;
+            this.DTGVNotas.RowTemplate.ReadOnly = true;
+            this.DTGVNotas.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DTGVNotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DTGVNotas.Size = new System.Drawing.Size(460, 229);
+            this.DTGVNotas.TabIndex = 35;
+            this.DTGVNotas.TabStop = false;
             // 
-            // Titulo
+            // Importe
             // 
-            this.Titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Titulo.Frozen = true;
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            this.Titulo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Titulo.Width = 150;
+            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Importe.HeaderText = "Titulo";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            this.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Importe.Width = 150;
             // 
-            // Nota
+            // Transaccion
             // 
-            this.Nota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nota.Frozen = true;
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            this.Nota.ReadOnly = true;
-            this.Nota.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nota.Width = 305;
+            this.Transaccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.NullValue = "Otros";
+            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Transaccion.HeaderText = "Nota";
+            this.Transaccion.Name = "Transaccion";
+            this.Transaccion.ReadOnly = true;
+            this.Transaccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Transaccion.Width = 310;
+            // 
+            // TxtNota
+            // 
+            this.TxtNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtNota.Location = new System.Drawing.Point(14, 77);
+            this.TxtNota.Multiline = true;
+            this.TxtNota.Name = "TxtNota";
+            this.TxtNota.Size = new System.Drawing.Size(458, 58);
+            this.TxtNota.TabIndex = 36;
             // 
             // FormNotas
             // 
@@ -170,39 +211,37 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(484, 411);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtNota);
+            this.Controls.Add(this.DTGVNotas);
             this.Controls.Add(this.PicFiltro);
             this.Controls.Add(this.TxtFiltro);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.LblNota);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.TxtTitulo);
-            this.Controls.Add(this.DTGVNotas);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "FormNotas";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notas";
-            ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DTGVNotas;
         private System.Windows.Forms.TextBox TxtTitulo;
         private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Label LblNota;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.PictureBox PicFiltro;
         private System.Windows.Forms.TextBox TxtFiltro;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
+        private System.Windows.Forms.DataGridView DTGVNotas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transaccion;
+        private System.Windows.Forms.TextBox TxtNota;
     }
 }
