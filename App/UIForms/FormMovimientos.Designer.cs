@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GroupDTGV = new System.Windows.Forms.GroupBox();
             this.PicFiltro = new System.Windows.Forms.PictureBox();
             this.TxtFiltro = new System.Windows.Forms.TextBox();
@@ -67,6 +67,7 @@
             this.TxtObservaciones = new System.Windows.Forms.TextBox();
             this.TxtImporte = new System.Windows.Forms.TextBox();
             this.notifyMovement = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pagosAsociadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupDTGV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).BeginInit();
@@ -125,14 +126,14 @@
             this.DtgMovFinal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.DtgMovFinal.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DtgMovFinal.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DtgMovFinal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DtgMovFinal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DtgMovFinal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DtgMovFinal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Importe,
@@ -143,14 +144,14 @@
             this.Observaciones});
             this.DtgMovFinal.ContextMenuStrip = this.MenuEdicion;
             this.DtgMovFinal.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DtgMovFinal.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DtgMovFinal.DefaultCellStyle = dataGridViewCellStyle8;
             this.DtgMovFinal.EnableHeadersVisualStyles = false;
             this.DtgMovFinal.Location = new System.Drawing.Point(7, 50);
             this.DtgMovFinal.Name = "DtgMovFinal";
@@ -170,10 +171,10 @@
             // Importe
             // 
             this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.Importe.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
             this.Importe.ReadOnly = true;
@@ -183,9 +184,9 @@
             // Transaccion
             // 
             this.Transaccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.NullValue = null;
-            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = null;
+            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
             this.Transaccion.HeaderText = "Transacción";
             this.Transaccion.Name = "Transaccion";
             this.Transaccion.ReadOnly = true;
@@ -195,10 +196,10 @@
             // Fecha
             // 
             this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.Fecha.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Fecha.DefaultCellStyle = dataGridViewCellStyle4;
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
@@ -208,9 +209,9 @@
             // NumCuotaPaga
             // 
             this.NumCuotaPaga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.NullValue = null;
-            this.NumCuotaPaga.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            this.NumCuotaPaga.DefaultCellStyle = dataGridViewCellStyle5;
             this.NumCuotaPaga.HeaderText = "Cuotas Pagas";
             this.NumCuotaPaga.Name = "NumCuotaPaga";
             this.NumCuotaPaga.ReadOnly = true;
@@ -220,10 +221,10 @@
             // Cuotas
             // 
             this.Cuotas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Format = "N0";
-            dataGridViewCellStyle14.NullValue = "1";
-            this.Cuotas.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = "1";
+            this.Cuotas.DefaultCellStyle = dataGridViewCellStyle6;
             this.Cuotas.HeaderText = "Cuotas Totales";
             this.Cuotas.Name = "Cuotas";
             this.Cuotas.ReadOnly = true;
@@ -233,9 +234,9 @@
             // Observaciones
             // 
             this.Observaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.NullValue = "-";
-            this.Observaciones.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.NullValue = "-";
+            this.Observaciones.DefaultCellStyle = dataGridViewCellStyle7;
             this.Observaciones.HeaderText = "Observaciones";
             this.Observaciones.Name = "Observaciones";
             this.Observaciones.ReadOnly = true;
@@ -245,22 +246,23 @@
             // MenuEdicion
             // 
             this.MenuEdicion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pagosAsociadosToolStripMenuItem,
             this.EditarMovimiento,
             this.EliminarMovimiento});
             this.MenuEdicion.Name = "MenuEdicion";
-            this.MenuEdicion.Size = new System.Drawing.Size(118, 48);
+            this.MenuEdicion.Size = new System.Drawing.Size(181, 92);
             // 
             // EditarMovimiento
             // 
             this.EditarMovimiento.Name = "EditarMovimiento";
-            this.EditarMovimiento.Size = new System.Drawing.Size(117, 22);
+            this.EditarMovimiento.Size = new System.Drawing.Size(180, 22);
             this.EditarMovimiento.Text = "Editar";
             this.EditarMovimiento.Click += new System.EventHandler(this.EditarMovimiento_Click);
             // 
             // EliminarMovimiento
             // 
             this.EliminarMovimiento.Name = "EliminarMovimiento";
-            this.EliminarMovimiento.Size = new System.Drawing.Size(117, 22);
+            this.EliminarMovimiento.Size = new System.Drawing.Size(180, 22);
             this.EliminarMovimiento.Text = "Eliminar";
             this.EliminarMovimiento.Click += new System.EventHandler(this.EliminarMovimiento_Click);
             // 
@@ -489,6 +491,12 @@
             this.notifyMovement.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyMovement.BalloonTipTitle = "Registro exitoso";
             // 
+            // pagosAsociadosToolStripMenuItem
+            // 
+            this.pagosAsociadosToolStripMenuItem.Name = "pagosAsociadosToolStripMenuItem";
+            this.pagosAsociadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pagosAsociadosToolStripMenuItem.Text = "Pagos asociados";
+            // 
             // FormMovimientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,5 +554,6 @@
         private System.Windows.Forms.ContextMenuStrip MenuEdicion;
         private System.Windows.Forms.ToolStripMenuItem EditarMovimiento;
         private System.Windows.Forms.ToolStripMenuItem EliminarMovimiento;
+        private System.Windows.Forms.ToolStripMenuItem pagosAsociadosToolStripMenuItem;
     }
 }

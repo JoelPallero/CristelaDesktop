@@ -113,10 +113,25 @@ create proc sp_PagosAgendados
 as
 begin
 Select * from Movimientos 
-Where PagoFinalizado = 'no' and NumCuotaPaga < CantCuotas
-and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
+Where PagoFinalizado = 'No' and NumCuotaPaga < CantCuotas
+and NumCuotaPaga = (select max(Id_Mov) from Movimientos)
 Order by FechaRealizada desc
 end
 
 exec sp_PagosAgendados
 Delete Movimientos where Id_Mov = 6
+
+
+Select * from Movimientos 
+where PagoFinalizado = 'no'
+and NumCuotaPaga < CantCuotas
+
+Order by FechaRealizada desc
+
+select Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, max(NumCuotaPaga), Observaciones 
+from Movimientos 
+where PagoFinalizado = 'no'
+and NumCuotaPaga < CantCuotas
+and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
+Group by Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, NumCuotaPaga, Observaciones 
+Order by FechaRealizada desc
