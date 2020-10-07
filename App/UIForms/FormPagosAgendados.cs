@@ -63,11 +63,6 @@ namespace FrontEndLayer
 
         #endregion
 
-        private void DtgMovAgendados_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
         private void DtgMovAgendados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewButtonCell cell = (DataGridViewButtonCell)DtgMovAgendados.Rows[e.RowIndex].Cells[e.ColumnIndex];

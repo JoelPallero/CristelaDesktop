@@ -109,8 +109,14 @@ SaldosEstablecidos
 where TipoMovimiento = 'GastoPermitido'
 and FechaRealizada >= Fecha
 
-select *
-from Movimientos
-where Importe = '" + movimientos.Importe + "'
-and TipoMovimiento = '" + movimientos.TipoMovimiento + "'
-and Observaciones = '" + movimientos.Observaciones + "'
+create proc sp_PagosAgendados
+as
+begin
+Select * from Movimientos 
+Where PagoFinalizado = 'no' and NumCuotaPaga < CantCuotas
+and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
+Order by FechaRealizada desc
+end
+
+exec sp_PagosAgendados
+Delete Movimientos where Id_Mov = 6

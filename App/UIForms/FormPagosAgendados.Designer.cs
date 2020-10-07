@@ -95,7 +95,6 @@
             this.DtgMovAgendados.TabIndex = 34;
             this.DtgMovAgendados.TabStop = false;
             this.DtgMovAgendados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgMovAgendados_CellContentClick);
-            this.DtgMovAgendados.MouseEnter += new System.EventHandler(this.DtgMovAgendados_MouseEnter);
             // 
             // Importe
             // 

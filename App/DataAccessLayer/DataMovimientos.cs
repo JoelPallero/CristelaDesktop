@@ -395,10 +395,7 @@ namespace DataAccessLayer
         #region Movimientos Agendados
         public DataSet MovAgendadosList(Movimientos movimientos)
         {
-            string orden = @"select * from Movimientos 
-                            where NumCuotaPaga < CantCuotas
-                            and NumCuotaPaga = (select max(distinct NumCuotaPaga) from Movimientos) 
-                            order by FechaRealizada asc";
+            string orden = @"exec sp_PagosAgendados";
 
             SqlCommand cmd = new SqlCommand(orden, conexion);            
             DataSet ds = new DataSet();
