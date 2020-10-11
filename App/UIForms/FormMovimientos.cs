@@ -49,9 +49,19 @@ namespace FrontEndLayer
         //private string mNotificacionRegistro;
         //private string notifyText;
         //private string notifyTitle;
+
+
+        public event EventHandler UpdateShoot;
+
+
         #endregion
 
         #region Métodos Generales del Form
+
+        protected virtual void OnUpdateShoot(object sender, EventArgs e)
+        {
+            UpdateShoot?.Invoke(sender, e);
+        }
 
         //private void ConfirmacionDeRegistro()
         //{
@@ -153,6 +163,7 @@ namespace FrontEndLayer
                 EnlistadoDTGV();
                 ClearFormAndVaraibles();
                 InhabilitarRadioButtom();
+                OnUpdateShoot(this, EventArgs.Empty);
             }
 
         }
@@ -323,7 +334,7 @@ namespace FrontEndLayer
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearFormAndVaraibles();
-        }
+        }        
 
         #endregion
 
@@ -454,4 +465,4 @@ namespace FrontEndLayer
 
         #endregion        
     }
-} 
+}

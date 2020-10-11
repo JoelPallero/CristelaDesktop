@@ -395,7 +395,7 @@ namespace DataAccessLayer
         #region Movimientos Agendados
         public DataSet MovAgendadosList(Movimientos movimientos)
         {
-            string orden = @"exec sp_PagosAgendados";
+            string orden = @"exec sp_SiguienteCuota";
 
             SqlCommand cmd = new SqlCommand(orden, conexion);            
             DataSet ds = new DataSet();

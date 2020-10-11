@@ -488,8 +488,6 @@
         private System.Windows.Forms.Button BtnMovimientos;
         private System.Windows.Forms.Button BtnInicio;
         private System.Windows.Forms.PictureBox PicFiltro;
-        private System.Windows.Forms.Label LblGastoPermitido;
-        private System.Windows.Forms.Label LblSaldoActual;
         private System.Windows.Forms.Panel pnlForms;
         private System.Windows.Forms.Label lblTextGastoPermitido;
         private System.Windows.Forms.Label lblTitulo;
@@ -503,5 +501,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NumCuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuotas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observaciones;
+        public System.Windows.Forms.Label LblGastoPermitido;
+        public System.Windows.Forms.Label LblSaldoActual;
     }
 }

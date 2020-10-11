@@ -123,19 +123,10 @@ Delete Movimientos where Id_Mov = 6
 
 
 Select * from Movimientos 
-where PagoFinalizado = 'no'
-and NumCuotaPaga < CantCuotas
 
-Order by FechaRealizada desc
-
-select Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, max(NumCuotaPaga), Observaciones 
-from Movimientos 
-where PagoFinalizado = 'no'
-and NumCuotaPaga < CantCuotas
-and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
-Group by Importe, TipoMovimiento, FechaRealizada, NumCuotaPaga, CantCuotas, NumCuotaPaga, Observaciones 
-Order by FechaRealizada desc
-
+create proc sp_SiguienteCuota
+as
+begin
 WITH siguiente_cuota AS(
     SELECT *, ROW_NUMBER() OVER( PARTITION BY ISNULL( CodMovimiento, Id_Mov) ORDER BY NumCuotaPaga DESC) rn
     FROM Movimientos
@@ -143,8 +134,13 @@ WITH siguiente_cuota AS(
     AND NumCuotaPaga < CantCuotas
 )
 SELECT *
-FROM Movimientos
+FROM siguiente_cuota
 WHERE rn = 1;
+end
 
+exec sp_SiguienteCuota
 
-delete movimientos where Id_Mov = 1010
+truncate table Movimientos
+
+INSERT INTO Movimientos(Importe, TipoMovimiento, FechaRealizada, CantCuotas, Observaciones)
+values (@Importe, @TipoMovimiento, @FechaRealizada, @CantCuotas, @Observaciones)

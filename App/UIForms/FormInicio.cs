@@ -1,10 +1,8 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -19,6 +17,8 @@ namespace FrontEndLayer
         private Movimientos _objMovimientos;
         private readonly NegMovimientos _objNegMovimientos;
 
+        FormMovimientos _formMovimientos;
+
         #endregion
 
         #region Load
@@ -31,8 +31,11 @@ namespace FrontEndLayer
             _objSaldosEstablecidos = new SaldosEstablecidos();
             _objMovimientos = new Movimientos();
             _objNegMovimientos = new NegMovimientos();
+            _formMovimientos = new FormMovimientos();
+            _formMovimientos.UpdateShoot += FormMovimientos_UpdateShoot;
             CargaDeSaldo();
             ClickInicio();
+            EnlistadoDTGV();
         }
 
         public void FormInicio_Load(object sender, EventArgs e)
@@ -43,10 +46,8 @@ namespace FrontEndLayer
 
         #endregion
 
-        #region Variables
-        ////publicas de Actualización de saldo
+        #region Variables        
         private decimal SaldoActual;
-
 
         ////Saldos Preestablecidos
         private decimal SaldoEmergencia;
@@ -55,6 +56,10 @@ namespace FrontEndLayer
         private int GastoPermitidoEntero;
 
         private string Buscar = string.Empty;
+
+
+        //Form Notas Abierto
+        public bool NotaAbierta;
 
         #endregion
 
@@ -74,6 +79,10 @@ namespace FrontEndLayer
 
         #region Métodos Generales Encapsulados
 
+        private void FormMovimientos_UpdateShoot(object sender, EventArgs e)
+        {
+            CargaDeSaldo();
+        }
 
         public void CargaDeSaldo()
         {
@@ -89,7 +98,7 @@ namespace FrontEndLayer
             }
             else
             {
-                GastoPermitido = _objSaldosEstablecidos.GastoPermitido; 
+                GastoPermitido = _objSaldosEstablecidos.GastoPermitido;
                 LblGastoPermitido.Text = "0" + "/" + Convert.ToString(GastoPermitido);
 
             }
@@ -111,7 +120,7 @@ namespace FrontEndLayer
                     LblSaldoActual.BackColor = Color.Orange;
                 }
             }
-            
+
             LblSaldoActual.Refresh();
         }
 
@@ -237,8 +246,12 @@ namespace FrontEndLayer
 
         private void BtnNotas_Click(object sender, EventArgs e)
         {
-            FormNotas _formNotas = new FormNotas();
-            _formNotas.Show();
+            if (NotaAbierta == false)
+            {
+                FormNotas _formNotas = new FormNotas();
+                _formNotas.ShowDialog();
+                NotaAbierta = true;
+            }
         }
 
         private void BtnAjustes_Click(object sender, EventArgs e)

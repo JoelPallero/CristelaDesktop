@@ -116,5 +116,6 @@ namespace FrontEndLayer
             TxtFiltro.ForeColor = Color.Gray;
             TxtFiltro.Text = "Buscar";
         }
+
     }
 }
