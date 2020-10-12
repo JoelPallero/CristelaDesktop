@@ -189,8 +189,8 @@ namespace FrontEndLayer
 
         public void ClickAjustes()
         {
-            //FormConfiguracion _formConfiguracion = new FormConfiguracion();
-            //_formConfiguracion.ShowDialog();
+            FormConfiguracion _formConfiguracion = new FormConfiguracion();
+            _formConfiguracion.ShowDialog();
         }
 
         private void AbrirFormHijo(object formHijo)

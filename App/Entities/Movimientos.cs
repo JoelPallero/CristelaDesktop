@@ -35,5 +35,7 @@ namespace Entities
         public int CodMovimiento { get => codMovimiento; set => codMovimiento = value; }
 
         #endregion
+
+
     }
 }
