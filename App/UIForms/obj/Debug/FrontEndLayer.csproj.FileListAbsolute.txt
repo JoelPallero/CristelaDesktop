@@ -63,3 +63,7 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\FrontEndLayer
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\FrontEndLayer.csproj.CopyComplete
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\UIForms.exe
 F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\UIForms.pdb
+F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\obj\Debug\UIForms.FormConfiguracion.resources
+F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\bin\Debug\MetroFramework.Design.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\bin\Debug\MetroFramework.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\UIForms\bin\Debug\MetroFramework.Fonts.dll

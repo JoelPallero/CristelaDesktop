@@ -23,6 +23,16 @@ namespace BusinessLogicLayer
             return _dataMovimientos.DeleteMovement(movimientos);
         }
 
+        public Movimientos DeletePeriodo(Movimientos movimientos)
+        {
+            return _dataMovimientos.DeletePeriodo(movimientos);
+        }
+
+        public Movimientos DeleteAll(string accion, Movimientos movimientos)
+        {
+            return _dataMovimientos.DeleteAll(accion, movimientos);
+        }
+
         public int UpdateMovement(Movimientos movimientos)
         {
             return _dataMovimientos.UpdateMovement(movimientos);

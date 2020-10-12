@@ -528,5 +528,55 @@ namespace DataAccessLayer
             return movimientos;
         }
         #endregion
+
+        #region Delete desde Configuraciones
+
+        public Movimientos DeletePeriodo(Movimientos movimientos)
+        {
+            string query = @"";
+
+            return movimientos;
+        }
+
+        public Movimientos DeleteAll(string accion, Movimientos movimientos)
+        {
+            string query = string.Empty;
+
+            switch (accion)
+            {
+                case "Todo":
+                    query = @"truncate table Movimientos;
+                              truncate Table SaldosEstablecidos";
+                    break;
+                case "Movimientos":
+                    query = @"truncate table Movimientos";
+                    break;
+                case "Saldos":
+                    query = @"truncate table SaldosEstablecidos";
+                    break;
+            }
+
+            SqlCommand cmd = new SqlCommand(query, conexion);
+            try
+            {
+                Abrirconexion();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+
+            return movimientos;
+        }
+
+
+        #endregion
     }
 }
