@@ -140,7 +140,12 @@ end
 
 exec sp_SiguienteCuota
 
-truncate table Movimientos
+SET LANGUAGE 'español'
+truncate table SaldosEstablecidos;
+Truncate table Movimientos;
 
-INSERT INTO Movimientos(Importe, TipoMovimiento, FechaRealizada, CantCuotas, Observaciones)
-values (@Importe, @TipoMovimiento, @FechaRealizada, @CantCuotas, @Observaciones)
+Select * from Movimientos
+
+Select * From SaldosEstablecidos
+where Id_SE = (select max (Id_SE) from SaldosEstablecidos)
+

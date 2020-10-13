@@ -15,19 +15,22 @@ namespace DataAccessLayer
                 Abrirconexion();
                 string orden = @"Insert into SaldosEstablecidos (SaldoEmergencia,
                                                                  SaldoCritico,
-                                                                 GastoPermitido) 
-                                values (@SaldoEmergencia, @SaldoCritico, @GastoPermitido)"
+                                                                 GastoPermitido,
+                                                                 Fecha) 
+                                values (@SaldoEmergencia, @SaldoCritico, @GastoPermitido, @Fecha)"
                 ;
 
                 SqlParameter saldoEmergencia = new SqlParameter("@SaldoEmergencia", saldosEstablecidos.SaldoEmergencia);
                 SqlParameter saldoCritico = new SqlParameter("@SaldoCritico", saldosEstablecidos.SaldoCritico);
                 SqlParameter gastoPermitido = new SqlParameter("@GastoPermitido", saldosEstablecidos.GastoPermitido);
+                SqlParameter fecha = new SqlParameter("@Fecha", saldosEstablecidos.Fecha);
 
                 SqlCommand cmd = new SqlCommand(orden, conexion);
 
                 cmd.Parameters.Add(saldoEmergencia);
                 cmd.Parameters.Add(saldoCritico);
                 cmd.Parameters.Add(gastoPermitido);
+                cmd.Parameters.Add(fecha);
 
                 resultado = cmd.ExecuteNonQuery();
 
@@ -35,7 +38,7 @@ namespace DataAccessLayer
             catch (Exception e)
             {
 
-                throw new Exception("No se pude guardar la nota", e);
+                throw new Exception("No se puede establecer los saldos", e);
             }
             finally
             {

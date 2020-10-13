@@ -13,6 +13,6 @@ namespace Entities
         public decimal SaldoEmergencia { get => saldoEmergencia; set => saldoEmergencia = value; }
         public decimal SaldoCritico { get => saldoCritico; set => saldoCritico = value; }
         public decimal GastoPermitido { get => gastoPermitido; set => gastoPermitido = value; }
-        public DateTime FechaSaldos { get => fechaSaldos; set => fechaSaldos = value; }
+        public DateTime Fecha { get => fechaSaldos; set => fechaSaldos = value; }
     }
 }

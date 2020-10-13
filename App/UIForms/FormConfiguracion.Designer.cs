@@ -50,10 +50,15 @@
             this.RbTodo = new System.Windows.Forms.RadioButton();
             this.RbMovimientos = new System.Windows.Forms.RadioButton();
             this.RbSaldos = new System.Windows.Forms.RadioButton();
+            this.SaldosActuales = new System.Windows.Forms.GroupBox();
+            this.LblEmergenciaActual = new System.Windows.Forms.Label();
+            this.LblCriticoActual = new System.Windows.Forms.Label();
+            this.LblPermitidoActual = new System.Windows.Forms.Label();
             this.TabBorrarDatos.SuspendLayout();
             this.TabSaldos.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.SaldosActuales.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabBorrarDatos
@@ -69,6 +74,7 @@
             // 
             // TabSaldos
             // 
+            this.TabSaldos.Controls.Add(this.SaldosActuales);
             this.TabSaldos.Controls.Add(this.LblCritico);
             this.TabSaldos.Controls.Add(this.LblPermitido);
             this.TabSaldos.Controls.Add(this.LblEmergencia);
@@ -120,29 +126,29 @@
             // 
             // TxtEmergencia
             // 
-            this.TxtEmergencia.Location = new System.Drawing.Point(186, 24);
+            this.TxtEmergencia.Location = new System.Drawing.Point(134, 24);
             this.TxtEmergencia.Name = "TxtEmergencia";
-            this.TxtEmergencia.Size = new System.Drawing.Size(148, 20);
+            this.TxtEmergencia.Size = new System.Drawing.Size(100, 20);
             this.TxtEmergencia.TabIndex = 63;
             // 
             // TxtPermitido
             // 
-            this.TxtPermitido.Location = new System.Drawing.Point(186, 94);
+            this.TxtPermitido.Location = new System.Drawing.Point(134, 96);
             this.TxtPermitido.Name = "TxtPermitido";
-            this.TxtPermitido.Size = new System.Drawing.Size(148, 20);
+            this.TxtPermitido.Size = new System.Drawing.Size(100, 20);
             this.TxtPermitido.TabIndex = 64;
             // 
             // TxtCritico
             // 
-            this.TxtCritico.Location = new System.Drawing.Point(186, 59);
+            this.TxtCritico.Location = new System.Drawing.Point(134, 60);
             this.TxtCritico.Name = "TxtCritico";
-            this.TxtCritico.Size = new System.Drawing.Size(148, 20);
+            this.TxtCritico.Size = new System.Drawing.Size(100, 20);
             this.TxtCritico.TabIndex = 65;
             // 
             // LblEmergencia
             // 
             this.LblEmergencia.AutoSize = true;
-            this.LblEmergencia.Location = new System.Drawing.Point(44, 30);
+            this.LblEmergencia.Location = new System.Drawing.Point(9, 30);
             this.LblEmergencia.Name = "LblEmergencia";
             this.LblEmergencia.Size = new System.Drawing.Size(113, 13);
             this.LblEmergencia.TabIndex = 66;
@@ -151,7 +157,7 @@
             // LblPermitido
             // 
             this.LblPermitido.AutoSize = true;
-            this.LblPermitido.Location = new System.Drawing.Point(44, 94);
+            this.LblPermitido.Location = new System.Drawing.Point(9, 96);
             this.LblPermitido.Name = "LblPermitido";
             this.LblPermitido.Size = new System.Drawing.Size(84, 13);
             this.LblPermitido.TabIndex = 67;
@@ -160,7 +166,7 @@
             // LblCritico
             // 
             this.LblCritico.AutoSize = true;
-            this.LblCritico.Location = new System.Drawing.Point(44, 62);
+            this.LblCritico.Location = new System.Drawing.Point(9, 63);
             this.LblCritico.Name = "LblCritico";
             this.LblCritico.Size = new System.Drawing.Size(71, 13);
             this.LblCritico.TabIndex = 68;
@@ -188,13 +194,14 @@
             this.RbPeriodo.Name = "RbPeriodo";
             this.RbPeriodo.Size = new System.Drawing.Size(93, 17);
             this.RbPeriodo.TabIndex = 64;
-            this.RbPeriodo.TabStop = true;
             this.RbPeriodo.Text = "Borrar período";
             this.RbPeriodo.UseVisualStyleBackColor = true;
+            this.RbPeriodo.CheckedChanged += new System.EventHandler(this.RbPeriodo_CheckedChanged);
             // 
             // RbOrigen
             // 
             this.RbOrigen.AutoSize = true;
+            this.RbOrigen.Checked = true;
             this.RbOrigen.Location = new System.Drawing.Point(200, 25);
             this.RbOrigen.Name = "RbOrigen";
             this.RbOrigen.Size = new System.Drawing.Size(109, 17);
@@ -202,6 +209,7 @@
             this.RbOrigen.TabStop = true;
             this.RbOrigen.Text = "Desde el principio";
             this.RbOrigen.UseVisualStyleBackColor = true;
+            this.RbOrigen.CheckedChanged += new System.EventHandler(this.RbOrigen_CheckedChanged);
             // 
             // label1
             // 
@@ -268,6 +276,7 @@
             this.RbTodo.TabStop = true;
             this.RbTodo.Text = "Todo";
             this.RbTodo.UseVisualStyleBackColor = true;
+            this.RbTodo.CheckedChanged += new System.EventHandler(this.RbTodo_CheckedChanged);
             // 
             // RbMovimientos
             // 
@@ -279,6 +288,7 @@
             this.RbMovimientos.TabStop = true;
             this.RbMovimientos.Text = "Movimientos";
             this.RbMovimientos.UseVisualStyleBackColor = true;
+            this.RbMovimientos.CheckedChanged += new System.EventHandler(this.RbMovimientos_CheckedChanged);
             // 
             // RbSaldos
             // 
@@ -290,6 +300,43 @@
             this.RbSaldos.TabStop = true;
             this.RbSaldos.Text = "Saldos";
             this.RbSaldos.UseVisualStyleBackColor = true;
+            this.RbSaldos.CheckedChanged += new System.EventHandler(this.RbSaldos_CheckedChanged);
+            // 
+            // SaldosActuales
+            // 
+            this.SaldosActuales.Controls.Add(this.LblPermitidoActual);
+            this.SaldosActuales.Controls.Add(this.LblCriticoActual);
+            this.SaldosActuales.Controls.Add(this.LblEmergenciaActual);
+            this.SaldosActuales.Location = new System.Drawing.Point(250, 6);
+            this.SaldosActuales.Name = "SaldosActuales";
+            this.SaldosActuales.Size = new System.Drawing.Size(118, 120);
+            this.SaldosActuales.TabIndex = 69;
+            this.SaldosActuales.TabStop = false;
+            this.SaldosActuales.Text = "Saldos actuales";
+            // 
+            // LblEmergenciaActual
+            // 
+            this.LblEmergenciaActual.AutoSize = true;
+            this.LblEmergenciaActual.Location = new System.Drawing.Point(24, 23);
+            this.LblEmergenciaActual.Name = "LblEmergenciaActual";
+            this.LblEmergenciaActual.Size = new System.Drawing.Size(0, 13);
+            this.LblEmergenciaActual.TabIndex = 70;
+            // 
+            // LblCriticoActual
+            // 
+            this.LblCriticoActual.AutoSize = true;
+            this.LblCriticoActual.Location = new System.Drawing.Point(24, 57);
+            this.LblCriticoActual.Name = "LblCriticoActual";
+            this.LblCriticoActual.Size = new System.Drawing.Size(0, 13);
+            this.LblCriticoActual.TabIndex = 71;
+            // 
+            // LblPermitidoActual
+            // 
+            this.LblPermitidoActual.AutoSize = true;
+            this.LblPermitidoActual.Location = new System.Drawing.Point(24, 93);
+            this.LblPermitidoActual.Name = "LblPermitidoActual";
+            this.LblPermitidoActual.Size = new System.Drawing.Size(0, 13);
+            this.LblPermitidoActual.TabIndex = 72;
             // 
             // FormConfiguracion
             // 
@@ -302,6 +349,7 @@
             this.Name = "FormConfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormConfiguracion";
+            this.Load += new System.EventHandler(this.FormConfiguracion_Load);
             this.TabBorrarDatos.ResumeLayout(false);
             this.TabSaldos.ResumeLayout(false);
             this.TabSaldos.PerformLayout();
@@ -309,6 +357,8 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.SaldosActuales.ResumeLayout(false);
+            this.SaldosActuales.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +387,9 @@
         private System.Windows.Forms.RadioButton RbMovimientos;
         private System.Windows.Forms.RadioButton RbTodo;
         private System.Windows.Forms.RadioButton RbSaldos;
+        private System.Windows.Forms.GroupBox SaldosActuales;
+        private System.Windows.Forms.Label LblPermitidoActual;
+        private System.Windows.Forms.Label LblCriticoActual;
+        private System.Windows.Forms.Label LblEmergenciaActual;
     }
 }

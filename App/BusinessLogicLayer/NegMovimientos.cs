@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using Entities;
+using System;
 using System.Data;
 
 namespace BusinessLogicLayer
@@ -23,9 +24,9 @@ namespace BusinessLogicLayer
             return _dataMovimientos.DeleteMovement(movimientos);
         }
 
-        public Movimientos DeletePeriodo(Movimientos movimientos)
+        public Movimientos DeletePeriodo(DateTime FechaDesde, DateTime FechaHasta, Movimientos movimientos)
         {
-            return _dataMovimientos.DeletePeriodo(movimientos);
+            return _dataMovimientos.DeletePeriodo(FechaDesde, FechaHasta, movimientos);
         }
 
         public Movimientos DeleteAll(string accion, Movimientos movimientos)

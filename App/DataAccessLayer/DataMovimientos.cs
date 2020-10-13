@@ -531,9 +531,28 @@ namespace DataAccessLayer
 
         #region Delete desde Configuraciones
 
-        public Movimientos DeletePeriodo(Movimientos movimientos)
+        public Movimientos DeletePeriodo(DateTime FechaDesde, DateTime FechaHasta, Movimientos movimientos)
         {
-            string query = @"";
+            string query = @"Delete Movimientos 
+                            Where FechaRealizada >= '"+FechaDesde+"' and FechaRealizada <= '"+FechaHasta+"';";
+
+            SqlCommand cmd = new SqlCommand(query, conexion);
+
+            try
+            {
+                Abrirconexion();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
 
             return movimientos;
         }

@@ -125,7 +125,7 @@ namespace FrontEndLayer
             LblSaldoActual.Refresh();
         }
 
-        private void EnlistadoDTGV()
+        public void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
             DataSet ds = _objNegMovimientos.MovementsList(Buscar);
