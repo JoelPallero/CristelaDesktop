@@ -42,10 +42,10 @@ namespace UIForms
 
         private void MostrarSaldos()
         {
-            _negSaldosEstablecidos.ConsultarSaldosEstablecidos();
-            LblEmergenciaActual.Text = Convert.ToString(_saldosEstablecidos.SaldoEmergencia);
-            LblCriticoActual.Text = Convert.ToString(_saldosEstablecidos.SaldoCritico);
-            LblPermitidoActual.Text = Convert.ToString(_saldosEstablecidos.GastoPermitido);
+            _saldosEstablecidos = _negSaldosEstablecidos.ConsultarSaldosEstablecidos();
+            LblEmergenciaActual.Text = "$" + Convert.ToString(_saldosEstablecidos.SaldoEmergencia);
+            LblCriticoActual.Text = "$" + Convert.ToString(_saldosEstablecidos.SaldoCritico);
+            LblPermitidoActual.Text = "$" + Convert.ToString(_saldosEstablecidos.GastoPermitido);
         }
 
         private void ValidarCamposVacios()
