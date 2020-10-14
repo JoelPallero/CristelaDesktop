@@ -29,20 +29,6 @@
         private void InitializeComponent()
         {
             this.TabEliminarDatos = new System.Windows.Forms.TabPage();
-            this.TabNotificaciones = new System.Windows.Forms.TabPage();
-            this.TabEstablecerSaldos = new System.Windows.Forms.TabPage();
-            this.BtnSave = new System.Windows.Forms.Button();
-            this.TxtEmergencia = new System.Windows.Forms.TextBox();
-            this.TxtPermitido = new System.Windows.Forms.TextBox();
-            this.TxtCritico = new System.Windows.Forms.TextBox();
-            this.LblEmergencia = new System.Windows.Forms.Label();
-            this.LblPermitido = new System.Windows.Forms.Label();
-            this.LblCritico = new System.Windows.Forms.Label();
-            this.SaldosActuales = new System.Windows.Forms.GroupBox();
-            this.LblEmergenciaActual = new System.Windows.Forms.Label();
-            this.LblCriticoActual = new System.Windows.Forms.Label();
-            this.LblPermitidoActual = new System.Windows.Forms.Label();
-            this.TabEliminacion = new System.Windows.Forms.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RbSaldos = new System.Windows.Forms.RadioButton();
             this.RbMovimientos = new System.Windows.Forms.RadioButton();
@@ -55,25 +41,49 @@
             this.RbOrigen = new System.Windows.Forms.RadioButton();
             this.RbPeriodo = new System.Windows.Forms.RadioButton();
             this.BtnDelete = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.TabNotificaciones = new System.Windows.Forms.TabPage();
+            this.BtnEstablecerNotis = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DtpAlarma3 = new System.Windows.Forms.DateTimePicker();
+            this.DtpAlarma2 = new System.Windows.Forms.DateTimePicker();
+            this.DtpAlarma1 = new System.Windows.Forms.DateTimePicker();
             this.GBNotificaciones = new System.Windows.Forms.GroupBox();
             this.RbNoti3 = new System.Windows.Forms.RadioButton();
             this.RbNoti2 = new System.Windows.Forms.RadioButton();
             this.RbNoti1 = new System.Windows.Forms.RadioButton();
-            this.DtpAlarma1 = new System.Windows.Forms.DateTimePicker();
-            this.DtpAlarma2 = new System.Windows.Forms.DateTimePicker();
-            this.DtpAlarma3 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LblTitulo = new System.Windows.Forms.Label();
+            this.TabEstablecerSaldos = new System.Windows.Forms.TabPage();
+            this.SaldosActuales = new System.Windows.Forms.GroupBox();
+            this.LblPermitidoActual = new System.Windows.Forms.Label();
+            this.LblCriticoActual = new System.Windows.Forms.Label();
+            this.LblEmergenciaActual = new System.Windows.Forms.Label();
+            this.LblCritico = new System.Windows.Forms.Label();
+            this.LblPermitido = new System.Windows.Forms.Label();
+            this.LblEmergencia = new System.Windows.Forms.Label();
+            this.TxtCritico = new System.Windows.Forms.TextBox();
+            this.TxtPermitido = new System.Windows.Forms.TextBox();
+            this.TxtEmergencia = new System.Windows.Forms.TextBox();
+            this.BtnSave = new System.Windows.Forms.Button();
+            this.TabEliminacion = new System.Windows.Forms.TabControl();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ChkLunes = new System.Windows.Forms.CheckBox();
+            this.ChkMartes = new System.Windows.Forms.CheckBox();
+            this.ChkMiercoles = new System.Windows.Forms.CheckBox();
+            this.ChkJueves = new System.Windows.Forms.CheckBox();
+            this.ChkViernes = new System.Windows.Forms.CheckBox();
+            this.ChkSabado = new System.Windows.Forms.CheckBox();
+            this.ChkDomingo = new System.Windows.Forms.CheckBox();
+            this.RbTodos = new System.Windows.Forms.RadioButton();
             this.TabEliminarDatos.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.TabNotificaciones.SuspendLayout();
+            this.GBNotificaciones.SuspendLayout();
             this.TabEstablecerSaldos.SuspendLayout();
             this.SaldosActuales.SuspendLayout();
             this.TabEliminacion.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.GBNotificaciones.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabEliminarDatos
@@ -94,154 +104,6 @@
             this.TabEliminarDatos.TabIndex = 2;
             this.TabEliminarDatos.Text = "Borrar Datos";
             this.TabEliminarDatos.UseVisualStyleBackColor = true;
-            // 
-            // TabNotificaciones
-            // 
-            this.TabNotificaciones.Controls.Add(this.button1);
-            this.TabNotificaciones.Controls.Add(this.label7);
-            this.TabNotificaciones.Controls.Add(this.label6);
-            this.TabNotificaciones.Controls.Add(this.label5);
-            this.TabNotificaciones.Controls.Add(this.DtpAlarma3);
-            this.TabNotificaciones.Controls.Add(this.DtpAlarma2);
-            this.TabNotificaciones.Controls.Add(this.DtpAlarma1);
-            this.TabNotificaciones.Controls.Add(this.GBNotificaciones);
-            this.TabNotificaciones.Controls.Add(this.label4);
-            this.TabNotificaciones.Location = new System.Drawing.Point(4, 22);
-            this.TabNotificaciones.Name = "TabNotificaciones";
-            this.TabNotificaciones.Padding = new System.Windows.Forms.Padding(3);
-            this.TabNotificaciones.Size = new System.Drawing.Size(376, 185);
-            this.TabNotificaciones.TabIndex = 1;
-            this.TabNotificaciones.Text = "Notificaciones Diarias";
-            this.TabNotificaciones.UseVisualStyleBackColor = true;
-            // 
-            // TabEstablecerSaldos
-            // 
-            this.TabEstablecerSaldos.Controls.Add(this.SaldosActuales);
-            this.TabEstablecerSaldos.Controls.Add(this.LblCritico);
-            this.TabEstablecerSaldos.Controls.Add(this.LblPermitido);
-            this.TabEstablecerSaldos.Controls.Add(this.LblEmergencia);
-            this.TabEstablecerSaldos.Controls.Add(this.TxtCritico);
-            this.TabEstablecerSaldos.Controls.Add(this.TxtPermitido);
-            this.TabEstablecerSaldos.Controls.Add(this.TxtEmergencia);
-            this.TabEstablecerSaldos.Controls.Add(this.BtnSave);
-            this.TabEstablecerSaldos.Location = new System.Drawing.Point(4, 22);
-            this.TabEstablecerSaldos.Name = "TabEstablecerSaldos";
-            this.TabEstablecerSaldos.Padding = new System.Windows.Forms.Padding(3);
-            this.TabEstablecerSaldos.Size = new System.Drawing.Size(376, 185);
-            this.TabEstablecerSaldos.TabIndex = 0;
-            this.TabEstablecerSaldos.Text = "Establecer Saldos";
-            this.TabEstablecerSaldos.UseVisualStyleBackColor = true;
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.BackColor = System.Drawing.SystemColors.Highlight;
-            this.BtnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSave.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.BtnSave.Location = new System.Drawing.Point(3, 139);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(370, 43);
-            this.BtnSave.TabIndex = 3;
-            this.BtnSave.Text = "Establecer Importes";
-            this.BtnSave.UseVisualStyleBackColor = false;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // TxtEmergencia
-            // 
-            this.TxtEmergencia.Location = new System.Drawing.Point(134, 24);
-            this.TxtEmergencia.Name = "TxtEmergencia";
-            this.TxtEmergencia.Size = new System.Drawing.Size(100, 20);
-            this.TxtEmergencia.TabIndex = 0;
-            // 
-            // TxtPermitido
-            // 
-            this.TxtPermitido.Location = new System.Drawing.Point(134, 96);
-            this.TxtPermitido.Name = "TxtPermitido";
-            this.TxtPermitido.Size = new System.Drawing.Size(100, 20);
-            this.TxtPermitido.TabIndex = 2;
-            // 
-            // TxtCritico
-            // 
-            this.TxtCritico.Location = new System.Drawing.Point(134, 60);
-            this.TxtCritico.Name = "TxtCritico";
-            this.TxtCritico.Size = new System.Drawing.Size(100, 20);
-            this.TxtCritico.TabIndex = 1;
-            // 
-            // LblEmergencia
-            // 
-            this.LblEmergencia.AutoSize = true;
-            this.LblEmergencia.Location = new System.Drawing.Point(9, 30);
-            this.LblEmergencia.Name = "LblEmergencia";
-            this.LblEmergencia.Size = new System.Drawing.Size(113, 13);
-            this.LblEmergencia.TabIndex = 66;
-            this.LblEmergencia.Text = "Saldo De Emergencia:";
-            // 
-            // LblPermitido
-            // 
-            this.LblPermitido.AutoSize = true;
-            this.LblPermitido.Location = new System.Drawing.Point(9, 96);
-            this.LblPermitido.Name = "LblPermitido";
-            this.LblPermitido.Size = new System.Drawing.Size(84, 13);
-            this.LblPermitido.TabIndex = 67;
-            this.LblPermitido.Text = "Gasto Permitido:";
-            // 
-            // LblCritico
-            // 
-            this.LblCritico.AutoSize = true;
-            this.LblCritico.Location = new System.Drawing.Point(9, 63);
-            this.LblCritico.Name = "LblCritico";
-            this.LblCritico.Size = new System.Drawing.Size(71, 13);
-            this.LblCritico.TabIndex = 68;
-            this.LblCritico.Text = "Saldo Crítico:";
-            // 
-            // SaldosActuales
-            // 
-            this.SaldosActuales.Controls.Add(this.LblPermitidoActual);
-            this.SaldosActuales.Controls.Add(this.LblCriticoActual);
-            this.SaldosActuales.Controls.Add(this.LblEmergenciaActual);
-            this.SaldosActuales.Location = new System.Drawing.Point(250, 6);
-            this.SaldosActuales.Name = "SaldosActuales";
-            this.SaldosActuales.Size = new System.Drawing.Size(118, 120);
-            this.SaldosActuales.TabIndex = 69;
-            this.SaldosActuales.TabStop = false;
-            this.SaldosActuales.Text = "Saldos actuales";
-            // 
-            // LblEmergenciaActual
-            // 
-            this.LblEmergenciaActual.AutoSize = true;
-            this.LblEmergenciaActual.Location = new System.Drawing.Point(24, 23);
-            this.LblEmergenciaActual.Name = "LblEmergenciaActual";
-            this.LblEmergenciaActual.Size = new System.Drawing.Size(0, 13);
-            this.LblEmergenciaActual.TabIndex = 70;
-            // 
-            // LblCriticoActual
-            // 
-            this.LblCriticoActual.AutoSize = true;
-            this.LblCriticoActual.Location = new System.Drawing.Point(24, 57);
-            this.LblCriticoActual.Name = "LblCriticoActual";
-            this.LblCriticoActual.Size = new System.Drawing.Size(0, 13);
-            this.LblCriticoActual.TabIndex = 71;
-            // 
-            // LblPermitidoActual
-            // 
-            this.LblPermitidoActual.AutoSize = true;
-            this.LblPermitidoActual.Location = new System.Drawing.Point(24, 93);
-            this.LblPermitidoActual.Name = "LblPermitidoActual";
-            this.LblPermitidoActual.Size = new System.Drawing.Size(0, 13);
-            this.LblPermitidoActual.TabIndex = 72;
-            // 
-            // TabEliminacion
-            // 
-            this.TabEliminacion.Controls.Add(this.TabEstablecerSaldos);
-            this.TabEliminacion.Controls.Add(this.TabNotificaciones);
-            this.TabEliminacion.Controls.Add(this.TabEliminarDatos);
-            this.TabEliminacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabEliminacion.Location = new System.Drawing.Point(0, 0);
-            this.TabEliminacion.Name = "TabEliminacion";
-            this.TabEliminacion.SelectedIndex = 0;
-            this.TabEliminacion.Size = new System.Drawing.Size(384, 211);
-            this.TabEliminacion.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -373,23 +235,108 @@
             this.BtnDelete.UseVisualStyleBackColor = false;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // label4
+            // TabNotificaciones
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(291, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Elegir la cantidad de notificaciones diarias que quiere recibir:";
+            this.TabNotificaciones.Controls.Add(this.groupBox2);
+            this.TabNotificaciones.Controls.Add(this.BtnEstablecerNotis);
+            this.TabNotificaciones.Controls.Add(this.label7);
+            this.TabNotificaciones.Controls.Add(this.label6);
+            this.TabNotificaciones.Controls.Add(this.label5);
+            this.TabNotificaciones.Controls.Add(this.DtpAlarma3);
+            this.TabNotificaciones.Controls.Add(this.DtpAlarma2);
+            this.TabNotificaciones.Controls.Add(this.DtpAlarma1);
+            this.TabNotificaciones.Controls.Add(this.GBNotificaciones);
+            this.TabNotificaciones.Controls.Add(this.LblTitulo);
+            this.TabNotificaciones.Location = new System.Drawing.Point(4, 22);
+            this.TabNotificaciones.Name = "TabNotificaciones";
+            this.TabNotificaciones.Padding = new System.Windows.Forms.Padding(3);
+            this.TabNotificaciones.Size = new System.Drawing.Size(376, 235);
+            this.TabNotificaciones.TabIndex = 1;
+            this.TabNotificaciones.Text = "Notificaciones Diarias";
+            this.TabNotificaciones.UseVisualStyleBackColor = true;
+            // 
+            // BtnEstablecerNotis
+            // 
+            this.BtnEstablecerNotis.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BtnEstablecerNotis.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnEstablecerNotis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEstablecerNotis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEstablecerNotis.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.BtnEstablecerNotis.Location = new System.Drawing.Point(3, 189);
+            this.BtnEstablecerNotis.Name = "BtnEstablecerNotis";
+            this.BtnEstablecerNotis.Size = new System.Drawing.Size(370, 43);
+            this.BtnEstablecerNotis.TabIndex = 90;
+            this.BtnEstablecerNotis.Text = "Establecer notificaciones diarias";
+            this.BtnEstablecerNotis.UseVisualStyleBackColor = false;
+            this.BtnEstablecerNotis.Click += new System.EventHandler(this.BtnEstablecerNotis_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(271, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 89;
+            this.label7.Text = "Alarma 3";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(271, 137);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "Alarma 2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(271, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 87;
+            this.label5.Text = "Alarma 1";
+            // 
+            // DtpAlarma3
+            // 
+            this.DtpAlarma3.CustomFormat = "HH:mm";
+            this.DtpAlarma3.Enabled = false;
+            this.DtpAlarma3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpAlarma3.Location = new System.Drawing.Point(268, 105);
+            this.DtpAlarma3.Name = "DtpAlarma3";
+            this.DtpAlarma3.ShowUpDown = true;
+            this.DtpAlarma3.Size = new System.Drawing.Size(90, 20);
+            this.DtpAlarma3.TabIndex = 86;
+            // 
+            // DtpAlarma2
+            // 
+            this.DtpAlarma2.CustomFormat = "HH:mm";
+            this.DtpAlarma2.Enabled = false;
+            this.DtpAlarma2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpAlarma2.Location = new System.Drawing.Point(268, 152);
+            this.DtpAlarma2.Name = "DtpAlarma2";
+            this.DtpAlarma2.ShowUpDown = true;
+            this.DtpAlarma2.Size = new System.Drawing.Size(90, 20);
+            this.DtpAlarma2.TabIndex = 85;
+            // 
+            // DtpAlarma1
+            // 
+            this.DtpAlarma1.CustomFormat = "HH:mm";
+            this.DtpAlarma1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DtpAlarma1.Location = new System.Drawing.Point(268, 56);
+            this.DtpAlarma1.Name = "DtpAlarma1";
+            this.DtpAlarma1.ShowUpDown = true;
+            this.DtpAlarma1.Size = new System.Drawing.Size(90, 20);
+            this.DtpAlarma1.TabIndex = 84;
             // 
             // GBNotificaciones
             // 
             this.GBNotificaciones.Controls.Add(this.RbNoti3);
             this.GBNotificaciones.Controls.Add(this.RbNoti2);
             this.GBNotificaciones.Controls.Add(this.RbNoti1);
-            this.GBNotificaciones.Location = new System.Drawing.Point(49, 41);
+            this.GBNotificaciones.Location = new System.Drawing.Point(142, 56);
             this.GBNotificaciones.Name = "GBNotificaciones";
-            this.GBNotificaciones.Size = new System.Drawing.Size(95, 93);
+            this.GBNotificaciones.Size = new System.Drawing.Size(101, 112);
             this.GBNotificaciones.TabIndex = 83;
             this.GBNotificaciones.TabStop = false;
             this.GBNotificaciones.Text = "Por día";
@@ -397,7 +344,7 @@
             // RbNoti3
             // 
             this.RbNoti3.AutoSize = true;
-            this.RbNoti3.Location = new System.Drawing.Point(35, 64);
+            this.RbNoti3.Location = new System.Drawing.Point(35, 80);
             this.RbNoti3.Name = "RbNoti3";
             this.RbNoti3.Size = new System.Drawing.Size(31, 17);
             this.RbNoti3.TabIndex = 70;
@@ -408,7 +355,7 @@
             // RbNoti2
             // 
             this.RbNoti2.AutoSize = true;
-            this.RbNoti2.Location = new System.Drawing.Point(35, 42);
+            this.RbNoti2.Location = new System.Drawing.Point(35, 51);
             this.RbNoti2.Name = "RbNoti2";
             this.RbNoti2.Size = new System.Drawing.Size(31, 17);
             this.RbNoti2.TabIndex = 69;
@@ -420,7 +367,7 @@
             // 
             this.RbNoti1.AutoSize = true;
             this.RbNoti1.Checked = true;
-            this.RbNoti1.Location = new System.Drawing.Point(35, 19);
+            this.RbNoti1.Location = new System.Drawing.Point(35, 24);
             this.RbNoti1.Name = "RbNoti1";
             this.RbNoti1.Size = new System.Drawing.Size(31, 17);
             this.RbNoti1.TabIndex = 68;
@@ -429,104 +376,269 @@
             this.RbNoti1.UseVisualStyleBackColor = true;
             this.RbNoti1.CheckedChanged += new System.EventHandler(this.RbNoti1_CheckedChanged);
             // 
-            // DtpAlarma1
+            // LblTitulo
             // 
-            this.DtpAlarma1.CustomFormat = "HH:mm";
-            this.DtpAlarma1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpAlarma1.Location = new System.Drawing.Point(169, 56);
-            this.DtpAlarma1.Name = "DtpAlarma1";
-            this.DtpAlarma1.ShowUpDown = true;
-            this.DtpAlarma1.Size = new System.Drawing.Size(90, 20);
-            this.DtpAlarma1.TabIndex = 84;
+            this.LblTitulo.AutoSize = true;
+            this.LblTitulo.Location = new System.Drawing.Point(46, 9);
+            this.LblTitulo.Name = "LblTitulo";
+            this.LblTitulo.Size = new System.Drawing.Size(252, 13);
+            this.LblTitulo.TabIndex = 0;
+            this.LblTitulo.Text = "Eliga el día, la hora y la cantidad de alarmas por día";
             // 
-            // DtpAlarma2
+            // TabEstablecerSaldos
             // 
-            this.DtpAlarma2.CustomFormat = "HH:mm";
-            this.DtpAlarma2.Enabled = false;
-            this.DtpAlarma2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpAlarma2.Location = new System.Drawing.Point(265, 55);
-            this.DtpAlarma2.Name = "DtpAlarma2";
-            this.DtpAlarma2.ShowUpDown = true;
-            this.DtpAlarma2.Size = new System.Drawing.Size(90, 20);
-            this.DtpAlarma2.TabIndex = 85;
+            this.TabEstablecerSaldos.Controls.Add(this.SaldosActuales);
+            this.TabEstablecerSaldos.Controls.Add(this.LblCritico);
+            this.TabEstablecerSaldos.Controls.Add(this.LblPermitido);
+            this.TabEstablecerSaldos.Controls.Add(this.LblEmergencia);
+            this.TabEstablecerSaldos.Controls.Add(this.TxtCritico);
+            this.TabEstablecerSaldos.Controls.Add(this.TxtPermitido);
+            this.TabEstablecerSaldos.Controls.Add(this.TxtEmergencia);
+            this.TabEstablecerSaldos.Controls.Add(this.BtnSave);
+            this.TabEstablecerSaldos.Location = new System.Drawing.Point(4, 22);
+            this.TabEstablecerSaldos.Name = "TabEstablecerSaldos";
+            this.TabEstablecerSaldos.Padding = new System.Windows.Forms.Padding(3);
+            this.TabEstablecerSaldos.Size = new System.Drawing.Size(376, 185);
+            this.TabEstablecerSaldos.TabIndex = 0;
+            this.TabEstablecerSaldos.Text = "Establecer Saldos";
+            this.TabEstablecerSaldos.UseVisualStyleBackColor = true;
             // 
-            // DtpAlarma3
+            // SaldosActuales
             // 
-            this.DtpAlarma3.CustomFormat = "HH:mm";
-            this.DtpAlarma3.Enabled = false;
-            this.DtpAlarma3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtpAlarma3.Location = new System.Drawing.Point(169, 105);
-            this.DtpAlarma3.Name = "DtpAlarma3";
-            this.DtpAlarma3.ShowUpDown = true;
-            this.DtpAlarma3.Size = new System.Drawing.Size(90, 20);
-            this.DtpAlarma3.TabIndex = 86;
+            this.SaldosActuales.Controls.Add(this.LblPermitidoActual);
+            this.SaldosActuales.Controls.Add(this.LblCriticoActual);
+            this.SaldosActuales.Controls.Add(this.LblEmergenciaActual);
+            this.SaldosActuales.Location = new System.Drawing.Point(250, 6);
+            this.SaldosActuales.Name = "SaldosActuales";
+            this.SaldosActuales.Size = new System.Drawing.Size(118, 120);
+            this.SaldosActuales.TabIndex = 69;
+            this.SaldosActuales.TabStop = false;
+            this.SaldosActuales.Text = "Saldos actuales";
             // 
-            // label5
+            // LblPermitidoActual
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(172, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 87;
-            this.label5.Text = "Alarma 1";
+            this.LblPermitidoActual.AutoSize = true;
+            this.LblPermitidoActual.Location = new System.Drawing.Point(24, 93);
+            this.LblPermitidoActual.Name = "LblPermitidoActual";
+            this.LblPermitidoActual.Size = new System.Drawing.Size(0, 13);
+            this.LblPermitidoActual.TabIndex = 72;
             // 
-            // label6
+            // LblCriticoActual
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(268, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 88;
-            this.label6.Text = "Alarma 2";
+            this.LblCriticoActual.AutoSize = true;
+            this.LblCriticoActual.Location = new System.Drawing.Point(24, 57);
+            this.LblCriticoActual.Name = "LblCriticoActual";
+            this.LblCriticoActual.Size = new System.Drawing.Size(0, 13);
+            this.LblCriticoActual.TabIndex = 71;
             // 
-            // label7
+            // LblEmergenciaActual
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(172, 90);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 89;
-            this.label7.Text = "Alarma 3";
+            this.LblEmergenciaActual.AutoSize = true;
+            this.LblEmergenciaActual.Location = new System.Drawing.Point(24, 23);
+            this.LblEmergenciaActual.Name = "LblEmergenciaActual";
+            this.LblEmergenciaActual.Size = new System.Drawing.Size(0, 13);
+            this.LblEmergenciaActual.TabIndex = 70;
             // 
-            // button1
+            // LblCritico
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(3, 139);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(370, 43);
-            this.button1.TabIndex = 90;
-            this.button1.Text = "Establecer notificaciones diarias";
-            this.button1.UseVisualStyleBackColor = false;
+            this.LblCritico.AutoSize = true;
+            this.LblCritico.Location = new System.Drawing.Point(9, 63);
+            this.LblCritico.Name = "LblCritico";
+            this.LblCritico.Size = new System.Drawing.Size(71, 13);
+            this.LblCritico.TabIndex = 68;
+            this.LblCritico.Text = "Saldo Crítico:";
+            // 
+            // LblPermitido
+            // 
+            this.LblPermitido.AutoSize = true;
+            this.LblPermitido.Location = new System.Drawing.Point(9, 96);
+            this.LblPermitido.Name = "LblPermitido";
+            this.LblPermitido.Size = new System.Drawing.Size(84, 13);
+            this.LblPermitido.TabIndex = 67;
+            this.LblPermitido.Text = "Gasto Permitido:";
+            // 
+            // LblEmergencia
+            // 
+            this.LblEmergencia.AutoSize = true;
+            this.LblEmergencia.Location = new System.Drawing.Point(9, 30);
+            this.LblEmergencia.Name = "LblEmergencia";
+            this.LblEmergencia.Size = new System.Drawing.Size(113, 13);
+            this.LblEmergencia.TabIndex = 66;
+            this.LblEmergencia.Text = "Saldo De Emergencia:";
+            // 
+            // TxtCritico
+            // 
+            this.TxtCritico.Location = new System.Drawing.Point(134, 60);
+            this.TxtCritico.Name = "TxtCritico";
+            this.TxtCritico.Size = new System.Drawing.Size(100, 20);
+            this.TxtCritico.TabIndex = 1;
+            // 
+            // TxtPermitido
+            // 
+            this.TxtPermitido.Location = new System.Drawing.Point(134, 96);
+            this.TxtPermitido.Name = "TxtPermitido";
+            this.TxtPermitido.Size = new System.Drawing.Size(100, 20);
+            this.TxtPermitido.TabIndex = 2;
+            // 
+            // TxtEmergencia
+            // 
+            this.TxtEmergencia.Location = new System.Drawing.Point(134, 24);
+            this.TxtEmergencia.Name = "TxtEmergencia";
+            this.TxtEmergencia.Size = new System.Drawing.Size(100, 20);
+            this.TxtEmergencia.TabIndex = 0;
+            // 
+            // BtnSave
+            // 
+            this.BtnSave.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BtnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSave.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.BtnSave.Location = new System.Drawing.Point(3, 139);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(370, 43);
+            this.BtnSave.TabIndex = 3;
+            this.BtnSave.Text = "Establecer Importes";
+            this.BtnSave.UseVisualStyleBackColor = false;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // TabEliminacion
+            // 
+            this.TabEliminacion.Controls.Add(this.TabEstablecerSaldos);
+            this.TabEliminacion.Controls.Add(this.TabNotificaciones);
+            this.TabEliminacion.Controls.Add(this.TabEliminarDatos);
+            this.TabEliminacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabEliminacion.Location = new System.Drawing.Point(0, 0);
+            this.TabEliminacion.Name = "TabEliminacion";
+            this.TabEliminacion.SelectedIndex = 0;
+            this.TabEliminacion.Size = new System.Drawing.Size(384, 261);
+            this.TabEliminacion.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.RbTodos);
+            this.groupBox2.Controls.Add(this.ChkDomingo);
+            this.groupBox2.Controls.Add(this.ChkSabado);
+            this.groupBox2.Controls.Add(this.ChkViernes);
+            this.groupBox2.Controls.Add(this.ChkJueves);
+            this.groupBox2.Controls.Add(this.ChkMiercoles);
+            this.groupBox2.Controls.Add(this.ChkMartes);
+            this.groupBox2.Controls.Add(this.ChkLunes);
+            this.groupBox2.Location = new System.Drawing.Point(8, 28);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(128, 155);
+            this.groupBox2.TabIndex = 84;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Por día";
+            // 
+            // ChkLunes
+            // 
+            this.ChkLunes.AutoSize = true;
+            this.ChkLunes.Location = new System.Drawing.Point(7, 36);
+            this.ChkLunes.Name = "ChkLunes";
+            this.ChkLunes.Size = new System.Drawing.Size(55, 17);
+            this.ChkLunes.TabIndex = 1;
+            this.ChkLunes.Text = "Lunes";
+            this.ChkLunes.UseVisualStyleBackColor = true;
+            // 
+            // ChkMartes
+            // 
+            this.ChkMartes.AutoSize = true;
+            this.ChkMartes.Location = new System.Drawing.Point(7, 52);
+            this.ChkMartes.Name = "ChkMartes";
+            this.ChkMartes.Size = new System.Drawing.Size(58, 17);
+            this.ChkMartes.TabIndex = 2;
+            this.ChkMartes.Text = "Martes";
+            this.ChkMartes.UseVisualStyleBackColor = true;
+            // 
+            // ChkMiercoles
+            // 
+            this.ChkMiercoles.AutoSize = true;
+            this.ChkMiercoles.Location = new System.Drawing.Point(7, 68);
+            this.ChkMiercoles.Name = "ChkMiercoles";
+            this.ChkMiercoles.Size = new System.Drawing.Size(71, 17);
+            this.ChkMiercoles.TabIndex = 3;
+            this.ChkMiercoles.Text = "Miércoles";
+            this.ChkMiercoles.UseVisualStyleBackColor = true;
+            // 
+            // ChkJueves
+            // 
+            this.ChkJueves.AutoSize = true;
+            this.ChkJueves.Location = new System.Drawing.Point(7, 84);
+            this.ChkJueves.Name = "ChkJueves";
+            this.ChkJueves.Size = new System.Drawing.Size(60, 17);
+            this.ChkJueves.TabIndex = 4;
+            this.ChkJueves.Text = "Jueves";
+            this.ChkJueves.UseVisualStyleBackColor = true;
+            // 
+            // ChkViernes
+            // 
+            this.ChkViernes.AutoSize = true;
+            this.ChkViernes.Location = new System.Drawing.Point(7, 100);
+            this.ChkViernes.Name = "ChkViernes";
+            this.ChkViernes.Size = new System.Drawing.Size(61, 17);
+            this.ChkViernes.TabIndex = 5;
+            this.ChkViernes.Text = "Viernes";
+            this.ChkViernes.UseVisualStyleBackColor = true;
+            // 
+            // ChkSabado
+            // 
+            this.ChkSabado.AutoSize = true;
+            this.ChkSabado.Location = new System.Drawing.Point(7, 116);
+            this.ChkSabado.Name = "ChkSabado";
+            this.ChkSabado.Size = new System.Drawing.Size(63, 17);
+            this.ChkSabado.TabIndex = 6;
+            this.ChkSabado.Text = "Sábado";
+            this.ChkSabado.UseVisualStyleBackColor = true;
+            // 
+            // ChkDomingo
+            // 
+            this.ChkDomingo.AutoSize = true;
+            this.ChkDomingo.Location = new System.Drawing.Point(7, 132);
+            this.ChkDomingo.Name = "ChkDomingo";
+            this.ChkDomingo.Size = new System.Drawing.Size(68, 17);
+            this.ChkDomingo.TabIndex = 7;
+            this.ChkDomingo.Text = "Domingo";
+            this.ChkDomingo.UseVisualStyleBackColor = true;
+            // 
+            // RbTodos
+            // 
+            this.RbTodos.AutoSize = true;
+            this.RbTodos.Location = new System.Drawing.Point(6, 18);
+            this.RbTodos.Name = "RbTodos";
+            this.RbTodos.Size = new System.Drawing.Size(114, 17);
+            this.RbTodos.TabIndex = 69;
+            this.RbTodos.Text = "Seleccionar Todos";
+            this.RbTodos.UseVisualStyleBackColor = true;
+            this.RbTodos.CheckedChanged += new System.EventHandler(this.RbTodos_CheckedChanged);
             // 
             // FormConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 211);
+            this.ClientSize = new System.Drawing.Size(384, 261);
             this.Controls.Add(this.TabEliminacion);
-            this.MaximumSize = new System.Drawing.Size(400, 250);
-            this.MinimumSize = new System.Drawing.Size(400, 250);
+            this.MaximumSize = new System.Drawing.Size(400, 300);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormConfiguracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ajustes";
             this.Load += new System.EventHandler(this.FormConfiguracion_Load);
             this.TabEliminarDatos.ResumeLayout(false);
             this.TabEliminarDatos.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.TabNotificaciones.ResumeLayout(false);
             this.TabNotificaciones.PerformLayout();
+            this.GBNotificaciones.ResumeLayout(false);
+            this.GBNotificaciones.PerformLayout();
             this.TabEstablecerSaldos.ResumeLayout(false);
             this.TabEstablecerSaldos.PerformLayout();
             this.SaldosActuales.ResumeLayout(false);
             this.SaldosActuales.PerformLayout();
             this.TabEliminacion.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.GBNotificaciones.ResumeLayout(false);
-            this.GBNotificaciones.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -567,10 +679,19 @@
         private System.Windows.Forms.RadioButton RbNoti3;
         private System.Windows.Forms.RadioButton RbNoti2;
         private System.Windows.Forms.RadioButton RbNoti1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblTitulo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnEstablecerNotis;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox ChkDomingo;
+        private System.Windows.Forms.CheckBox ChkSabado;
+        private System.Windows.Forms.CheckBox ChkViernes;
+        private System.Windows.Forms.CheckBox ChkJueves;
+        private System.Windows.Forms.CheckBox ChkMiercoles;
+        private System.Windows.Forms.CheckBox ChkMartes;
+        private System.Windows.Forms.CheckBox ChkLunes;
+        private System.Windows.Forms.RadioButton RbTodos;
     }
 }

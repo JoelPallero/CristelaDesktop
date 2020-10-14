@@ -53,6 +53,13 @@ UserName varchar(50) not null,
 UserPass varchar (50) not null,
 )
 
+
+create table NotificacionesDiarias(
+Id int primary Key,
+HoraAlarma1 time(4) null,
+HolaAlarma2 time(4) null,
+HolaAlarma3 time(4) null
+)
 ----------------------------------------
 
 
@@ -172,3 +179,5 @@ select @SumaTotal as SumaSaldo, @PermitidoTotal as SumaPermitido
 
 exec sp_SaldoActual
 Select * from Movimientos
+
+select * from NotificacionesDiarias

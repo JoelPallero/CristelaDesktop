@@ -20,7 +20,9 @@ namespace UIForms
         private Movimientos _movimientos = new Movimientos();
         private SaldosEstablecidos _saldosEstablecidos = new SaldosEstablecidos();
         private NegSaldosEstablecidos _negSaldosEstablecidos = new NegSaldosEstablecidos();
-        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+        private NotificacionesDiarias _notificacionesDiarias = new NotificacionesDiarias();
+        private NegnotificacionesDiarias _negnotificacionesDiarias = new NegnotificacionesDiarias();
 
         public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
 
@@ -40,6 +42,7 @@ namespace UIForms
         private string accion = string.Empty;
         private DateTime FechaDesde;
         private DateTime FechaHasta;
+        private bool TodosChecked;
 
         #endregion
 
@@ -152,17 +155,17 @@ namespace UIForms
             }
             MostrarSaldos();
             vacio = false;
-            actualizacionDeSaldoFinal.GetSaldoActual();
-            actualizacionDeSaldoFinal.GetSaldos();
+            _actualizacionDeSaldoFinal.GetSaldoActual();
+            _actualizacionDeSaldoFinal.GetSaldos();
 
 
             var ActualizarSaldo = new ActualizacionDeSaldo()
             {
-                SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
-                PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual,
-                SaldoDeEmergencia = actualizacionDeSaldoFinal.Emergencia,
-                SaldoDeCritico = actualizacionDeSaldoFinal.Critico,
-                SaldoPermitido = actualizacionDeSaldoFinal.SaldoPermitido
+                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual,
+                SaldoDeEmergencia = _actualizacionDeSaldoFinal.Emergencia,
+                SaldoDeCritico = _actualizacionDeSaldoFinal.Critico,
+                SaldoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido
             };
 
             // Y luego disparas el evento
@@ -180,8 +183,6 @@ namespace UIForms
         #endregion
 
         #region Notificaciones
-
-
 
         #endregion
 
@@ -204,6 +205,67 @@ namespace UIForms
             DtpAlarma1.Enabled = true;
             DtpAlarma2.Enabled = true;
             DtpAlarma3.Enabled = true;
+        }
+
+        private void BtnEstablecerNotis_Click(object sender, EventArgs e)
+        {
+            if (RbNoti1.Checked)
+            {
+                _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString("00");
+                _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString("00");
+            }
+            else
+            {
+                if (RbNoti2.Checked)
+                {
+                    _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString();
+                    _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString();
+
+                    _notificacionesDiarias.HolaAlarma2 = DtpAlarma2.Value.Hour.ToString();
+                    _notificacionesDiarias.MinutoAlarma2 = DtpAlarma2.Value.Minute.ToString();
+
+                }
+                else
+                {
+                    _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString();
+                    _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString();
+
+                    _notificacionesDiarias.HolaAlarma2 = DtpAlarma2.Value.Hour.ToString();
+                    _notificacionesDiarias.MinutoAlarma2 = DtpAlarma2.Value.Minute.ToString();
+
+                    _notificacionesDiarias.HolaAlarma3 = DtpAlarma3.Value.Hour.ToString();
+                    _notificacionesDiarias.MinutoAlarma3 = DtpAlarma3.Value.Minute.ToString();
+
+
+                }
+            }
+            _negnotificacionesDiarias.InsertHoraAlarmas(_notificacionesDiarias);
+        }
+
+        private void RbTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbTodos.Checked)
+            {
+                ChkLunes.Checked = true;
+                ChkMartes.Checked = true;
+                ChkMiercoles.Checked = true;
+                ChkJueves.Checked = true;
+                ChkViernes.Checked = true;
+                ChkSabado.Checked = true;
+                ChkDomingo.Checked = true;
+
+                TodosChecked = true;
+            }
+            else
+            {
+                ChkLunes.Checked = false;
+                ChkMartes.Checked = false;
+                ChkMiercoles.Checked = false;
+                ChkJueves.Checked = false;
+                ChkViernes.Checked = false;
+                ChkSabado.Checked = false;
+                ChkDomingo.Checked = false;
+            }            
         }
     }
 }

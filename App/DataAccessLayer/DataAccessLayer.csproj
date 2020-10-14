@@ -46,6 +46,7 @@
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataMovimientos.cs" />
     <Compile Include="DataNotas.cs" />
+    <Compile Include="DataNotificacionesDiarias.cs" />
     <Compile Include="DataSaldosEstablecidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

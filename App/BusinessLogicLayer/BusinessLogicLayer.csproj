@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="NegMovimientos.cs" />
     <Compile Include="NegNotas.cs" />
+    <Compile Include="NegnotificacionesDiarias.cs" />
     <Compile Include="NegSaldosEstablecidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
