@@ -300,10 +300,10 @@ namespace FrontEndLayer
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
-            DataSet ds = _objNegMovimientos.MovementsList(Buscar);
-            if (ds.Tables[0].Rows.Count > 0)
+            actualizacionDeSaldoFinal.CargarListaDemovimientos();
+            if (actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
                     DtgMovFinal.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
@@ -355,9 +355,7 @@ namespace FrontEndLayer
             ClearFormAndVaraibles();
         }
 
-        #endregion
-
-        
+        #endregion        
 
         #region Filtrar DatagridView        
 
@@ -365,6 +363,7 @@ namespace FrontEndLayer
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
+                actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
                 EnlistadoDTGV();
             }
         }

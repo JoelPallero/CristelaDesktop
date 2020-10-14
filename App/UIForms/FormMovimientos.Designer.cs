@@ -48,6 +48,7 @@
             this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuEdicion = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pagosAsociadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.EliminarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupMovimientos = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,6 @@
             this.TxtObservaciones = new System.Windows.Forms.TextBox();
             this.TxtImporte = new System.Windows.Forms.TextBox();
             this.notifyMovement = new System.Windows.Forms.NotifyIcon(this.components);
-            this.pagosAsociadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GroupDTGV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).BeginInit();
@@ -114,7 +114,7 @@
             this.TxtFiltro.Text = "Buscar";
             this.TxtFiltro.Enter += new System.EventHandler(this.TxtFiltro_Enter);
             this.TxtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFiltro_KeyPress);
-            this.TxtFiltro.Leave += new System.EventHandler(this.TxtFiltro_MouseLeave);
+            this.TxtFiltro.Leave += new System.EventHandler(this.TxtFiltro_Leave);
             this.TxtFiltro.MouseEnter += new System.EventHandler(this.TxtFiltro_MouseEnter);
             this.TxtFiltro.MouseLeave += new System.EventHandler(this.TxtFiltro_MouseLeave);
             // 
@@ -250,19 +250,25 @@
             this.EditarMovimiento,
             this.EliminarMovimiento});
             this.MenuEdicion.Name = "MenuEdicion";
-            this.MenuEdicion.Size = new System.Drawing.Size(181, 92);
+            this.MenuEdicion.Size = new System.Drawing.Size(162, 70);
+            // 
+            // pagosAsociadosToolStripMenuItem
+            // 
+            this.pagosAsociadosToolStripMenuItem.Name = "pagosAsociadosToolStripMenuItem";
+            this.pagosAsociadosToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.pagosAsociadosToolStripMenuItem.Text = "Pagos asociados";
             // 
             // EditarMovimiento
             // 
             this.EditarMovimiento.Name = "EditarMovimiento";
-            this.EditarMovimiento.Size = new System.Drawing.Size(180, 22);
+            this.EditarMovimiento.Size = new System.Drawing.Size(161, 22);
             this.EditarMovimiento.Text = "Editar";
             this.EditarMovimiento.Click += new System.EventHandler(this.EditarMovimiento_Click);
             // 
             // EliminarMovimiento
             // 
             this.EliminarMovimiento.Name = "EliminarMovimiento";
-            this.EliminarMovimiento.Size = new System.Drawing.Size(180, 22);
+            this.EliminarMovimiento.Size = new System.Drawing.Size(161, 22);
             this.EliminarMovimiento.Text = "Eliminar";
             this.EliminarMovimiento.Click += new System.EventHandler(this.EliminarMovimiento_Click);
             // 
@@ -490,12 +496,6 @@
             // 
             this.notifyMovement.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyMovement.BalloonTipTitle = "Registro exitoso";
-            // 
-            // pagosAsociadosToolStripMenuItem
-            // 
-            this.pagosAsociadosToolStripMenuItem.Name = "pagosAsociadosToolStripMenuItem";
-            this.pagosAsociadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pagosAsociadosToolStripMenuItem.Text = "Pagos asociados";
             // 
             // FormMovimientos
             // 

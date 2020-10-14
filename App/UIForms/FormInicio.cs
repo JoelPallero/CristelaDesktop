@@ -39,14 +39,13 @@ namespace FrontEndLayer
 
         #endregion
 
-        #region Variables        
+        #region Variables
 
         ////Saldos Preestablecidos
         private decimal SaldoEmergencia;
         private decimal SaldoCritico;
         private decimal GastoPermitido;
 
-        private string Buscar = string.Empty;
 
 
         //Form Notas Abierto
@@ -58,7 +57,7 @@ namespace FrontEndLayer
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void BtnMinimize_Click(object sender, EventArgs e)
@@ -122,10 +121,10 @@ namespace FrontEndLayer
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
-            DataSet ds = _objNegMovimientos.MovementsList(Buscar);
-            if (ds.Tables[0].Rows.Count > 0)
+            actualizacionDeSaldoFinal.CargarListaDemovimientos();
+            if (actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
                     DtgMovFinal.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
@@ -272,7 +271,7 @@ namespace FrontEndLayer
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                Buscar = TxtFiltro.Text;
+                actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
                 EnlistadoDTGV();
             }            
         }
@@ -313,8 +312,12 @@ namespace FrontEndLayer
         }
 
 
+
         #endregion
 
-        
+        private void ExitCristela_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

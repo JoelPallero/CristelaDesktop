@@ -2,6 +2,7 @@
 using Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,9 @@ namespace UIForms
         public decimal Critico;
         public decimal SaldoPermitido;
 
+        public DataSet DsTablaDeMovimientos = new DataSet();
+        public string Buscar = string.Empty;
+
         public void GetSaldoActual()
         {
             _objMovimientos = _objNegMovimientos.ConsultarSaldo(_objMovimientos);
@@ -34,6 +38,11 @@ namespace UIForms
             Emergencia = _objSaldosEstablecidos.SaldoEmergencia;
             Critico = _objSaldosEstablecidos.SaldoCritico;
             SaldoPermitido = _objSaldosEstablecidos.GastoPermitido;
+        }
+
+        public void CargarListaDemovimientos()
+        {
+            DsTablaDeMovimientos = _objNegMovimientos.MovementsList(Buscar);
         }
 
     }

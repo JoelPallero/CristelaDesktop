@@ -179,5 +179,31 @@ namespace UIForms
 
         #endregion
 
+        #region Notificaciones
+
+
+
+        #endregion
+
+        private void RbNoti1_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpAlarma1.Enabled = true;
+            DtpAlarma2.Enabled = false;
+            DtpAlarma3.Enabled = false;
+        }
+
+        private void RbNoti2_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpAlarma1.Enabled = true;
+            DtpAlarma2.Enabled = true;
+            DtpAlarma3.Enabled = false;
+        }
+
+        private void RbNoti3_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpAlarma1.Enabled = true;
+            DtpAlarma2.Enabled = true;
+            DtpAlarma3.Enabled = true;
+        }
     }
 }
