@@ -247,6 +247,7 @@
             this.LblSaldoActual.Size = new System.Drawing.Size(250, 50);
             this.LblSaldoActual.TabIndex = 6;
             this.LblSaldoActual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblSaldoActual.TextChanged += new System.EventHandler(this.LblSaldoActual_TextChanged);
             this.LblSaldoActual.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlTitulo_MouseDown);
             // 
             // BtnAjustes

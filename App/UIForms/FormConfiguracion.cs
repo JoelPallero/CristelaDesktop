@@ -20,6 +20,9 @@ namespace UIForms
         private Movimientos _movimientos = new Movimientos();
         private SaldosEstablecidos _saldosEstablecidos = new SaldosEstablecidos();
         private NegSaldosEstablecidos _negSaldosEstablecidos = new NegSaldosEstablecidos();
+        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+
+        public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
 
         public FormConfiguracion()
         {
@@ -149,7 +152,32 @@ namespace UIForms
             }
             MostrarSaldos();
             vacio = false;
+            actualizacionDeSaldoFinal.GetSaldoActual();
+            actualizacionDeSaldoFinal.GetSaldos();
+
+
+            var ActualizarSaldo = new ActualizacionDeSaldo()
+            {
+                SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual,
+                SaldoDeEmergencia = actualizacionDeSaldoFinal.Emergencia,
+                SaldoDeCritico = actualizacionDeSaldoFinal.Critico,
+                SaldoPermitido = actualizacionDeSaldoFinal.SaldoPermitido
+            };
+
+            // Y luego disparas el evento
+            OnNotificarCambios(this, ActualizarSaldo);
+
         }
+
+        #region Notificar Cambio para Actualizar saldo
+
+        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
+        {
+            NotificarCambios?.Invoke(sender, e);
+        }
+
+        #endregion
 
     }
 }

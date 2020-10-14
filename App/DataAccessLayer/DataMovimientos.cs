@@ -325,39 +325,6 @@ namespace DataAccessLayer
             return movimientos;
         }
 
-        public Movimientos ConsultarGastoPermitidoActual(Movimientos movimientos)
-        {
-            string query = "execute sp_GastoPermitido";
-
-            SqlCommand cmd = new SqlCommand(query, conexion);
-
-            try
-            {
-                Abrirconexion();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    movimientos.GastoPermitido = decimal.Parse(reader["SumaTotal"].ToString());
-                }
-                reader.Close();
-                cmd.ExecuteReader();
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception("No se pudo traer el Saldo Atualizado", e);
-            }
-            finally
-            {
-                Cerrarconexion();
-                cmd.Dispose();
-            }
-            return movimientos;
-        }
-
-
         public Movimientos ConsultarSaldo(Movimientos movimientos)
         {
 
@@ -371,7 +338,8 @@ namespace DataAccessLayer
 
                 if (reader.Read())
                 {
-                    movimientos.SaldoActual = decimal.Parse(reader["SumaTotal"].ToString());
+                    movimientos.SaldoActual = decimal.Parse(reader["SumaSaldo"].ToString());
+                    movimientos.GastoPermitido = decimal.Parse(reader["SumaPermitido"].ToString());
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();

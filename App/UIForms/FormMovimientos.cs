@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using UIForms;
 
 namespace FrontEndLayer
 {
@@ -15,6 +16,10 @@ namespace FrontEndLayer
         private readonly NegMovimientos _objNegMovimientos;
         private SaldosEstablecidos _objSaldosEstablecidos;
         private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos;
+        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+
+        public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
+
 
         #endregion
 
@@ -43,7 +48,6 @@ namespace FrontEndLayer
         private decimal IngresoSaldo;
         private decimal GastoPermitidoEstablecido;
         private decimal GastoPermitidoActual;
-        //private readonly decimal GastoPermitido;
         private int IdMovimiento;
         private int NumDeCuota;
         //private string mNotificacionRegistro;
@@ -51,17 +55,11 @@ namespace FrontEndLayer
         //private string notifyTitle;
 
 
-        public event EventHandler UpdateShoot;
 
 
         #endregion
 
         #region Métodos Generales del Form
-
-        protected virtual void OnUpdateShoot(object sender, EventArgs e)
-        {
-            UpdateShoot?.Invoke(sender, e);
-        }
 
         //private void ConfirmacionDeRegistro()
         //{
@@ -137,6 +135,15 @@ namespace FrontEndLayer
         }
         #endregion
 
+        #region Notificar Cambio para Actualizar saldo
+
+        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
+        {
+            NotificarCambios?.Invoke(sender, e);
+        }
+
+        #endregion
+
         #region Método Para Guardar Movimiento
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -163,10 +170,22 @@ namespace FrontEndLayer
                 EnlistadoDTGV();
                 ClearFormAndVaraibles();
                 InhabilitarRadioButtom();
-                OnUpdateShoot(this, EventArgs.Empty);
+                actualizacionDeSaldoFinal.GetSaldoActual();
+
+                // Primero creas la instancia con toda la información que enviarás al padre
+                var ActualizarSaldo = new ActualizacionDeSaldo()
+                {
+                    SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
+                    PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual
+                };
+
+                // Y luego disparas el evento
+                OnNotificarCambios(this, ActualizarSaldo);
             }
 
         }
+
+        
 
         private void SaveMovimiento()
         {
@@ -204,10 +223,10 @@ namespace FrontEndLayer
         }
         private void VerifyGastoPermitidoEstablecido()
         {
-            _objSaldosEstablecidos = _objNegSaldosEstablecidos.ConsultarSaldosEstablecidos();
-            GastoPermitidoEstablecido = _objSaldosEstablecidos.GastoPermitido;
-            _objMovimientos = _objNegMovimientos.ConsultarGastoPermitidoActual(_objMovimientos);
-            GastoPermitidoActual = _objMovimientos.GastoPermitido;
+            actualizacionDeSaldoFinal.GetSaldos();
+            GastoPermitidoEstablecido = actualizacionDeSaldoFinal.SaldoPermitido;
+            actualizacionDeSaldoFinal.GetSaldoActual();
+            GastoPermitidoActual = actualizacionDeSaldoFinal.SaldoPermitido;
 
             if (GastoPermitidoEstablecido == 0)
             {
@@ -251,7 +270,7 @@ namespace FrontEndLayer
                     IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
                     break;
                 case "Gasto Permitido":
-                    IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
+                    IngresoSaldo = Convert.ToDecimal(TxtImporte.Text);
                     break;
                 case "Luz":
                     IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
@@ -334,9 +353,11 @@ namespace FrontEndLayer
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearFormAndVaraibles();
-        }        
+        }
 
         #endregion
+
+        
 
         #region Filtrar DatagridView        
 

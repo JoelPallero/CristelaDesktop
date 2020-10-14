@@ -13,12 +13,11 @@ namespace FrontEndLayer
     {
         #region Instanciamientos de Clases
 
-        private SaldosEstablecidos _objSaldosEstablecidos;
-        private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos;
-        private Movimientos _objMovimientos;
-        private readonly NegMovimientos _objNegMovimientos;
-
-        FormMovimientos _formMovimientos;
+        private SaldosEstablecidos _objSaldosEstablecidos = new SaldosEstablecidos();
+        private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
+        private Movimientos _objMovimientos = new Movimientos();
+        private readonly NegMovimientos _objNegMovimientos = new NegMovimientos();
+        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
 
         #endregion
 
@@ -27,13 +26,6 @@ namespace FrontEndLayer
         public FormInicio()
         {
             InitializeComponent();
-
-            _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
-            _objSaldosEstablecidos = new SaldosEstablecidos();
-            _objMovimientos = new Movimientos();
-            _objNegMovimientos = new NegMovimientos();
-            _formMovimientos = new FormMovimientos();
-            _formMovimientos.UpdateShoot += FormMovimientos_UpdateShoot;
             CargaDeSaldo();
             ClickInicio();
             EnlistadoDTGV();
@@ -48,13 +40,11 @@ namespace FrontEndLayer
         #endregion
 
         #region Variables        
-        private decimal SaldoActual;
 
         ////Saldos Preestablecidos
         private decimal SaldoEmergencia;
         private decimal SaldoCritico;
         private decimal GastoPermitido;
-        private int GastoPermitidoEntero;
 
         private string Buscar = string.Empty;
 
@@ -78,41 +68,47 @@ namespace FrontEndLayer
 
         #endregion
 
-        #region Métodos Generales Encapsulados
+        #region Métodos
 
-        private void FormMovimientos_UpdateShoot(object sender, EventArgs e)
+        private void formSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
-            CargaDeSaldo();
+            LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
+            LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
         }
 
-        public void CargaDeSaldo()
+        private void formConfigSaldos_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
-            _objMovimientos = _objNegMovimientos.ConsultarSaldo(_objMovimientos);
-            SaldoActual = _objMovimientos.SaldoActual;
-            _objSaldosEstablecidos = _objNegSaldosEstablecidos.ConsultarSaldosEstablecidos();
-            SaldoEmergencia = _objSaldosEstablecidos.SaldoEmergencia;
-            SaldoCritico = _objSaldosEstablecidos.SaldoCritico;
-            if (_objSaldosEstablecidos.GastoPermitido >= 0)
-            {
-                GastoPermitidoEntero = Convert.ToInt32(_objSaldosEstablecidos.GastoPermitido);
-                LblGastoPermitido.Text = "0" + "/" + Convert.ToString(GastoPermitidoEntero);
-            }
-            else
-            {
-                GastoPermitido = _objSaldosEstablecidos.GastoPermitido;
-                LblGastoPermitido.Text = "0" + "/" + Convert.ToString(GastoPermitido);
+            SaldoEmergencia = e.SaldoDeEmergencia;
+            SaldoCritico = e.SaldoDeCritico;
+            GastoPermitido = e.SaldoPermitido;
 
-            }
+            LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
+            LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+        }
 
-            LblSaldoActual.Text = "$" + Convert.ToString(SaldoActual);
+        private void CargaDeSaldo()
+        {
+            actualizacionDeSaldoFinal.GetSaldoActual();
 
-            if (SaldoActual > SaldoEmergencia)
+            actualizacionDeSaldoFinal.GetSaldos();
+            SaldoEmergencia = actualizacionDeSaldoFinal.Emergencia;
+            SaldoCritico = actualizacionDeSaldoFinal.Critico;
+            GastoPermitido = actualizacionDeSaldoFinal.SaldoPermitido;
+
+            LblSaldoActual.Text = actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
+            LblGastoPermitido.Text = actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+
+        }
+
+        private void LblSaldoActual_TextChanged(object sender, EventArgs e)
+        {
+            if (actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
             {
                 LblSaldoActual.BackColor = Color.LawnGreen;
             }
             else
             {
-                if (SaldoActual <= SaldoCritico)
+                if (actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
                 {
                     LblSaldoActual.BackColor = Color.Red;
                 }
@@ -121,11 +117,9 @@ namespace FrontEndLayer
                     LblSaldoActual.BackColor = Color.Orange;
                 }
             }
-
-            LblSaldoActual.Refresh();
         }
 
-        public void EnlistadoDTGV()
+        private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
             DataSet ds = _objNegMovimientos.MovementsList(Buscar);
@@ -190,8 +184,12 @@ namespace FrontEndLayer
 
         public void ClickAjustes()
         {
-            FormConfiguracion _formConfiguracion = new FormConfiguracion();
-            _formConfiguracion.ShowDialog();
+            // Crear la instancia
+            var hijoConEvento = new FormConfiguracion();
+            // Suscripción al evento
+            hijoConEvento.NotificarCambios += formConfigSaldos_NotificarCambios;
+
+            hijoConEvento.ShowDialog();
         }
 
         private void AbrirFormHijo(object formHijo)
@@ -236,7 +234,13 @@ namespace FrontEndLayer
         private void BtnMovimientos_Click(object sender, EventArgs e)
         {
             ClickMovimientos();
-            AbrirFormHijo(formHijo: new FormMovimientos());
+
+            // Crear la instancia
+            var hijoConEvento = new FormMovimientos();
+            // Suscripción al evento
+            hijoConEvento.NotificarCambios += formSaldosFinales_NotificarCambios;
+
+            AbrirFormHijo(formHijo: hijoConEvento);
         }
 
         private void BtnAgenda_Click(object sender, EventArgs e)
@@ -257,8 +261,9 @@ namespace FrontEndLayer
 
         private void BtnAjustes_Click(object sender, EventArgs e)
         {
-            ClickAjustes();
+            ClickAjustes();            
         }
+
 
         #endregion
 
@@ -309,5 +314,7 @@ namespace FrontEndLayer
 
 
         #endregion
+
+        
     }
 }

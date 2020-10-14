@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizacionDeSaldo.cs" />
     <Compile Include="MasterAccess.cs" />
     <Compile Include="Movimientos.cs" />
     <Compile Include="Notas.cs" />

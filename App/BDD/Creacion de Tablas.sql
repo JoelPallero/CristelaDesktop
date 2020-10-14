@@ -123,7 +123,7 @@ Delete Movimientos where Id_Mov = 6
 
 
 Select * from Movimientos 
-
+use AdministradorPersonal
 create proc sp_SiguienteCuota
 as
 begin
@@ -144,8 +144,31 @@ SET LANGUAGE 'español'
 truncate table SaldosEstablecidos;
 Truncate table Movimientos;
 
-Select * from Movimientos
+Select *, ROW_NUMBER() OVER( PARTITION BY ISNULL( CodMovimiento, Id_Mov) ORDER BY NumCuotaPaga DESC) rn from Movimientos
 
 Select * From SaldosEstablecidos
 where Id_SE = (select max (Id_SE) from SaldosEstablecidos)
 
+use AdministradorPersonal
+
+create procedure sp_SaldoActual
+as
+declare @SumaTotal Decimal(18,2)
+declare @PermitidoTotal Decimal (18,2)
+set @SumaTotal = (select sum(Importe) from Movimientos
+where TipoMovimiento != 'Gasto Permitido')
+set @PermitidoTotal = (select sum(Importe) from Movimientos mov, SaldosEstablecidos se
+where TipoMovimiento = 'Gasto Permitido' and mov.FechaRealizada >= se.Fecha)
+if @SumaTotal is null
+begin
+set @SumaTotal = 0
+end
+if @PermitidoTotal is null
+begin
+set @PermitidoTotal = 0
+end
+select @SumaTotal as SumaSaldo, @PermitidoTotal as SumaPermitido
+
+
+exec sp_SaldoActual
+Select * from Movimientos

@@ -55,11 +55,6 @@ namespace BusinessLogicLayer
             return _dataMovimientos.ConsultarSaldo(movimientos);
         }
 
-        public Movimientos ConsultarGastoPermitidoActual(Movimientos movimientos)
-        {
-            return _dataMovimientos.ConsultarGastoPermitidoActual(movimientos);
-        }
-
         public Movimientos ConsultarDatosDeMovimiento(Movimientos movimientos)
         {
             return _dataMovimientos.ConsultarDatosDeMovimiento(movimientos);
