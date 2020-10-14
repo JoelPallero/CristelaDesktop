@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace FrontEndLayer
+namespace Cristela
 {
     static class Program
     {

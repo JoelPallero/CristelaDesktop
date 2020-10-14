@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UIForms
+namespace Cristela
 {
     public class ActualizacionDeSaldoFinal
     {
@@ -43,6 +43,11 @@ namespace UIForms
         public void CargarListaDemovimientos()
         {
             DsTablaDeMovimientos = _objNegMovimientos.MovementsList(Buscar);
+        }
+
+        public void CargarMovAgendados()
+        {
+            DsTablaDeMovimientos = _objNegMovimientos.MovAgendadosList(_objMovimientos);
         }
 
     }

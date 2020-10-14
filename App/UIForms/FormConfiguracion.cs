@@ -1,6 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
-using FrontEndLayer;
+using Cristela;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UIForms
+namespace Cristela
 {
     public partial class FormConfiguracion : Form
     {
@@ -23,6 +23,7 @@ namespace UIForms
         private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
         private NotificacionesDiarias _notificacionesDiarias = new NotificacionesDiarias();
         private NegnotificacionesDiarias _negnotificacionesDiarias = new NegnotificacionesDiarias();
+        private NotificacionesGTR _notificacionesGTR = new NotificacionesGTR();
 
         public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
 
@@ -240,6 +241,7 @@ namespace UIForms
                 }
             }
             _negnotificacionesDiarias.InsertHoraAlarmas(_notificacionesDiarias);
+            _notificacionesGTR.ActivarTmrAlarma();
         }
 
         private void RbTodos_CheckedChanged(object sender, EventArgs e)

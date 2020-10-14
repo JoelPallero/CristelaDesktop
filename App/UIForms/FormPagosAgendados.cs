@@ -1,16 +1,10 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrontEndLayer
+namespace Cristela
 {
     public partial class FormPagosAgendados : Form
     {
@@ -18,7 +12,7 @@ namespace FrontEndLayer
 
         private Movimientos _objMovimientos = new Movimientos();
         private NegMovimientos _objNegMovimientos = new NegMovimientos();
-
+        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
 
         #endregion
 
@@ -32,7 +26,6 @@ namespace FrontEndLayer
         private string ObservacionesAgenda;
 
         #endregion
-
 
         #region Loading Form
         public FormPagosAgendados()
@@ -51,10 +44,10 @@ namespace FrontEndLayer
         private void EnlistadoDTGV()
         {
             DtgMovAgendados.Rows.Clear();
-            DataSet ds = _objNegMovimientos.MovAgendadosList(_objMovimientos);
-            if (ds.Tables[0].Rows.Count > 0)
+            _actualizacionDeSaldoFinal.CargarMovAgendados();
+            if (_actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in _actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
                     DtgMovAgendados.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }

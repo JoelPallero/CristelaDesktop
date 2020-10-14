@@ -79,12 +79,6 @@
     <Compile Include="FormPagosAgendados.Designer.cs">
       <DependentUpon>FormPagosAgendados.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEstablecerSaldos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEstablecerSaldos.Designer.cs">
-      <DependentUpon>FormEstablecerSaldos.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,13 +97,11 @@
     <Compile Include="FormNotas.Designer.cs">
       <DependentUpon>FormNotas.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotificacionesGTR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormConfiguracion.resx">
       <DependentUpon>FormConfiguracion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormEstablecerSaldos.resx">
-      <DependentUpon>FormEstablecerSaldos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

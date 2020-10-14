@@ -21,9 +21,9 @@ namespace BusinessLogicLayer
             return dataNotificacionesDiarias.InsertHoraAlarmas(notificacionesDiarias);
         }
 
-        //public NotificacionesDiarias GetHoraAlarmas(NotificacionesDiarias notificacionesDiarias)
-        //{
-        //    //return dataNotificacionesDiarias.GetHoraAlarmas(notificacionesDiarias);
-        //}
+        public NotificacionesDiarias GetAlarma(NotificacionesDiarias notificacionesDiarias)
+        {
+            return dataNotificacionesDiarias.GetAlarma(notificacionesDiarias);
+        }
     }
 }

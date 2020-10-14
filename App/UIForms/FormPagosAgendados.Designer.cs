@@ -1,4 +1,4 @@
-﻿namespace FrontEndLayer
+﻿namespace Cristela
 {
     partial class FormPagosAgendados
     {

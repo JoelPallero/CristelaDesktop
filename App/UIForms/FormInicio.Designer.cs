@@ -1,4 +1,4 @@
-﻿namespace FrontEndLayer
+﻿namespace Cristela
 {
     partial class FormInicio
     {
@@ -63,6 +63,10 @@
             this.TxtFiltro = new System.Windows.Forms.TextBox();
             this.MenuSalirIcono = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ExitCristela = new System.Windows.Forms.ToolStripMenuItem();
+            this.TmrAlarma = new System.Windows.Forms.Timer(this.components);
+            this.ConsultaNuevosMov = new System.Windows.Forms.NotifyIcon(this.components);
+            this.nuevoMovimiento = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.DtgMovFinal)).BeginInit();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
@@ -458,9 +462,11 @@
             // MenuSalirIcono
             // 
             this.MenuSalirIcono.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.nuevoMovimiento,
             this.ExitCristela});
             this.MenuSalirIcono.Name = "MenuSalirIcono";
-            this.MenuSalirIcono.Size = new System.Drawing.Size(155, 26);
+            this.MenuSalirIcono.Size = new System.Drawing.Size(178, 54);
             // 
             // ExitCristela
             // 
@@ -468,6 +474,34 @@
             this.ExitCristela.Size = new System.Drawing.Size(180, 22);
             this.ExitCristela.Text = "Apagar Cristela";
             this.ExitCristela.Click += new System.EventHandler(this.ExitCristela_Click);
+            // 
+            // TmrAlarma
+            // 
+            this.TmrAlarma.Interval = 1000;
+            this.TmrAlarma.Tick += new System.EventHandler(this.TmrAlarma_Tick);
+            // 
+            // ConsultaNuevosMov
+            // 
+            this.ConsultaNuevosMov.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ConsultaNuevosMov.BalloonTipText = "Doble Click para registrar el movimiento que no hayas guardado.";
+            this.ConsultaNuevosMov.BalloonTipTitle = "¿Tienes algún nuevo movimiento sin registrar?";
+            this.ConsultaNuevosMov.ContextMenuStrip = this.MenuSalirIcono;
+            this.ConsultaNuevosMov.Icon = ((System.Drawing.Icon)(resources.GetObject("ConsultaNuevosMov.Icon")));
+            this.ConsultaNuevosMov.Text = "Registrar nuevos gastos";
+            this.ConsultaNuevosMov.Visible = true;
+            this.ConsultaNuevosMov.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConsultaNuevosMov_MouseClick);
+            // 
+            // nuevoMovimiento
+            // 
+            this.nuevoMovimiento.Name = "nuevoMovimiento";
+            this.nuevoMovimiento.Size = new System.Drawing.Size(180, 22);
+            this.nuevoMovimiento.Text = "Nuevo Movimiento";
+            this.nuevoMovimiento.Click += new System.EventHandler(this.BtnMovimientos_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // FormInicio
             // 
@@ -525,5 +559,9 @@
         private System.Windows.Forms.Label LblSaldoActual;
         private System.Windows.Forms.ContextMenuStrip MenuSalirIcono;
         private System.Windows.Forms.ToolStripMenuItem ExitCristela;
+        public System.Windows.Forms.Timer TmrAlarma;
+        private System.Windows.Forms.NotifyIcon ConsultaNuevosMov;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem nuevoMovimiento;
     }
 }

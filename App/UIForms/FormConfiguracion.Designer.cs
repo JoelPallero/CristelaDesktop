@@ -1,4 +1,4 @@
-﻿namespace UIForms
+﻿namespace Cristela
 {
     partial class FormConfiguracion
     {

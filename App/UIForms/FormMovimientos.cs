@@ -4,9 +4,8 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using UIForms;
 
-namespace FrontEndLayer
+namespace Cristela
 {
     public partial class FormMovimientos : Form
     {
@@ -53,9 +52,6 @@ namespace FrontEndLayer
         //private string mNotificacionRegistro;
         //private string notifyText;
         //private string notifyTitle;
-
-
-
 
         #endregion
 

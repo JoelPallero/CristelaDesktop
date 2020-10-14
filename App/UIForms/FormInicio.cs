@@ -5,9 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using UIForms;
+using Cristela;
 
-namespace FrontEndLayer
+namespace Cristela
 {
     public partial class FormInicio : Form
     {
@@ -17,7 +17,8 @@ namespace FrontEndLayer
         private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
         private Movimientos _objMovimientos = new Movimientos();
         private readonly NegMovimientos _objNegMovimientos = new NegMovimientos();
-        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+        private NotificacionesGTR _notificacionesGTR = new NotificacionesGTR();
 
         #endregion
 
@@ -87,27 +88,27 @@ namespace FrontEndLayer
 
         private void CargaDeSaldo()
         {
-            actualizacionDeSaldoFinal.GetSaldoActual();
+            _actualizacionDeSaldoFinal.GetSaldoActual();
 
-            actualizacionDeSaldoFinal.GetSaldos();
-            SaldoEmergencia = actualizacionDeSaldoFinal.Emergencia;
-            SaldoCritico = actualizacionDeSaldoFinal.Critico;
-            GastoPermitido = actualizacionDeSaldoFinal.SaldoPermitido;
+            _actualizacionDeSaldoFinal.GetSaldos();
+            SaldoEmergencia = _actualizacionDeSaldoFinal.Emergencia;
+            SaldoCritico = _actualizacionDeSaldoFinal.Critico;
+            GastoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido;
 
-            LblSaldoActual.Text = actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
-            LblGastoPermitido.Text = actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            LblSaldoActual.Text = _actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
+            LblGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
 
         }
 
         private void LblSaldoActual_TextChanged(object sender, EventArgs e)
         {
-            if (actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
+            if (_actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
             {
                 LblSaldoActual.BackColor = Color.LawnGreen;
             }
             else
             {
-                if (actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
+                if (_actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
                 {
                     LblSaldoActual.BackColor = Color.Red;
                 }
@@ -121,10 +122,10 @@ namespace FrontEndLayer
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
-            actualizacionDeSaldoFinal.CargarListaDemovimientos();
-            if (actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
+            _actualizacionDeSaldoFinal.CargarListaDemovimientos();
+            if (_actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
+                foreach (DataRow dr in _actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
                     DtgMovFinal.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
@@ -271,7 +272,7 @@ namespace FrontEndLayer
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
+                _actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
                 EnlistadoDTGV();
             }            
         }
@@ -318,6 +319,51 @@ namespace FrontEndLayer
         private void ExitCristela_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void TmrAlarma_Tick(object sender, EventArgs e)
+        {
+            string diaActual = Application.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek).ToString();
+            string horaActual = DateTime.Now.Hour.ToString();
+            string minutoACtual = DateTime.Now.Minute.ToString();
+
+            _notificacionesGTR.ConsultaDeAlarma();
+
+            if (horaActual == _notificacionesGTR.horas && minutoACtual == _notificacionesGTR.minutos)
+            {
+                mostrarNotificacion();
+                TmrAlarma.Stop();
+            }
+        }
+
+        private void mostrarNotificacion()
+        {
+            ConsultaNuevosMov.Visible = true;
+            ConsultaNuevosMov.ShowBalloonTip(5000);
+        }
+
+        private void ConsultaNuevosMov_BalloonTipShown(object sender, EventArgs e)
+        {
+            ConsultaNuevosMov.ShowBalloonTip(8000);
+        }
+
+        private void ConsultaNuevosMov_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MenuSalirIcono.Show();
+            }
+            else
+            {
+                ClickMovimientos();
+
+                // Crear la instancia
+                var hijoConEvento = new FormMovimientos();
+                // Suscripción al evento
+                hijoConEvento.NotificarCambios += formSaldosFinales_NotificarCambios;
+
+                AbrirFormHijo(formHijo: hijoConEvento);
+            }
         }
     }
 }

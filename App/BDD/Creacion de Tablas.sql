@@ -55,10 +55,13 @@ UserPass varchar (50) not null,
 
 
 create table NotificacionesDiarias(
-Id int primary Key,
-HoraAlarma1 time(4) null,
-HolaAlarma2 time(4) null,
-HolaAlarma3 time(4) null
+Id int primary Key identity,
+HoraAlarma1 varchar(2) null,
+MinutoAlarma1 varchar(2) null,
+HoraAlarma2 varchar(2) null,
+MinutoAlarma2 varchar(2) null,
+HoraAlarma3 varchar(2) null,
+MinutoAlarma3 varchar(2) null,
 )
 ----------------------------------------
 

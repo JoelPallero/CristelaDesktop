@@ -52,9 +52,36 @@ namespace DataAccessLayer
             return resultado;
         }
 
-        //public NotificacionesDiarias GetHoraAlarmas(NotificacionesDiarias notificacionesDiarias)
-        //{
-            
-        //}
+        public NotificacionesDiarias GetAlarma(NotificacionesDiarias notificacionesDiarias)
+        {
+            string query = @"select * from NotificacionesDiarias where Id = (select max(Id) from NotificacionesDiarias)";
+
+            SqlCommand cmd = new SqlCommand(query, conexion);
+
+            try
+            {
+                Abrirconexion();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    notificacionesDiarias.HoraAlarma1 = reader["HoraAlarma1"].ToString(); 
+                    notificacionesDiarias.MinutoAlarma1 = reader["MinutoAlarma1"].ToString();
+                }
+                reader.Close();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                Cerrarconexion();
+                cmd.Dispose();
+            }
+
+            return notificacionesDiarias;
+        }
     }
 }

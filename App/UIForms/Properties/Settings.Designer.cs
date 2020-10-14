@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FrontEndLayer.Properties
+namespace Cristela.Properties
 {
 
 

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "..\Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "..\Entities\Entities.csproj", "{A985B522-FFCC-465B-A399-5D140CE291F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEndLayer", "..\UIForms\FrontEndLayer.csproj", "{1C564F09-2911-4EDC-8A08-2DE65D33B8A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cristela", "..\UIForms\Cristela.csproj", "{1C564F09-2911-4EDC-8A08-2DE65D33B8A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
