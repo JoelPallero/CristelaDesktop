@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Cristela;
 
 namespace Cristela
 {
@@ -155,7 +154,7 @@ namespace Cristela
             OcultarInicio();
             lblTitulo.Text = "Agregar Movimientos";
             BtnInicio.BackColor = Color.Transparent;
-            BtnInicio.ForeColor = Color.FromArgb(60, 60 ,60);
+            BtnInicio.ForeColor = Color.FromArgb(60, 60, 60);
             BtnMovimientos.BackColor = Color.CornflowerBlue;
             BtnMovimientos.ForeColor = Color.White;
             BtnAgenda.BackColor = Color.Transparent;
@@ -203,7 +202,7 @@ namespace Cristela
             fh.Dock = DockStyle.Fill;
             this.pnlForms.Controls.Add(fh);
             this.pnlForms.Tag = fh;
-            fh.Show();            
+            fh.Show();
         }
 
         private void OcultarInicio()
@@ -261,9 +260,8 @@ namespace Cristela
 
         private void BtnAjustes_Click(object sender, EventArgs e)
         {
-            ClickAjustes();            
+            ClickAjustes();
         }
-
 
         #endregion
 
@@ -274,7 +272,7 @@ namespace Cristela
             {
                 _actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
                 EnlistadoDTGV();
-            }            
+            }
         }
         private void TxtFiltro_MouseEnter(object sender, EventArgs e)
         {

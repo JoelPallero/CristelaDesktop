@@ -299,7 +299,7 @@ namespace DataAccessLayer
             ;
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
-            
+
             try
             {
                 Abrirconexion();
@@ -311,7 +311,7 @@ namespace DataAccessLayer
                     movimientos.NumCuotaPaga = int.Parse(reader["NumCuotaPaga"].ToString());
                 }
                 reader.Close();
-                cmd.ExecuteNonQuery();                
+                cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -365,7 +365,7 @@ namespace DataAccessLayer
         {
             string orden = @"exec sp_SiguienteCuota";
 
-            SqlCommand cmd = new SqlCommand(orden, conexion);            
+            SqlCommand cmd = new SqlCommand(orden, conexion);
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter();
 
@@ -502,7 +502,7 @@ namespace DataAccessLayer
         public Movimientos DeletePeriodo(DateTime FechaDesde, DateTime FechaHasta, Movimientos movimientos)
         {
             string query = @"Delete Movimientos 
-                            Where FechaRealizada >= '"+FechaDesde+"' and FechaRealizada <= '"+FechaHasta+"';";
+                            Where FechaRealizada >= '" + FechaDesde + "' and FechaRealizada <= '" + FechaHasta + "';";
 
             SqlCommand cmd = new SqlCommand(query, conexion);
 

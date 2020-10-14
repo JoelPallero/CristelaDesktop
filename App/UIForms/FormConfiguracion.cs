@@ -1,14 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
-using Cristela;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cristela
@@ -151,7 +143,7 @@ namespace Cristela
                 }
                 else
                 {
-                    MessageBox.Show("No se ha seleccionado ningún item. Seleccione lo que quiera borrar.", "Seleccionar dato a borrar",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No se ha seleccionado ningún item. Seleccione lo que quiera borrar.", "Seleccionar dato a borrar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             MostrarSaldos();
@@ -267,7 +259,7 @@ namespace Cristela
                 ChkViernes.Checked = false;
                 ChkSabado.Checked = false;
                 ChkDomingo.Checked = false;
-            }            
+            }
         }
     }
 }

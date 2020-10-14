@@ -108,7 +108,7 @@ namespace Cristela
             }
 
             //permitir teclas de control como retroceso
-            else if (Char.IsControl(e.KeyChar)) 
+            else if (Char.IsControl(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -181,7 +181,7 @@ namespace Cristela
 
         }
 
-        
+
 
         private void SaveMovimiento()
         {

@@ -8,7 +8,7 @@ namespace BusinessLogicLayer
     public class NegMovimientos
     {
         private readonly DataMovimientos _dataMovimientos;
-        
+
         public NegMovimientos()
         {
             _dataMovimientos = new DataMovimientos();

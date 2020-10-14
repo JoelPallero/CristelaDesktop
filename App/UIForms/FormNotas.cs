@@ -1,13 +1,8 @@
 ﻿using BusinessLogicLayer;
 using Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cristela
@@ -62,7 +57,7 @@ namespace Cristela
             if (string.IsNullOrWhiteSpace(TxtTitulo.Text) ||
                 string.IsNullOrWhiteSpace(TxtNota.Text))
             {
-                MessageBox.Show("Para guardar nota debe completar todos los campos requeridos","Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Para guardar nota debe completar todos los campos requeridos", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

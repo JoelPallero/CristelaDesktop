@@ -1,10 +1,6 @@
 ﻿using Entities;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -65,7 +61,7 @@ namespace DataAccessLayer
 
                 if (reader.Read())
                 {
-                    notificacionesDiarias.HoraAlarma1 = reader["HoraAlarma1"].ToString(); 
+                    notificacionesDiarias.HoraAlarma1 = reader["HoraAlarma1"].ToString();
                     notificacionesDiarias.MinutoAlarma1 = reader["MinutoAlarma1"].ToString();
                 }
                 reader.Close();
