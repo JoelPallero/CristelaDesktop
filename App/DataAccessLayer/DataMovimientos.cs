@@ -533,13 +533,18 @@ namespace DataAccessLayer
             {
                 case "Todo":
                     query = @"truncate table Movimientos;
-                              truncate Table SaldosEstablecidos";
+                              truncate table SaldosEstablecidos;
+                              truncate table Notas"
+                    ;
                     break;
                 case "Movimientos":
                     query = @"truncate table Movimientos";
                     break;
                 case "Saldos":
                     query = @"truncate table SaldosEstablecidos";
+                    break;
+                case "Notas":
+                    query = @"truncate table Notas";
                     break;
             }
 

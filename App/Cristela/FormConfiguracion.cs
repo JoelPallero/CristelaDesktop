@@ -127,6 +127,16 @@ namespace Cristela
             }
         }
 
+
+        private void RbNotas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbNotas.Checked)
+            {
+                accion = "Notas";
+                vacio = true;
+            }
+        }
+
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             if (RbPeriodo.Checked)
@@ -261,5 +271,6 @@ namespace Cristela
                 ChkDomingo.Checked = false;
             }
         }
+
     }
 }

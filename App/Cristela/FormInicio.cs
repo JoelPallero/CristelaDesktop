@@ -27,6 +27,7 @@ namespace Cristela
         {
             InitializeComponent();
             CargaDeSaldo();
+            CambioDeColor();
             ClickInicio();
             EnlistadoDTGV();
         }
@@ -73,6 +74,7 @@ namespace Cristela
         {
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            CambioDeColor();
             EnlistadoDTGV();
         }
 
@@ -84,7 +86,7 @@ namespace Cristela
 
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
-
+            CambioDeColor();
             EnlistadoDTGV();
         }
 
@@ -99,12 +101,26 @@ namespace Cristela
 
             LblSaldoActual.Text = _actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
             LblGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
-
+            CambioDeColor();
         }
 
-        private void LblSaldoActual_TextChanged(object sender, EventArgs e)
+        private void CambioDeColor()
         {
-
+            if (Convert.ToDecimal(LblSaldoActual.Text) > SaldoEmergencia)
+            {
+                LblSaldoActual.BackColor = Color.LawnGreen;
+            }
+            else
+            {
+                if (Convert.ToDecimal(LblSaldoActual.Text) <= SaldoCritico)
+                {
+                    LblSaldoActual.BackColor = Color.Red;
+                }
+                else
+                {
+                    LblSaldoActual.BackColor = Color.Orange;
+                }
+            }
         }
 
         private void EnlistadoDTGV()
@@ -239,12 +255,8 @@ namespace Cristela
 
         private void BtnNotas_Click(object sender, EventArgs e)
         {
-            if (NotaAbierta == false)
-            {
-                FormNotas _formNotas = new FormNotas();
-                _formNotas.ShowDialog();
-                NotaAbierta = true;
-            }
+            FormNotas _formNotas = new FormNotas();
+            _formNotas.ShowDialog();
         }
 
         private void BtnAjustes_Click(object sender, EventArgs e)

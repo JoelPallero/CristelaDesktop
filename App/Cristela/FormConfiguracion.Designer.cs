@@ -76,6 +76,7 @@
             this.TxtEmergencia = new System.Windows.Forms.TextBox();
             this.BtnSave = new System.Windows.Forms.Button();
             this.TabEliminacion = new System.Windows.Forms.TabControl();
+            this.RbNotas = new System.Windows.Forms.RadioButton();
             this.TabEliminarDatos.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabNotificaciones.SuspendLayout();
@@ -107,12 +108,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.RbNotas);
             this.groupBox1.Controls.Add(this.RbSaldos);
             this.groupBox1.Controls.Add(this.RbMovimientos);
             this.groupBox1.Controls.Add(this.RbTodo);
             this.groupBox1.Location = new System.Drawing.Point(207, 48);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(149, 85);
+            this.groupBox1.Size = new System.Drawing.Size(149, 111);
             this.groupBox1.TabIndex = 82;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccionar Datos a borrar";
@@ -506,7 +508,7 @@
             this.SaldosActuales.Controls.Add(this.LblPermitidoActual);
             this.SaldosActuales.Controls.Add(this.LblCriticoActual);
             this.SaldosActuales.Controls.Add(this.LblEmergenciaActual);
-            this.SaldosActuales.Location = new System.Drawing.Point(250, 6);
+            this.SaldosActuales.Location = new System.Drawing.Point(250, 18);
             this.SaldosActuales.Name = "SaldosActuales";
             this.SaldosActuales.Size = new System.Drawing.Size(118, 120);
             this.SaldosActuales.TabIndex = 69;
@@ -540,7 +542,7 @@
             // LblCritico
             // 
             this.LblCritico.AutoSize = true;
-            this.LblCritico.Location = new System.Drawing.Point(9, 63);
+            this.LblCritico.Location = new System.Drawing.Point(9, 75);
             this.LblCritico.Name = "LblCritico";
             this.LblCritico.Size = new System.Drawing.Size(71, 13);
             this.LblCritico.TabIndex = 68;
@@ -549,7 +551,7 @@
             // LblPermitido
             // 
             this.LblPermitido.AutoSize = true;
-            this.LblPermitido.Location = new System.Drawing.Point(9, 96);
+            this.LblPermitido.Location = new System.Drawing.Point(9, 108);
             this.LblPermitido.Name = "LblPermitido";
             this.LblPermitido.Size = new System.Drawing.Size(84, 13);
             this.LblPermitido.TabIndex = 67;
@@ -558,7 +560,7 @@
             // LblEmergencia
             // 
             this.LblEmergencia.AutoSize = true;
-            this.LblEmergencia.Location = new System.Drawing.Point(9, 30);
+            this.LblEmergencia.Location = new System.Drawing.Point(9, 42);
             this.LblEmergencia.Name = "LblEmergencia";
             this.LblEmergencia.Size = new System.Drawing.Size(113, 13);
             this.LblEmergencia.TabIndex = 66;
@@ -566,21 +568,21 @@
             // 
             // TxtCritico
             // 
-            this.TxtCritico.Location = new System.Drawing.Point(134, 60);
+            this.TxtCritico.Location = new System.Drawing.Point(134, 72);
             this.TxtCritico.Name = "TxtCritico";
             this.TxtCritico.Size = new System.Drawing.Size(100, 20);
             this.TxtCritico.TabIndex = 1;
             // 
             // TxtPermitido
             // 
-            this.TxtPermitido.Location = new System.Drawing.Point(134, 96);
+            this.TxtPermitido.Location = new System.Drawing.Point(134, 108);
             this.TxtPermitido.Name = "TxtPermitido";
             this.TxtPermitido.Size = new System.Drawing.Size(100, 20);
             this.TxtPermitido.TabIndex = 2;
             // 
             // TxtEmergencia
             // 
-            this.TxtEmergencia.Location = new System.Drawing.Point(134, 24);
+            this.TxtEmergencia.Location = new System.Drawing.Point(134, 36);
             this.TxtEmergencia.Name = "TxtEmergencia";
             this.TxtEmergencia.Size = new System.Drawing.Size(100, 20);
             this.TxtEmergencia.TabIndex = 0;
@@ -611,6 +613,18 @@
             this.TabEliminacion.SelectedIndex = 0;
             this.TabEliminacion.Size = new System.Drawing.Size(384, 261);
             this.TabEliminacion.TabIndex = 0;
+            // 
+            // RbNotas
+            // 
+            this.RbNotas.AutoSize = true;
+            this.RbNotas.Location = new System.Drawing.Point(35, 86);
+            this.RbNotas.Name = "RbNotas";
+            this.RbNotas.Size = new System.Drawing.Size(53, 17);
+            this.RbNotas.TabIndex = 71;
+            this.RbNotas.TabStop = true;
+            this.RbNotas.Text = "Notas";
+            this.RbNotas.UseVisualStyleBackColor = true;
+            this.RbNotas.CheckedChanged += new System.EventHandler(this.RbNotas_CheckedChanged);
             // 
             // FormConfiguracion
             // 
@@ -693,5 +707,6 @@
         private System.Windows.Forms.CheckBox ChkMartes;
         private System.Windows.Forms.CheckBox ChkLunes;
         private System.Windows.Forms.RadioButton RbTodos;
+        private System.Windows.Forms.RadioButton RbNotas;
     }
 }
