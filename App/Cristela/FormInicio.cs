@@ -73,6 +73,7 @@ namespace Cristela
         {
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            EnlistadoDTGV();
         }
 
         private void formConfigSaldos_NotificarCambios(object sender, ActualizacionDeSaldo e)
@@ -83,6 +84,8 @@ namespace Cristela
 
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+
+            EnlistadoDTGV();
         }
 
         private void CargaDeSaldo()
@@ -101,21 +104,7 @@ namespace Cristela
 
         private void LblSaldoActual_TextChanged(object sender, EventArgs e)
         {
-            if (_actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
-            {
-                LblSaldoActual.BackColor = Color.LawnGreen;
-            }
-            else
-            {
-                if (_actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
-                {
-                    LblSaldoActual.BackColor = Color.Red;
-                }
-                else
-                {
-                    LblSaldoActual.BackColor = Color.Orange;
-                }
-            }
+
         }
 
         private void EnlistadoDTGV()
@@ -361,6 +350,26 @@ namespace Cristela
                 hijoConEvento.NotificarCambios += formSaldosFinales_NotificarCambios;
 
                 AbrirFormHijo(formHijo: hijoConEvento);
+            }
+            ColorDeAviso();
+        }
+
+        private void ColorDeAviso()
+        {
+            if (_actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
+            {
+                LblSaldoActual.BackColor = Color.LawnGreen;
+            }
+            else
+            {
+                if (_actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
+                {
+                    LblSaldoActual.BackColor = Color.Red;
+                }
+                else
+                {
+                    LblSaldoActual.BackColor = Color.Orange;
+                }
             }
         }
     }

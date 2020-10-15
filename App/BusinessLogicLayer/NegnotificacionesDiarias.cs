@@ -5,7 +5,7 @@ namespace BusinessLogicLayer
 {
     public class NegnotificacionesDiarias
     {
-        DataNotificacionesDiarias dataNotificacionesDiarias;
+        private readonly DataNotificacionesDiarias dataNotificacionesDiarias;
         public NegnotificacionesDiarias()
         {
             dataNotificacionesDiarias = new DataNotificacionesDiarias();
