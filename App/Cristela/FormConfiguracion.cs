@@ -42,9 +42,9 @@ namespace Cristela
         private void MostrarSaldos()
         {
             _saldosEstablecidos = _negSaldosEstablecidos.ConsultarSaldosEstablecidos();
-            LblEmergenciaActual.Text = "$" + Convert.ToString(_saldosEstablecidos.SaldoEmergencia);
-            LblCriticoActual.Text = "$" + Convert.ToString(_saldosEstablecidos.SaldoCritico);
-            LblPermitidoActual.Text = "$" + Convert.ToString(_saldosEstablecidos.GastoPermitido);
+            LblEmergenciaActual.Text = "$" + _saldosEstablecidos.SaldoEmergencia.ToString("G29");
+            LblCriticoActual.Text = "$" + _saldosEstablecidos.SaldoCritico.ToString("G29");
+            LblPermitidoActual.Text = "$" + _saldosEstablecidos.GastoPermitido.ToString("G29");
         }
 
         private void ValidarCamposVacios()
@@ -81,6 +81,7 @@ namespace Cristela
                 _negSaldosEstablecidos.EstablecerSaldos(_saldosEstablecidos);
                 ClearText();
                 MostrarSaldos();
+                ActualizacionDeSaldos();
             }
             else
             {
@@ -158,6 +159,11 @@ namespace Cristela
             }
             MostrarSaldos();
             vacio = false;
+            ActualizacionDeSaldos();
+        }
+
+        private void ActualizacionDeSaldos()
+        {
             _actualizacionDeSaldoFinal.GetSaldoActual();
             _actualizacionDeSaldoFinal.GetSaldos();
 
@@ -173,7 +179,6 @@ namespace Cristela
 
             // Y luego disparas el evento
             OnNotificarCambios(this, ActualizarSaldo);
-
         }
 
         #region Notificar Cambio para Actualizar saldo

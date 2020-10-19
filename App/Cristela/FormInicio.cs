@@ -12,10 +12,6 @@ namespace Cristela
     {
         #region Instanciamientos de Clases
 
-        private SaldosEstablecidos _objSaldosEstablecidos = new SaldosEstablecidos();
-        private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
-        private Movimientos _objMovimientos = new Movimientos();
-        private readonly NegMovimientos _objNegMovimientos = new NegMovimientos();
         private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
         private NotificacionesGTR _notificacionesGTR = new NotificacionesGTR();
 
@@ -50,7 +46,7 @@ namespace Cristela
 
 
         //Form Notas Abierto
-        public bool NotaAbierta;
+        public bool FormHided;
 
         #endregion
 
@@ -58,6 +54,7 @@ namespace Cristela
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
+            FormHided = true;
             this.Hide();
         }
 
@@ -70,7 +67,7 @@ namespace Cristela
 
         #region Métodos
 
-        private void formSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
+        private void FormSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
@@ -78,12 +75,11 @@ namespace Cristela
             EnlistadoDTGV();
         }
 
-        private void formConfigSaldos_NotificarCambios(object sender, ActualizacionDeSaldo e)
+        private void FormConfigSaldos_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
             SaldoEmergencia = e.SaldoDeEmergencia;
             SaldoCritico = e.SaldoDeCritico;
             GastoPermitido = e.SaldoPermitido;
-
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
             LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
             CambioDeColor();
@@ -93,12 +89,10 @@ namespace Cristela
         private void CargaDeSaldo()
         {
             _actualizacionDeSaldoFinal.GetSaldoActual();
-
             _actualizacionDeSaldoFinal.GetSaldos();
             SaldoEmergencia = _actualizacionDeSaldoFinal.Emergencia;
             SaldoCritico = _actualizacionDeSaldoFinal.Critico;
             GastoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido;
-
             LblSaldoActual.Text = _actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
             LblGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
             CambioDeColor();
@@ -131,9 +125,8 @@ namespace Cristela
             {
                 foreach (DataRow dr in _actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
-                    DtgMovFinal.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
+                    DtgMovFinal.Rows.Add(dr[0].ToString(), dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
-
                 lblTitulo.Text = "Movimientos Registrados";
             }
         }
@@ -191,7 +184,7 @@ namespace Cristela
             // Crear la instancia
             var hijoConEvento = new FormConfiguracion();
             // Suscripción al evento
-            hijoConEvento.NotificarCambios += formConfigSaldos_NotificarCambios;
+            hijoConEvento.NotificarCambios += FormConfigSaldos_NotificarCambios;
 
             hijoConEvento.ShowDialog();
         }
@@ -237,14 +230,19 @@ namespace Cristela
 
         private void BtnMovimientos_Click(object sender, EventArgs e)
         {
+            if (FormHided == true)
+            {
+                this.Show();
+            }
             ClickMovimientos();
 
             // Crear la instancia
             var hijoConEvento = new FormMovimientos();
             // Suscripción al evento
-            hijoConEvento.NotificarCambios += formSaldosFinales_NotificarCambios;
+            hijoConEvento.NotificarCambios += FormSaldosFinales_NotificarCambios;
 
             AbrirFormHijo(formHijo: hijoConEvento);
+            FormHided = false;
         }
 
         private void BtnAgenda_Click(object sender, EventArgs e)
@@ -322,20 +320,20 @@ namespace Cristela
 
         private void TmrAlarma_Tick(object sender, EventArgs e)
         {
-            string diaActual = Application.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek).ToString();
-            string horaActual = DateTime.Now.Hour.ToString();
-            string minutoACtual = DateTime.Now.Minute.ToString();
+            string DiaActual = Application.CurrentCulture.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek).ToString();
+            string HoraActual = DateTime.Now.Hour.ToString();
+            string MinutoACtual = DateTime.Now.Minute.ToString();
 
             _notificacionesGTR.ConsultaDeAlarma();
 
-            if (horaActual == _notificacionesGTR.horas && minutoACtual == _notificacionesGTR.minutos)
+            if (HoraActual == _notificacionesGTR.horas && MinutoACtual == _notificacionesGTR.minutos)
             {
-                mostrarNotificacion();
+                MostrarNotificacion();
                 TmrAlarma.Stop();
             }
         }
 
-        private void mostrarNotificacion()
+        private void MostrarNotificacion()
         {
             ConsultaNuevosMov.Visible = true;
             ConsultaNuevosMov.ShowBalloonTip(5000);
@@ -359,7 +357,7 @@ namespace Cristela
                 // Crear la instancia
                 var hijoConEvento = new FormMovimientos();
                 // Suscripción al evento
-                hijoConEvento.NotificarCambios += formSaldosFinales_NotificarCambios;
+                hijoConEvento.NotificarCambios += FormSaldosFinales_NotificarCambios;
 
                 AbrirFormHijo(formHijo: hijoConEvento);
             }
@@ -383,6 +381,16 @@ namespace Cristela
                     LblSaldoActual.BackColor = Color.Orange;
                 }
             }
+        }
+
+        private void DtgMovFinal_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DtgMovFinal_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

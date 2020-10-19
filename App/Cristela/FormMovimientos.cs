@@ -13,12 +13,8 @@ namespace Cristela
 
         private Movimientos _objMovimientos;
         private readonly NegMovimientos _objNegMovimientos;
-        private SaldosEstablecidos _objSaldosEstablecidos;
-        private readonly NegSaldosEstablecidos _objNegSaldosEstablecidos;
         private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
-
         public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
-
 
         #endregion
 
@@ -28,8 +24,6 @@ namespace Cristela
             InitializeComponent();
             _objMovimientos = new Movimientos();
             _objNegMovimientos = new NegMovimientos();
-            _objSaldosEstablecidos = new SaldosEstablecidos();
-            _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
         }
         private void FormMovimientos_Load(object sender, EventArgs e)
         {
@@ -42,30 +36,16 @@ namespace Cristela
         #region Variables
 
         private bool vacio;
-        private readonly string Buscar = string.Empty;
+        private readonly string Buscar = "Registro";
         private bool Establecido;
         private decimal IngresoSaldo;
         private decimal GastoPermitidoEstablecido;
         private decimal GastoPermitidoActual;
-        private int IdMovimiento;
         private int NumDeCuota;
-        //private string mNotificacionRegistro;
-        //private string notifyText;
-        //private string notifyTitle;
-
         #endregion
 
         #region Métodos Generales del Form
 
-        //private void ConfirmacionDeRegistro()
-        //{
-        //notifyMovement.Text = mNotificacionRegistro;
-        //notifyMovement.BalloonTipTitle = notifyTitle;
-        //notifyMovement.BalloonTipText = notifyText;
-        //notifyMovement.BalloonTipIcon = ToolTipIcon.Info;
-        //notifyMovement.Visible = true;
-        //notifyMovement.ShowBalloonTip(5000);
-        //}
 
         private void ValidarCamposVacios()
         {
@@ -87,15 +67,12 @@ namespace Cristela
             cmbCuotas.Enabled = false;
         }
 
-        private void ClearFormAndVaraibles()
+        private void ClearControls()
         {
             TxtImporte.Clear();
             cmbTransaccion.SelectedItem = null;
             TxtObservaciones.Clear();
 
-            IdMovimiento = 0;
-            NumDeCuota = 0;
-            IngresoSaldo = 0;
 
             RbAgendaN.Checked = true;
         }
@@ -162,39 +139,37 @@ namespace Cristela
                     UpdateMovement();
                     BtnSave.Text = "Guardar";
                 }
-
+                actualizacionDeSaldoFinal.Buscar = Buscar;
                 EnlistadoDTGV();
-                ClearFormAndVaraibles();
+                ClearControls();
                 InhabilitarRadioButtom();
-                actualizacionDeSaldoFinal.GetSaldoActual();
-
-                // Primero creas la instancia con toda la información que enviarás al padre
-                var ActualizarSaldo = new ActualizacionDeSaldo()
-                {
-                    SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
-                    PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual
-                };
-
-                // Y luego disparas el evento
-                OnNotificarCambios(this, ActualizarSaldo);
+                ActualizarSaldos();
             }
 
         }
 
+        private void ActualizarSaldos()
+        {
+            actualizacionDeSaldoFinal.GetSaldoActual();
 
+            // Primero creas la instancia con toda la información que enviarás al padre
+            var ActualizarSaldo = new ActualizacionDeSaldo()
+            {
+                SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual
+            };
+
+            // Y luego disparas el evento
+            OnNotificarCambios(this, ActualizarSaldo);
+        }
 
         private void SaveMovimiento()
         {
             VerifyGastoPermitidoEstablecido();
 
-            if (cmbTransaccion.Text == "Gasto Permitido" && Establecido == false)
-            {
-                EstablecerGastoPermitido();
-            }
-            else
+            if (Establecido == true)
             {
                 CalcularSaldoActual();
-
                 _objMovimientos.Importe = IngresoSaldo;
                 _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
                 _objMovimientos.FechaRealizada = Convert.ToDateTime(dtpFecha.Value);
@@ -202,7 +177,6 @@ namespace Cristela
                 if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
                 {
                     _objMovimientos.NumCuotaPaga = 1;
-                    //Convert.ToInt32(cmbCuotas.SelectedItem) - (Convert.ToInt32(cmbCuotas.SelectedItem) - 1);
                     _objMovimientos.PagoFinalizado = "No";
                 }
                 else
@@ -213,36 +187,45 @@ namespace Cristela
 
                 _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
                 _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
-
                 _objNegMovimientos.SaveMovement(_objMovimientos);
             }
         }
         private void VerifyGastoPermitidoEstablecido()
         {
-            actualizacionDeSaldoFinal.GetSaldos();
-            GastoPermitidoEstablecido = actualizacionDeSaldoFinal.SaldoPermitido;
             actualizacionDeSaldoFinal.GetSaldoActual();
-            GastoPermitidoActual = actualizacionDeSaldoFinal.SaldoPermitido;
+            GastoPermitidoEstablecido = actualizacionDeSaldoFinal.SaldoPermitido;
+            GastoPermitidoActual = actualizacionDeSaldoFinal.PermitidoActual;
+            GastoPermitidoActual += Convert.ToDecimal(TxtImporte.Text);
 
-            if (GastoPermitidoEstablecido == 0)
+            if (GastoPermitidoEstablecido <= 0)
             {
                 Establecido = false;
             }
             else
             {
-                //if (GastoPermitido > GastoPermitidoActual)
-                //{
-                //    Establecido = false;
-                //}
-                Establecido = true;
+                if (GastoPermitidoActual > GastoPermitidoEstablecido)
+                {
+                    Establecido = false;
+                    ClearControls();
+                    //EstablecerGastoPermitido();
+                    MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
+                    "Para establecer un Gasto Permitido, Presiona 'Aceptar'",
+                    "Inconsistencias en el Gasto Permitido",
+                    MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Establecido = true;
+                }
             }
 
 
         }
         private void EstablecerGastoPermitido()
         {
-            DialogResult _dialogResult = MessageBox.Show("Para registrar este movimiento debes tener preestablecido el Importe de Gasto Permitido, ya que actualmente es de 0. ¿Quieres Establecer el Gasto Permitido ahora? Si es así, dale al botón OK",
-                "No hay Gasto Permitido Establecido",
+            DialogResult _dialogResult = MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
+                "Para establecer un Gasto Permitido, Presiona 'Aceptar'",
+                "Inconsistencias en el Gasto Permitido",
                 MessageBoxButtons.OKCancel);
 
             if (_dialogResult == DialogResult.OK)
@@ -296,12 +279,13 @@ namespace Cristela
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
+            actualizacionDeSaldoFinal.Buscar = Buscar;
             actualizacionDeSaldoFinal.CargarListaDemovimientos();
             if (actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
-                    DtgMovFinal.Rows.Add(dr[1].ToString(), dr[2], dr[3], dr[4], dr[5], dr[6]);
+                    DtgMovFinal.Rows.Add(dr[0].ToString(), dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
             }
         }
@@ -348,7 +332,7 @@ namespace Cristela
         }
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            ClearFormAndVaraibles();
+            ClearControls();
         }
 
         #endregion        
@@ -415,40 +399,29 @@ namespace Cristela
 
         private void CargaDeDatosOnLine()
         {
+            TxtImporte.Text = DtgMovFinal.CurrentRow.Cells[1].Value.ToString();
+            cmbTransaccion.SelectedItem = DtgMovFinal.CurrentRow.Cells[2].Value.ToString();
+            dtpFecha.Value = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[3].Value);
+            cmbCuotas.SelectedItem = DtgMovFinal.CurrentRow.Cells[5].Value.ToString();
 
-            IdMovimiento = _objMovimientos.Id_Mov;
-            NumDeCuota = _objMovimientos.NumCuotaPaga;
-
-            TxtImporte.Text = Convert.ToString(DtgMovFinal.CurrentRow.Cells[0].Value);
-            cmbTransaccion.SelectedItem = Convert.ToString(DtgMovFinal.CurrentRow.Cells[1].Value);
-            dtpFecha.Value = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[2].Value);
-
-            if (DtgMovFinal.CurrentRow.Cells[3].Value.ToString() == "Si")
-            {
-                RbAgendaY.Checked = true;
-                RbAgendaN.Checked = false;
-            }
-            else
+            if (DtgMovFinal.CurrentRow.Cells[5].Value.ToString() == "1")
             {
                 RbAgendaY.Checked = false;
                 RbAgendaN.Checked = true;
             }
+            else
+            {
+                RbAgendaY.Checked = true;
+                RbAgendaN.Checked = false;
+            }
 
-            cmbCuotas.SelectedItem = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[4].Value);
-            TxtObservaciones.Text = Convert.ToString(DtgMovFinal.CurrentRow.Cells[5].Value);
-
+            TxtObservaciones.Text = DtgMovFinal.CurrentRow.Cells[6].Value.ToString();
             BtnSave.Text = "Modificar";
         }
 
         private void ConsultarDatosDeMovimiento()
         {
-            _objMovimientos.Importe = Convert.ToDecimal(DtgMovFinal.CurrentRow.Cells[0].Value);
-            _objMovimientos.TipoMovimiento = Convert.ToString(DtgMovFinal.CurrentRow.Cells[1].Value);
-            _objMovimientos.FechaRealizada = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[2].Value);
-            _objMovimientos.NumCuotaPaga = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[3].Value);
-            _objMovimientos.CantCuotas = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[4].Value);
-            _objMovimientos.Observaciones = Convert.ToString(DtgMovFinal.CurrentRow.Cells[5].Value);
-
+            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
             _objNegMovimientos.ConsultarDatosDeMovimiento(_objMovimientos);
         }
 
@@ -462,8 +435,9 @@ namespace Cristela
         #region Eliminar Movimiento
         private void EliminarMovimiento_Click(object sender, EventArgs e)
         {
-            ConsultarDatosDeMovimiento();
+            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
             _objNegMovimientos.DeleteMovement(_objMovimientos);
+            ActualizarSaldos();
             EnlistadoDTGV();
         }
         #endregion
@@ -479,6 +453,7 @@ namespace Cristela
             }
         }
 
-        #endregion        
+        #endregion
+
     }
 }

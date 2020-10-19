@@ -140,12 +140,13 @@ begin
 WITH siguiente_cuota AS(
     SELECT *, ROW_NUMBER() OVER( PARTITION BY ISNULL( CodMovimiento, Id_Mov) ORDER BY NumCuotaPaga DESC) rn
     FROM Movimientos
-    WHERE PagoFinalizado = 'No'
-    AND NumCuotaPaga < CantCuotas
+	where CantCuotas > 1
+	and NumCuotaPaga = (select max(NumCuotaPaga) from Movimientos)
+	and NumCuotaPaga != CantCuotas
 )
 SELECT *
 FROM siguiente_cuota
-WHERE rn = 1;
+WHERE rn = 1
 end
 
 exec sp_SiguienteCuota
@@ -184,3 +185,17 @@ exec sp_SaldoActual
 Select * from Movimientos
 
 select * from NotificacionesDiarias
+
+select * from Movimientos
+WHERE FechaRealizada BETWEEN GETDATE()-7 AND GETDATE()
+Order by Id_Mov desc
+
+create procedure sp_MovimientosMesActual
+as
+begin
+select * from Movimientos
+go
+select * from Movimientos
+WHERE MONTH(FechaRealizada) = MONTH(GETDATE())
+Order by FechaRealizada desc
+end

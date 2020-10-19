@@ -39,9 +39,9 @@ namespace BusinessLogicLayer
             return _dataMovimientos.UpdateMovement(movimientos);
         }
 
-        public DataSet MovAgendadosList(Movimientos movimientos)
+        public DataSet MovAgendadosList()
         {
-            return _dataMovimientos.MovAgendadosList(movimientos);
+            return _dataMovimientos.MovAgendadosList();
         }
 
         public DataSet MovementsList(string accion)

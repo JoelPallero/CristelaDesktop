@@ -38,9 +38,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DtgMovAgendados = new System.Windows.Forms.DataGridView();
+            this.ReferenciaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Mov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumCuotaPaga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,9 +67,10 @@
             this.DtgMovAgendados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DtgMovAgendados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DtgMovAgendados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ReferenciaId,
+            this.Id_Mov,
             this.Importe,
             this.Transaccion,
-            this.Fecha,
             this.NumCuotaPaga,
             this.Cuotas,
             this.Observaciones,
@@ -96,13 +98,33 @@
             this.DtgMovAgendados.TabStop = false;
             this.DtgMovAgendados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgMovAgendados_CellContentClick);
             // 
+            // ReferenciaId
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ReferenciaId.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ReferenciaId.Frozen = true;
+            this.ReferenciaId.HeaderText = "ID Pago";
+            this.ReferenciaId.Name = "ReferenciaId";
+            this.ReferenciaId.ReadOnly = true;
+            this.ReferenciaId.Width = 82;
+            // 
+            // Id_Mov
+            // 
+            this.Id_Mov.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id_Mov.Frozen = true;
+            this.Id_Mov.HeaderText = "Referencia";
+            this.Id_Mov.Name = "Id_Mov";
+            this.Id_Mov.ReadOnly = true;
+            this.Id_Mov.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id_Mov.Width = 90;
+            // 
             // Importe
             // 
             this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Importe.DefaultCellStyle = dataGridViewCellStyle3;
             this.Importe.Frozen = true;
             this.Importe.HeaderText = "Importe";
             this.Importe.Name = "Importe";
@@ -113,28 +135,14 @@
             // Transaccion
             // 
             this.Transaccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = null;
-            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Transaccion.DefaultCellStyle = dataGridViewCellStyle4;
             this.Transaccion.Frozen = true;
             this.Transaccion.HeaderText = "Transacción";
             this.Transaccion.Name = "Transaccion";
             this.Transaccion.ReadOnly = true;
             this.Transaccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Transaccion.Width = 120;
-            // 
-            // Fecha
-            // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Fecha.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Fecha.Frozen = true;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // NumCuotaPaga
             // 
@@ -173,7 +181,7 @@
             this.Observaciones.Name = "Observaciones";
             this.Observaciones.ReadOnly = true;
             this.Observaciones.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Observaciones.Width = 254;
+            this.Observaciones.Width = 200;
             // 
             // Hecho
             // 
@@ -212,9 +220,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DtgMovAgendados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReferenciaId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Mov;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumCuotaPaga;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuotas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observaciones;

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConfiguracion));
             this.TabEliminarDatos = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RbNotas = new System.Windows.Forms.RadioButton();
             this.RbSaldos = new System.Windows.Forms.RadioButton();
             this.RbMovimientos = new System.Windows.Forms.RadioButton();
             this.RbTodo = new System.Windows.Forms.RadioButton();
@@ -76,7 +78,6 @@
             this.TxtEmergencia = new System.Windows.Forms.TextBox();
             this.BtnSave = new System.Windows.Forms.Button();
             this.TabEliminacion = new System.Windows.Forms.TabControl();
-            this.RbNotas = new System.Windows.Forms.RadioButton();
             this.TabEliminarDatos.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabNotificaciones.SuspendLayout();
@@ -118,6 +119,18 @@
             this.groupBox1.TabIndex = 82;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccionar Datos a borrar";
+            // 
+            // RbNotas
+            // 
+            this.RbNotas.AutoSize = true;
+            this.RbNotas.Location = new System.Drawing.Point(35, 86);
+            this.RbNotas.Name = "RbNotas";
+            this.RbNotas.Size = new System.Drawing.Size(53, 17);
+            this.RbNotas.TabIndex = 71;
+            this.RbNotas.TabStop = true;
+            this.RbNotas.Text = "Notas";
+            this.RbNotas.UseVisualStyleBackColor = true;
+            this.RbNotas.CheckedChanged += new System.EventHandler(this.RbNotas_CheckedChanged);
             // 
             // RbSaldos
             // 
@@ -614,24 +627,13 @@
             this.TabEliminacion.Size = new System.Drawing.Size(384, 261);
             this.TabEliminacion.TabIndex = 0;
             // 
-            // RbNotas
-            // 
-            this.RbNotas.AutoSize = true;
-            this.RbNotas.Location = new System.Drawing.Point(35, 86);
-            this.RbNotas.Name = "RbNotas";
-            this.RbNotas.Size = new System.Drawing.Size(53, 17);
-            this.RbNotas.TabIndex = 71;
-            this.RbNotas.TabStop = true;
-            this.RbNotas.Text = "Notas";
-            this.RbNotas.UseVisualStyleBackColor = true;
-            this.RbNotas.CheckedChanged += new System.EventHandler(this.RbNotas_CheckedChanged);
-            // 
             // FormConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 261);
             this.Controls.Add(this.TabEliminacion);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(400, 300);
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "FormConfiguracion";

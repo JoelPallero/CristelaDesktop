@@ -6,10 +6,10 @@ namespace Cristela
 {
     public class ActualizacionDeSaldoFinal
     {
-        Movimientos _objMovimientos = new Movimientos();
-        NegMovimientos _objNegMovimientos = new NegMovimientos();
-        SaldosEstablecidos _objSaldosEstablecidos = new SaldosEstablecidos();
-        NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
+        private Movimientos _objMovimientos = new Movimientos();
+        private NegMovimientos _objNegMovimientos = new NegMovimientos();
+        private SaldosEstablecidos _objSaldosEstablecidos = new SaldosEstablecidos();
+        private NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
 
         public decimal SaldoActual;
         public decimal PermitidoActual;
@@ -23,7 +23,8 @@ namespace Cristela
         public void GetSaldoActual()
         {
             _objMovimientos = _objNegMovimientos.ConsultarSaldo(_objMovimientos);
-            SaldoActual = _objMovimientos.SaldoActual;
+            GetSaldos();
+            SaldoActual = _objMovimientos.SaldoActual - _objSaldosEstablecidos.GastoPermitido;
             PermitidoActual = _objMovimientos.GastoPermitido;
         }
 
@@ -42,8 +43,7 @@ namespace Cristela
 
         public void CargarMovAgendados()
         {
-            DsTablaDeMovimientos = _objNegMovimientos.MovAgendadosList(_objMovimientos);
+            DsTablaDeMovimientos = _objNegMovimientos.MovAgendadosList();
         }
-
     }
 }

@@ -66,7 +66,7 @@ namespace DataAccessLayer
             int resultado = -1;
 
             string orden = "Delete Movimientos where Id_Mov = @Id_Mov";
-            ;
+            
 
             SqlParameter id_Mov = new SqlParameter("@Id_Mov", movimientos.Id_Mov);
 
@@ -151,39 +151,36 @@ namespace DataAccessLayer
 
             if (string.IsNullOrEmpty(accion))
             {
-                orden = @"select Id_Mov,
-                                 Importe, 
-                                 TipoMovimiento,
-                                 FechaRealizada, 
-                                 NumCuotaPaga, 
-                                 CantCuotas, 
-                                 Observaciones,
-                                 PagoFinalizado
+                orden = @"select *
                         from Movimientos
-                        Order by Id_Mov desc"
+                        WHERE MONTH(FechaRealizada) = MONTH(GETDATE())
+                        Order by FechaRealizada desc"
                 ;
             }
             else
             {
-                orden = @"SET LANGUAGE ESPAÑOL;
-                          select Id_Mov,
-                                 Importe,
-                                 TipoMovimiento,
-                                 FechaRealizada,
-                                 NumCuotaPaga,
-                                 CantCuotas,
-                                 Observaciones,
-                                 PagoFinalizado
+                if (accion == "Registro")
+                {
+                    orden = @"select *
                         from Movimientos
-                        where Importe LIKE @query 
+                        WHERE FechaRealizada BETWEEN GETDATE()-1 AND GETDATE()
+                        Order by FechaRealizada desc"
+                    ;
+                }
+                else
+                {
+                    orden = @"Select *
+                        from Movimientos
+                        where Id_Mov LIKE @query 
+                        or Importe LIKE @query 
                         or TipoMovimiento LIKE @query
-                        or FechaRealizada LIKE @query
                         or NumCuotaPaga LIKE @query
                         or CantCuotas LIKE @query
                         or Observaciones LIKE @query
                         or PagoFinalizado LIKE @query
                         Order by Id_Mov Desc"
-                ;
+                    ;
+                }
             }
 
             SqlCommand cmd = new SqlCommand(orden, conexion)
@@ -219,70 +216,6 @@ namespace DataAccessLayer
             return ds;
         }
 
-        //public DataSet DateTimeFilter(string accion1, string accion2, bool busqueda)
-        //{
-        //    //string orden;
-
-
-        //    //if (busqueda)
-        //    //{
-        //    //    orden = @"SET SET LANGUAGE 'español' go
-        //    //              select Id_Mov,
-        //    //                     Importe,
-        //    //                     TipoMovimiento,
-        //    //                     FechaCreacion, 
-        //    //                     AgendarPago,
-        //    //                     CantCuotas,
-        //    //                     Observaciones
-        //    //            from Movimientos
-        //    //            where FechaCreacion LIKE '" + Convert.ToDateTime(accion1) + "'; "
-        //    //    ;
-
-        //    //    SqlCommand cmd = new SqlCommand(orden, conexion);                
-        //    //    cmd.CommandType = CommandType.Text;
-
-        //    //    cmd.Parameters.Add(new SqlParameter()
-        //    //    {
-        //    //        ParameterName = "@query",
-        //    //        SqlDbType = SqlDbType.DateTime,
-        //    //        Value = string.Format("%{0}%", accion1)
-        //    //    });
-        //    //}
-        //    //else
-        //    //{
-        //    //    orden = @"select Id_Mov,
-        //    //                     Importe,
-        //    //                     TipoMovimiento,
-        //    //                     FechaCreacion, 
-        //    //                     AgendarPago,
-        //    //                     CantCuotas,
-        //    //                     Observaciones
-        //    //             from Movimientos
-        //    //             where FechaCreacion BETWEEN '" + accion1 + " AND '" + accion2 + "'; "
-        //    //    ;
-        //    //}
-
-        //    //DataSet ds = new DataSet();
-        //    //SqlDataAdapter da = new SqlDataAdapter();
-
-        //    //try
-        //    //{
-        //    //    Abrirconexion();
-        //    //    cmd.ExecuteNonQuery();
-        //    //    da.SelectCommand = cmd;
-        //    //    da.Fill(ds);
-        //    //}
-        //    //catch (Exception e)
-        //    //{
-        //    //    throw new Exception("Error al listar Movimientos", e);
-        //    //}
-        //    //finally
-        //    //{
-        //    //    Cerrarconexion();
-        //    //    cmd.Dispose();
-        //    //}
-        //    //return ds;
-        //}
 
         #endregion
 
@@ -292,10 +225,7 @@ namespace DataAccessLayer
         {
             string orden = @"select *
                         from Movimientos
-                        where Importe = '" + movimientos.Importe + "'" +
-                        "and TipoMovimiento = '" + movimientos.TipoMovimiento + "'" +
-                        "and CantCuotas = '" + movimientos.CantCuotas + "'" +
-                        "and Observaciones = '" + movimientos.Observaciones + "';"
+                        where Id_Mov = '" + movimientos.Id_Mov + "';"
             ;
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
@@ -361,7 +291,7 @@ namespace DataAccessLayer
         #endregion
 
         #region Movimientos Agendados
-        public DataSet MovAgendadosList(Movimientos movimientos)
+        public DataSet MovAgendadosList()
         {
             string orden = @"exec sp_SiguienteCuota";
 
@@ -474,27 +404,6 @@ namespace DataAccessLayer
             return resultado;
         }
 
-        private Movimientos ConsultaId(int IdMovimiento, Movimientos movimientos)
-        {
-            string query = "select Id_Mov From Movimientos where CodMovimiento = '" + IdMovimiento + "'";
-
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                Cerrarconexion();
-                //cmd.Dispose()
-            }
-
-            return movimientos;
-        }
         #endregion
 
         #region Delete desde Configuraciones
