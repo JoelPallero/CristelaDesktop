@@ -103,16 +103,22 @@ namespace Cristela
             if (Convert.ToDecimal(LblSaldoActual.Text) > SaldoEmergencia)
             {
                 LblSaldoActual.BackColor = Color.LawnGreen;
+                LblTituloSaldo.BackColor = Color.LawnGreen;
+                LblTituloSaldo.ForeColor = Color.Black;
             }
             else
             {
                 if (Convert.ToDecimal(LblSaldoActual.Text) <= SaldoCritico)
                 {
                     LblSaldoActual.BackColor = Color.Red;
+                    LblTituloSaldo.BackColor = Color.Red;
+                    LblTituloSaldo.ForeColor = Color.White;
                 }
                 else
                 {
                     LblSaldoActual.BackColor = Color.Orange;
+                    LblTituloSaldo.BackColor = Color.Orange;
+                    LblTituloSaldo.ForeColor = Color.Black;
                 }
             }
         }
@@ -385,12 +391,24 @@ namespace Cristela
 
         private void DtgMovFinal_MouseEnter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void DtgMovFinal_MouseLeave(object sender, EventArgs e)
         {
 
+        }
+
+        private void DtgMovFinal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ToString() != string.Empty)
+            {
+                DtgMovFinal.ShowCellToolTips = true;
+            }
+            else
+            {
+                DtgMovFinal.ShowCellToolTips = false;
+            }
         }
     }
 }

@@ -193,6 +193,7 @@
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.Size = new System.Drawing.Size(158, 20);
             this.DtHasta.TabIndex = 79;
+            this.DtHasta.Value = new System.DateTime(2020, 10, 20, 0, 0, 0, 0);
             // 
             // DtDesde
             // 
@@ -201,6 +202,7 @@
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.Size = new System.Drawing.Size(158, 20);
             this.DtDesde.TabIndex = 78;
+            this.DtDesde.Value = new System.DateTime(2020, 10, 20, 0, 0, 0, 0);
             // 
             // label1
             // 
@@ -280,6 +282,7 @@
             this.groupBox2.Controls.Add(this.ChkMiercoles);
             this.groupBox2.Controls.Add(this.ChkMartes);
             this.groupBox2.Controls.Add(this.ChkLunes);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(8, 28);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(128, 155);
@@ -372,6 +375,7 @@
             // 
             this.BtnEstablecerNotis.BackColor = System.Drawing.SystemColors.Highlight;
             this.BtnEstablecerNotis.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnEstablecerNotis.Enabled = false;
             this.BtnEstablecerNotis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEstablecerNotis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEstablecerNotis.ForeColor = System.Drawing.SystemColors.HighlightText;
@@ -386,6 +390,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Enabled = false;
             this.label7.Location = new System.Drawing.Point(271, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
@@ -395,6 +400,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Enabled = false;
             this.label6.Location = new System.Drawing.Point(271, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
@@ -404,6 +410,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Enabled = false;
             this.label5.Location = new System.Drawing.Point(271, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
@@ -435,6 +442,7 @@
             // DtpAlarma1
             // 
             this.DtpAlarma1.CustomFormat = "HH:mm";
+            this.DtpAlarma1.Enabled = false;
             this.DtpAlarma1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DtpAlarma1.Location = new System.Drawing.Point(268, 56);
             this.DtpAlarma1.Name = "DtpAlarma1";
@@ -447,6 +455,7 @@
             this.GBNotificaciones.Controls.Add(this.RbNoti3);
             this.GBNotificaciones.Controls.Add(this.RbNoti2);
             this.GBNotificaciones.Controls.Add(this.RbNoti1);
+            this.GBNotificaciones.Enabled = false;
             this.GBNotificaciones.Location = new System.Drawing.Point(142, 56);
             this.GBNotificaciones.Name = "GBNotificaciones";
             this.GBNotificaciones.Size = new System.Drawing.Size(101, 112);
@@ -492,6 +501,7 @@
             // LblTitulo
             // 
             this.LblTitulo.AutoSize = true;
+            this.LblTitulo.Enabled = false;
             this.LblTitulo.Location = new System.Drawing.Point(46, 9);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(252, 13);

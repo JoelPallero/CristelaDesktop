@@ -140,26 +140,33 @@ namespace Cristela
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if (RbPeriodo.Checked)
+            DialogResult dialogResult = MessageBox.Show("Va a eliminar datos de manera permanente. " +
+                "¿Está seguro que quieres eliminarlos permanentemente?",
+                "ADVERTENCIA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                FechaDesde = DtDesde.Value;
-                FechaHasta = DtHasta.Value;
-                _movimientos = _negMovimientos.DeletePeriodo(FechaDesde, FechaHasta, _movimientos);
-            }
-            else
-            {
-                if (vacio)
+                if (RbPeriodo.Checked)
                 {
-                    _movimientos = _negMovimientos.DeleteAll(accion, _movimientos);
+                    FechaDesde = DtDesde.Value;
+                    FechaHasta = DtHasta.Value;
+                    _movimientos = _negMovimientos.DeletePeriodo(FechaDesde, FechaHasta, _movimientos);
                 }
                 else
                 {
-                    MessageBox.Show("No se ha seleccionado ningún item. Seleccione lo que quiera borrar.", "Seleccionar dato a borrar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (vacio)
+                    {
+                        _movimientos = _negMovimientos.DeleteAll(accion, _movimientos);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se ha seleccionado ningún item. Seleccione lo que quiera borrar.", "Seleccionar dato a borrar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-            }
-            MostrarSaldos();
-            vacio = false;
-            ActualizacionDeSaldos();
+                MostrarSaldos();
+                vacio = false;
+                ActualizacionDeSaldos();
+            }            
         }
 
         private void ActualizacionDeSaldos()

@@ -141,54 +141,60 @@ namespace Cristela
                 }
                 actualizacionDeSaldoFinal.Buscar = Buscar;
                 EnlistadoDTGV();
-                ClearControls();
                 InhabilitarRadioButtom();
                 ActualizarSaldos();
+                ClearControls();
             }
-
         }
 
         private void ActualizarSaldos()
         {
             actualizacionDeSaldoFinal.GetSaldoActual();
 
-            // Primero creas la instancia con toda la información que enviarás al padre
+            // Primero creo la instancia con toda la información que voy a enviar al FormInicial
             var ActualizarSaldo = new ActualizacionDeSaldo()
             {
                 SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
                 PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual
             };
 
-            // Y luego disparas el evento
+            //Y luego disparo el evento enviando los datos que hay en "ActualizarSaldo" (arriba)
             OnNotificarCambios(this, ActualizarSaldo);
+        }
+
+        private void CargarMovimiento()
+        {
+            CalcularSaldoActual();
+            _objMovimientos.Importe = IngresoSaldo;
+            _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
+            _objMovimientos.FechaRealizada = Convert.ToDateTime(dtpFecha.Value);
+
+            if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
+            {
+                _objMovimientos.NumCuotaPaga = 1;
+                _objMovimientos.PagoFinalizado = "No";
+            }
+            else
+            {
+                _objMovimientos.NumCuotaPaga = Convert.ToInt32(cmbCuotas.SelectedItem);
+                _objMovimientos.PagoFinalizado = "Si";
+            }
+
+            _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
+            _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
+            _objNegMovimientos.SaveMovement(_objMovimientos);
         }
 
         private void SaveMovimiento()
         {
-            VerifyGastoPermitidoEstablecido();
-
-            if (Establecido == true)
+            if (cmbTransaccion.SelectedItem.ToString() == "Gasto Permitido")
             {
-                CalcularSaldoActual();
-                _objMovimientos.Importe = IngresoSaldo;
-                _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
-                _objMovimientos.FechaRealizada = Convert.ToDateTime(dtpFecha.Value);
-
-                if (RbAgendaY.Checked && Convert.ToInt32(cmbCuotas.SelectedItem) > 1)
-                {
-                    _objMovimientos.NumCuotaPaga = 1;
-                    _objMovimientos.PagoFinalizado = "No";
-                }
-                else
-                {
-                    _objMovimientos.NumCuotaPaga = Convert.ToInt32(cmbCuotas.SelectedItem);
-                    _objMovimientos.PagoFinalizado = "Si";
-                }
-
-                _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
-                _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
-                _objNegMovimientos.SaveMovement(_objMovimientos);
+                VerifyGastoPermitidoEstablecido();
             }
+            else
+            {
+                CargarMovimiento();
+            }            
         }
         private void VerifyGastoPermitidoEstablecido()
         {
@@ -200,6 +206,7 @@ namespace Cristela
             if (GastoPermitidoEstablecido <= 0)
             {
                 Establecido = false;
+                MessageBoxGastoPermitido();
             }
             else
             {
@@ -207,24 +214,26 @@ namespace Cristela
                 {
                     Establecido = false;
                     ClearControls();
-                    //EstablecerGastoPermitido();
-                    MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
-                    "Para establecer un Gasto Permitido, Presiona 'Aceptar'",
-                    "Inconsistencias en el Gasto Permitido",
-                    MessageBoxButtons.OK);
+                    MessageBoxGastoPermitido();
                 }
                 else
                 {
-                    Establecido = true;
+                    CargarMovimiento();
                 }
             }
+        }
 
-
+        private void MessageBoxGastoPermitido() 
+        {
+            MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
+                    "Para establecer un Gasto Permitido, ingresa al menú 'Ajustes'.",
+                    "Inconsistencias de datos:",
+                    MessageBoxButtons.OK);
         }
         private void EstablecerGastoPermitido()
         {
             DialogResult _dialogResult = MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
-                "Para establecer un Gasto Permitido, Presiona 'Aceptar'",
+                "Para establecer un Gasto Permitido, Presiona 'Aceptar'.",
                 "Inconsistencias en el Gasto Permitido",
                 MessageBoxButtons.OKCancel);
 
@@ -274,7 +283,6 @@ namespace Cristela
                     break;
             }
         }
-
 
         private void EnlistadoDTGV()
         {
