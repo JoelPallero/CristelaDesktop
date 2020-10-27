@@ -10,6 +10,7 @@ namespace DataAccessLayer
         #region ABM de movimientos.
         public int SaveMovement(Movimientos movimientos)
         {
+            SaldosEstablecidos saldosEstablecidos = new SaldosEstablecidos();
             int resultado = -1;
             string orden = @"Insert into Movimientos (Importe, 
                                                      TipoMovimiento,   
@@ -17,14 +18,17 @@ namespace DataAccessLayer
                                                      NumCuotaPaga, 
                                                      CantCuotas, 
                                                      Observaciones,
-                                                     PagoFinalizado)       
-                            values (@Importe, 
-                                    @TipoMovimiento,   
-                                    @FechaRealizada, 
-                                    @NumCuotaPaga, 
-                                    @CantCuotas, 
-                                    @Observaciones,
-                                    @PagoFinalizado)"
+                                                     PagoFinalizado,
+                                                     SeId) " +
+                                                     "values (@Importe, " +
+                                                             "@TipoMovimiento, " +
+                                                             "@FechaRealizada, " +
+                                                             "@NumCuotaPaga, " +
+                                                             "@CantCuotas," +
+                                                             "@Observaciones, " +
+                                                             "@PagoFinalizado, " +
+                                                             "@SeId)"
+
             ;
 
             SqlParameter importe = new SqlParameter("@Importe", movimientos.Importe);
@@ -34,6 +38,7 @@ namespace DataAccessLayer
             SqlParameter cantCuotas = new SqlParameter("@CantCuotas", movimientos.CantCuotas);
             SqlParameter observaciones = new SqlParameter("@Observaciones", movimientos.Observaciones);
             SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
+            SqlParameter seId = new SqlParameter("@SeId", movimientos.SeId);
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             cmd.Parameters.Add(importe);
@@ -43,6 +48,7 @@ namespace DataAccessLayer
             cmd.Parameters.Add(cantCuotas);
             cmd.Parameters.Add(observaciones);
             cmd.Parameters.Add(pagoFinalizado);
+            cmd.Parameters.Add(seId);
 
             try
             {
@@ -442,18 +448,18 @@ namespace DataAccessLayer
             {
                 case "Todo":
                     query = @"truncate table Movimientos;
-                              truncate table SaldosEstablecidos;
+                              delete SaldosEstablecidos where Id_SE != 1000;
                               truncate table Notas"
                     ;
                     break;
                 case "Movimientos":
-                    query = @"truncate table Movimientos";
+                    query = "truncate table Movimientos";
                     break;
                 case "Saldos":
-                    query = @"truncate table SaldosEstablecidos";
+                    query = "delete SaldosEstablecidos where Id_SE != 1000";
                     break;
                 case "Notas":
-                    query = @"truncate table Notas";
+                    query = "truncate table Notas";
                     break;
             }
 
@@ -465,7 +471,6 @@ namespace DataAccessLayer
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally

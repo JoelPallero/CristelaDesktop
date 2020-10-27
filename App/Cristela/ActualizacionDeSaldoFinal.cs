@@ -11,11 +11,13 @@ namespace Cristela
         private SaldosEstablecidos _objSaldosEstablecidos = new SaldosEstablecidos();
         private NegSaldosEstablecidos _objNegSaldosEstablecidos = new NegSaldosEstablecidos();
 
+        public int IdSe;
         public decimal SaldoActual;
         public decimal PermitidoActual;
         public decimal Emergencia;
         public decimal Critico;
         public decimal SaldoPermitido;
+        
 
         public DataSet DsTablaDeMovimientos = new DataSet();
         public string Buscar = string.Empty;
@@ -31,6 +33,7 @@ namespace Cristela
         public void GetSaldos()
         {
             _objSaldosEstablecidos = _objNegSaldosEstablecidos.ConsultarSaldosEstablecidos();
+            IdSe = _objSaldosEstablecidos.Id_SE;
             Emergencia = _objSaldosEstablecidos.SaldoEmergencia;
             Critico = _objSaldosEstablecidos.SaldoCritico;
             SaldoPermitido = _objSaldosEstablecidos.GastoPermitido;

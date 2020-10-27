@@ -9,11 +9,11 @@ namespace Cristela
 {
     public partial class FormMovimientos : Form
     {
-        #region Instancias de las Clases.
+        #region Instancias
 
         private Movimientos _objMovimientos;
         private readonly NegMovimientos _objNegMovimientos;
-        private ActualizacionDeSaldoFinal actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
         public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
 
         #endregion
@@ -46,7 +46,6 @@ namespace Cristela
 
         #region Métodos Generales del Form
 
-
         private void ValidarCamposVacios()
         {
             if (string.IsNullOrEmpty(TxtImporte.Text) ||
@@ -72,7 +71,7 @@ namespace Cristela
             TxtImporte.Clear();
             cmbTransaccion.SelectedItem = null;
             TxtObservaciones.Clear();
-
+            IngresoSaldo = 0;
 
             RbAgendaN.Checked = true;
         }
@@ -131,7 +130,7 @@ namespace Cristela
             else
             {
                 if (BtnSave.Text == "Guardar")
-                {
+                {                 
                     SaveMovimiento();
                 }
                 else
@@ -139,7 +138,7 @@ namespace Cristela
                     UpdateMovement();
                     BtnSave.Text = "Guardar";
                 }
-                actualizacionDeSaldoFinal.Buscar = Buscar;
+                _actualizacionDeSaldoFinal.Buscar = Buscar;
                 EnlistadoDTGV();
                 InhabilitarRadioButtom();
                 ActualizarSaldos();
@@ -149,13 +148,13 @@ namespace Cristela
 
         private void ActualizarSaldos()
         {
-            actualizacionDeSaldoFinal.GetSaldoActual();
+            _actualizacionDeSaldoFinal.GetSaldoActual();
 
             // Primero creo la instancia con toda la información que voy a enviar al FormInicial
             var ActualizarSaldo = new ActualizacionDeSaldo()
             {
-                SaldoFinal = actualizacionDeSaldoFinal.SaldoActual,
-                PermitidoFinal = actualizacionDeSaldoFinal.PermitidoActual
+                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual
             };
 
             //Y luego disparo el evento enviando los datos que hay en "ActualizarSaldo" (arriba)
@@ -182,6 +181,7 @@ namespace Cristela
 
             _objMovimientos.CantCuotas = Convert.ToInt32(cmbCuotas.SelectedItem);
             _objMovimientos.Observaciones = Convert.ToString(TxtObservaciones.Text);
+            _objMovimientos.SeId = _actualizacionDeSaldoFinal.IdSe;
             _objNegMovimientos.SaveMovement(_objMovimientos);
         }
 
@@ -193,14 +193,15 @@ namespace Cristela
             }
             else
             {
+                _actualizacionDeSaldoFinal.GetSaldos();
                 CargarMovimiento();
             }            
         }
         private void VerifyGastoPermitidoEstablecido()
         {
-            actualizacionDeSaldoFinal.GetSaldoActual();
-            GastoPermitidoEstablecido = actualizacionDeSaldoFinal.SaldoPermitido;
-            GastoPermitidoActual = actualizacionDeSaldoFinal.PermitidoActual;
+            _actualizacionDeSaldoFinal.GetSaldoActual();
+            GastoPermitidoEstablecido = _actualizacionDeSaldoFinal.SaldoPermitido;
+            GastoPermitidoActual = _actualizacionDeSaldoFinal.PermitidoActual;
             GastoPermitidoActual += Convert.ToDecimal(TxtImporte.Text);
 
             if (GastoPermitidoEstablecido <= 0)
@@ -287,11 +288,11 @@ namespace Cristela
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
-            actualizacionDeSaldoFinal.Buscar = Buscar;
-            actualizacionDeSaldoFinal.CargarListaDemovimientos();
-            if (actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
+            _actualizacionDeSaldoFinal.Buscar = Buscar;
+            _actualizacionDeSaldoFinal.CargarListaDemovimientos();
+            if (_actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow dr in actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
+                foreach (DataRow dr in _actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows)
                 {
                     DtgMovFinal.Rows.Add(dr[0].ToString(), dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
@@ -351,7 +352,7 @@ namespace Cristela
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
+                _actualizacionDeSaldoFinal.Buscar = TxtFiltro.Text;
                 EnlistadoDTGV();
             }
         }
@@ -403,6 +404,7 @@ namespace Cristela
             ConsultarDatosDeMovimiento();
             CargaDeDatosOnLine();
             EnlistadoDTGV();
+            ActualizarSaldos();
         }
 
         private void CargaDeDatosOnLine()
@@ -462,6 +464,5 @@ namespace Cristela
         }
 
         #endregion
-
     }
 }

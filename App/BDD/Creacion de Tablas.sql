@@ -51,7 +51,7 @@ go
 Create table DataUser(
 IdUser int primary key identity not null,
 UserName varchar(50) not null,
-UserPass varchar (50) not null,
+UserPass varchar (50) not null
 )
 
 
@@ -62,11 +62,9 @@ MinutoAlarma1 varchar(2) null,
 HoraAlarma2 varchar(2) null,
 MinutoAlarma2 varchar(2) null,
 HoraAlarma3 varchar(2) null,
-MinutoAlarma3 varchar(2) null,
+MinutoAlarma3 varchar(2) null
 )
-----------------------------------------
 
-use AdministradorPersonal
 create proc sp_SiguienteCuota
 as
 begin

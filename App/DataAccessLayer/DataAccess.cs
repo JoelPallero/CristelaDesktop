@@ -7,17 +7,16 @@ namespace DataAccessLayer
     public class DataAccess
     {
         public SqlConnection conexion;
-        public string CadenaDeConexion = @"Integrated Security=SSPI;
-                                           Persist Security Info=False;
-                                           Initial Catalog=AdministradorPersonal;
-                                           Data Source=DESKTOP-S279OM7\SQLEXPRESS"
+        public string CadenaDeConexion = @"Data Source=(LocalDB)\MSSQLLocalDB;
+                                            AttachDbFilename=
+                                            ""F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\CristellaDesktop\SampleDatabaseWalkthrough\SampleDatabaseWalkthrough.mdf"";
+                                            Integrated Security=True"
         ;
 
         public DataAccess()
         {
             conexion = new SqlConnection(CadenaDeConexion);
         }
-
 
         #region Apertura y cierre de conexioón
         public void Abrirconexion()

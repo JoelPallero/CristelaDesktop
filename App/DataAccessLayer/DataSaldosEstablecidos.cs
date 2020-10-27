@@ -66,12 +66,14 @@ namespace DataAccessLayer
 
                 if (readerSaldo.Read())
                 {
+                    saldosEstablecidos.Id_SE = int.Parse(readerSaldo["Id_SE"].ToString());
                     saldosEstablecidos.SaldoEmergencia = decimal.Parse(readerSaldo["SaldoEmergencia"].ToString());
                     saldosEstablecidos.SaldoCritico = decimal.Parse(readerSaldo["SaldoCritico"].ToString());
                     saldosEstablecidos.GastoPermitido = decimal.Parse(readerSaldo["GastoPermitido"].ToString());
                 }
                 else
                 {
+                    saldosEstablecidos.Id_SE = 1003;
                     saldosEstablecidos.SaldoEmergencia = 0;
                     saldosEstablecidos.SaldoCritico = 0;
                     saldosEstablecidos.GastoPermitido = 0;

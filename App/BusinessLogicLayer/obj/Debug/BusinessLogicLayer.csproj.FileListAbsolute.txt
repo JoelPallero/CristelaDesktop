@@ -53,3 +53,10 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLog
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\Entities.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml

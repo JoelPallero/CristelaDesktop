@@ -43,3 +43,9 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessL
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\EntityFramework.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\Entities.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\EntityFramework.xml
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml

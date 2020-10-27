@@ -174,7 +174,6 @@ namespace Cristela
             _actualizacionDeSaldoFinal.GetSaldoActual();
             _actualizacionDeSaldoFinal.GetSaldos();
 
-
             var ActualizarSaldo = new ActualizacionDeSaldo()
             {
                 SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
@@ -283,6 +282,5 @@ namespace Cristela
                 ChkDomingo.Checked = false;
             }
         }
-
     }
 }

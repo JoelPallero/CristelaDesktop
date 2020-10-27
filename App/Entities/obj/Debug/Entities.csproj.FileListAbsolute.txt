@@ -27,3 +27,10 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bi
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.dll
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.pdb
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\Entities.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.SqlServer.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.xml
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.SqlServer.xml
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.CopyComplete
