@@ -6,6 +6,8 @@ namespace DataAccessLayer
 {
     public class DataSaldosEstablecidos : DataAccess
     {
+        #region Alta y consulta de Saldos Establecidos
+
         public int EstablecerSaldos(SaldosEstablecidos saldosEstablecidos)
         {
             int resultado = -1;
@@ -92,5 +94,7 @@ namespace DataAccessLayer
             }
             return saldosEstablecidos;
         }
+
+        #endregion
     }
 }

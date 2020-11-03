@@ -10,14 +10,14 @@ namespace Cristela
 {
     public partial class FormInicio : Form
     {
-        #region Instanciamientos de Clases
+        #region Instancias
 
         private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
         private NotificacionesGTR _notificacionesGTR = new NotificacionesGTR();
 
         #endregion
 
-        #region Load
+        #region Loading
 
         public FormInicio()
         {
@@ -65,8 +65,7 @@ namespace Cristela
 
         #endregion
 
-        #region Métodos
-
+        #region Actualización de datos.
         private void FormSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
             LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
@@ -85,6 +84,10 @@ namespace Cristela
             CambioDeColor();
             EnlistadoDTGV();
         }
+
+        #endregion
+
+        #region Métodos        
 
         private void CargaDeSaldo()
         {
@@ -254,7 +257,15 @@ namespace Cristela
         private void BtnAgenda_Click(object sender, EventArgs e)
         {
             ClickAgenda();
-            AbrirFormHijo(formHijo: new FormPagosAgendados());
+            // Crear la instancia
+            var hijoConEvento = new FormPagosAgendados();
+            // Suscripción al evento
+            hijoConEvento.NotificarCambios += FormSaldosFinales_NotificarCambios;
+
+            AbrirFormHijo(formHijo: hijoConEvento);
+            FormHided = false;
+
+
         }
 
         private void BtnNotas_Click(object sender, EventArgs e)

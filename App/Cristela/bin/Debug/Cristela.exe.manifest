@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cristela.exe" size="104952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cristela.exe" size="105464">
       <assemblyIdentity name="Cristela" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lTQMN2SrfLDmo/WyIkmCHwK4ZdEX6zCC9OFA76D/3r0=</dsig:DigestValue>
+        <dsig:DigestValue>25TfWDJBh9jR6YQFZTv3ez6hT+Tv8mvUcimQ8Zm+HvI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>P+VXh9IIZ86g6Ek1x0m6+jy3Ez97rw+MSFXJeoZUSZw=</dsig:DigestValue>
+        <dsig:DigestValue>8VxKydo2BHrX03FvqQgeFOqdndWw0qnqwf3HHjFdaaI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

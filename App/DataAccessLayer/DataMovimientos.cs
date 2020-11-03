@@ -412,7 +412,7 @@ namespace DataAccessLayer
 
         #endregion
 
-        #region Delete desde Configuraciones
+        #region Reset de los datos.
 
         public Movimientos DeletePeriodo(DateTime FechaDesde, DateTime FechaHasta, Movimientos movimientos)
         {
@@ -481,8 +481,6 @@ namespace DataAccessLayer
 
             return movimientos;
         }
-
-
         #endregion
     }
 }

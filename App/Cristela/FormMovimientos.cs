@@ -44,7 +44,7 @@ namespace Cristela
         private int NumDeCuota;
         #endregion
 
-        #region Métodos Generales del Form
+        #region Métodos
 
         private void ValidarCamposVacios()
         {
@@ -74,91 +74,6 @@ namespace Cristela
             IngresoSaldo = 0;
 
             RbAgendaN.Checked = true;
-        }
-        private void TxtImporte_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //Solo se teclean los digitos
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-
-            //permitir teclas de control como retroceso
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsPunctuation(e.KeyChar))
-            {
-                if (TxtImporte.Text.Contains(",") || TxtImporte.Text.Contains("."))
-                {
-                    e.Handled = true;
-                }
-                else
-                {
-                    e.Handled = false;
-                }
-            }
-            else
-            {
-                //con esto se desactivan todas las otras teclas no contempladas en las líneas anteriores
-                e.Handled = true;
-            }
-        }
-        #endregion
-
-        #region Notificar Cambio para Actualizar saldo
-
-        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
-        {
-            NotificarCambios?.Invoke(sender, e);
-        }
-
-        #endregion
-
-        #region Método Para Guardar Movimiento
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-            ValidarCamposVacios();
-            if (vacio)
-            {
-                MessageBox.Show("No puede haber campos vacíos para poder guardar el movimiento",
-                                "Datos Incompletos",
-                                MessageBoxButtons.OK);
-            }
-            else
-            {
-                if (BtnSave.Text == "Guardar")
-                {                 
-                    SaveMovimiento();
-                }
-                else
-                {
-                    UpdateMovement();
-                    BtnSave.Text = "Guardar";
-                }
-                _actualizacionDeSaldoFinal.Buscar = Buscar;
-                EnlistadoDTGV();
-                InhabilitarRadioButtom();
-                ActualizarSaldos();
-                ClearControls();
-            }
-        }
-
-        private void ActualizarSaldos()
-        {
-            _actualizacionDeSaldoFinal.GetSaldoActual();
-
-            // Primero creo la instancia con toda la información que voy a enviar al FormInicial
-            var ActualizarSaldo = new ActualizacionDeSaldo()
-            {
-                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
-                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual
-            };
-
-            //Y luego disparo el evento enviando los datos que hay en "ActualizarSaldo" (arriba)
-            OnNotificarCambios(this, ActualizarSaldo);
         }
 
         private void CargarMovimiento()
@@ -195,7 +110,7 @@ namespace Cristela
             {
                 _actualizacionDeSaldoFinal.GetSaldos();
                 CargarMovimiento();
-            }            
+            }
         }
         private void VerifyGastoPermitidoEstablecido()
         {
@@ -224,7 +139,7 @@ namespace Cristela
             }
         }
 
-        private void MessageBoxGastoPermitido() 
+        private void MessageBoxGastoPermitido()
         {
             MessageBox.Show("El movimiento que quieres registrar, no se encuentra establecido o supera el máximo establecido. " +
                     "Para establecer un Gasto Permitido, ingresa al menú 'Ajustes'.",
@@ -339,11 +254,169 @@ namespace Cristela
                 }
             }
         }
+
+        private void CargaDeDatosOnLine()
+        {
+            TxtImporte.Text = DtgMovFinal.CurrentRow.Cells[1].Value.ToString();
+            cmbTransaccion.SelectedItem = DtgMovFinal.CurrentRow.Cells[2].Value.ToString();
+            dtpFecha.Value = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[3].Value);
+            cmbCuotas.SelectedItem = DtgMovFinal.CurrentRow.Cells[5].Value.ToString();
+
+            if (DtgMovFinal.CurrentRow.Cells[5].Value.ToString() == "1")
+            {
+                RbAgendaY.Checked = false;
+                RbAgendaN.Checked = true;
+            }
+            else
+            {
+                RbAgendaY.Checked = true;
+                RbAgendaN.Checked = false;
+            }
+
+            TxtObservaciones.Text = DtgMovFinal.CurrentRow.Cells[6].Value.ToString();
+            BtnSave.Text = "Modificar";
+        }
+
+        private void ConsultarDatosDeMovimiento()
+        {
+            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
+            _objNegMovimientos.ConsultarDatosDeMovimiento(_objMovimientos);
+        }
+
+        #endregion
+
+        #region Notificar Cambio para Actualizar saldo
+        private void ActualizarSaldos()
+        {
+            _actualizacionDeSaldoFinal.GetSaldoActual();
+
+            // Primero creo la instancia con toda la información que voy a enviar al FormInicial
+            var ActualizarSaldo = new ActualizacionDeSaldo()
+            {
+                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual
+            };
+
+            //Y luego disparo el evento enviando los datos que hay en "ActualizarSaldo" (arriba)
+            OnNotificarCambios(this, ActualizarSaldo);
+        }
+        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
+        {
+            NotificarCambios?.Invoke(sender, e);
+        }
+
+        #endregion
+
+        #region Eventos
+
+        private void TxtImporte_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Solo se teclean los digitos
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+
+            //permitir teclas de control como retroceso
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsPunctuation(e.KeyChar))
+            {
+                if (TxtImporte.Text.Contains(",") || TxtImporte.Text.Contains("."))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                //con esto se desactivan todas las otras teclas no contempladas en las líneas anteriores
+                e.Handled = true;
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            ValidarCamposVacios();
+            if (vacio)
+            {
+                MessageBox.Show("No puede haber campos vacíos para poder guardar el movimiento",
+                                "Datos Incompletos",
+                                MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (BtnSave.Text == "Guardar")
+                {                 
+                    SaveMovimiento();
+                }
+                else
+                {
+                    UpdateMovement();
+                    BtnSave.Text = "Guardar";
+                }
+                _actualizacionDeSaldoFinal.Buscar = Buscar;
+                EnlistadoDTGV();
+                InhabilitarRadioButtom();
+                ActualizarSaldos();
+                ClearControls();
+            }
+        }
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             ClearControls();
         }
+        private void DtgMovFinal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ConsultarDatosDeMovimiento();
+            CargaDeDatosOnLine();
+            EnlistadoDTGV();
+            ActualizarSaldos();
+        }
+        private void EditarMovimiento_Click(object sender, EventArgs e)
+        {
+            ConsultarDatosDeMovimiento();
+            CargaDeDatosOnLine();
+        }
 
+        private void RbAgendaN_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbAgendaN.Checked)
+            {
+                InhabilitarRadioButtom();
+            }
+        }
+
+        private void RbAgendaY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbAgendaY.Checked)
+            {
+                cmbCuotas.Enabled = true;
+            }
+        }
+
+        private void EliminarMovimiento_Click(object sender, EventArgs e)
+        {
+            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
+            _objNegMovimientos.DeleteMovement(_objMovimientos);
+            ActualizarSaldos();
+            EnlistadoDTGV();
+        }
+
+        private void DtgMovFinal_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DtgMovFinal.CurrentCell = DtgMovFinal.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                DtgMovFinal.Rows[e.RowIndex].Selected = true;
+                DtgMovFinal.Focus();
+            }
+        }
         #endregion        
 
         #region Filtrar DatagridView        
@@ -376,91 +449,6 @@ namespace Cristela
         {
             TxtFiltro.ForeColor = Color.Gray;
             TxtFiltro.Text = "Buscar";
-        }
-
-        #endregion
-
-        #region RadioButtom
-        private void RbAgendaN_CheckedChanged(object sender, EventArgs e)
-        {
-            if (RbAgendaN.Checked)
-            {
-                InhabilitarRadioButtom();
-            }
-        }
-
-        private void RbAgendaY_CheckedChanged(object sender, EventArgs e)
-        {
-            if (RbAgendaY.Checked)
-            {
-                cmbCuotas.Enabled = true;
-            }
-        }
-        #endregion
-
-        #region Editar Movimiento
-        private void DtgMovFinal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ConsultarDatosDeMovimiento();
-            CargaDeDatosOnLine();
-            EnlistadoDTGV();
-            ActualizarSaldos();
-        }
-
-        private void CargaDeDatosOnLine()
-        {
-            TxtImporte.Text = DtgMovFinal.CurrentRow.Cells[1].Value.ToString();
-            cmbTransaccion.SelectedItem = DtgMovFinal.CurrentRow.Cells[2].Value.ToString();
-            dtpFecha.Value = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[3].Value);
-            cmbCuotas.SelectedItem = DtgMovFinal.CurrentRow.Cells[5].Value.ToString();
-
-            if (DtgMovFinal.CurrentRow.Cells[5].Value.ToString() == "1")
-            {
-                RbAgendaY.Checked = false;
-                RbAgendaN.Checked = true;
-            }
-            else
-            {
-                RbAgendaY.Checked = true;
-                RbAgendaN.Checked = false;
-            }
-
-            TxtObservaciones.Text = DtgMovFinal.CurrentRow.Cells[6].Value.ToString();
-            BtnSave.Text = "Modificar";
-        }
-
-        private void ConsultarDatosDeMovimiento()
-        {
-            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
-            _objNegMovimientos.ConsultarDatosDeMovimiento(_objMovimientos);
-        }
-
-        private void EditarMovimiento_Click(object sender, EventArgs e)
-        {
-            ConsultarDatosDeMovimiento();
-            CargaDeDatosOnLine();
-        }
-        #endregion
-
-        #region Eliminar Movimiento
-        private void EliminarMovimiento_Click(object sender, EventArgs e)
-        {
-            _objMovimientos.Id_Mov = Convert.ToInt32(DtgMovFinal.CurrentRow.Cells[0].Value);
-            _objNegMovimientos.DeleteMovement(_objMovimientos);
-            ActualizarSaldos();
-            EnlistadoDTGV();
-        }
-        #endregion
-
-        #region Capturar Click derecho del mouse en el dtgv
-        private void DtgMovFinal_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                DtgMovFinal.CurrentCell = DtgMovFinal.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                DtgMovFinal.Rows[e.RowIndex].Selected = true;
-                DtgMovFinal.Focus();
-            }
         }
 
         #endregion

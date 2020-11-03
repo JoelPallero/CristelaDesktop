@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer;
 using Entities;
+using System;
 
 namespace Cristela
 {
@@ -8,8 +9,10 @@ namespace Cristela
         private NotificacionesDiarias _notificacionesDiarias = new NotificacionesDiarias();
         private NegnotificacionesDiarias _negnotificacionesDiarias = new NegnotificacionesDiarias();
 
-        public string horas;
-        public string minutos;
+        private int CantAlarmas = 0;
+        public DateTime Alarma1;
+        public DateTime Alarma2;
+        public DateTime Alarma3;
 
         public void ActivarTmrAlarma()
         {
@@ -20,9 +23,10 @@ namespace Cristela
 
         public void ConsultaDeAlarma()
         {
-            _notificacionesDiarias = _negnotificacionesDiarias.GetAlarma(_notificacionesDiarias);
-            horas = _notificacionesDiarias.HoraAlarma1;
-            minutos = _notificacionesDiarias.MinutoAlarma1;
+            _notificacionesDiarias = _negnotificacionesDiarias.CuantasAlarmas(_notificacionesDiarias);
+            
         }
+
+
     }
 }

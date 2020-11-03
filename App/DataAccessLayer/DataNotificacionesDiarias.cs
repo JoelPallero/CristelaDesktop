@@ -10,26 +10,12 @@ namespace DataAccessLayer
         public int InsertHoraAlarmas(NotificacionesDiarias notificacionesDiarias)
         {
             int resultado = -1;
-            string query = @"Insert into NotificacionesDiarias (HoraAlarma1,
-                                                                MinutoAlarma1)
-                            values (@HoraAlarma1, 
-                                    @MinutoAlarma1)"
+            string query = @"Insert into Notificaciones (HoraAlarma)
+                            values (@HoraAlarma)"
             ;
-
-            SqlParameter horaAlarma1 = new SqlParameter("@HoraAlarma1", notificacionesDiarias.HoraAlarma1);
-            SqlParameter minutoAlarma1 = new SqlParameter("@MinutoAlarma1", notificacionesDiarias.MinutoAlarma1);
-            //SqlParameter horaAlarma2 = new SqlParameter("@HolaAlarma2", notificacionesDiarias.HolaAlarma2);
-            //SqlParameter minutoAlarma2 = new SqlParameter("@MinutoAlarma2", notificacionesDiarias.MinutoAlarma2);
-            //SqlParameter horaAlarma3 = new SqlParameter("@HolaAlarma3", notificacionesDiarias.HolaAlarma3);
-            //SqlParameter minutoAlarma3 = new SqlParameter("@MinutoAlarma3", notificacionesDiarias.MinutoAlarma3);
-
+            SqlParameter horaAlarma = new SqlParameter("@HoraAlarma", notificacionesDiarias.HoraAlarma);
             SqlCommand cmd = new SqlCommand(query, conexion);
-            cmd.Parameters.Add(horaAlarma1);
-            cmd.Parameters.Add(minutoAlarma1);
-            //cmd.Parameters.Add(horaAlarma2);
-            //cmd.Parameters.Add(minutoAlarma2);
-            //cmd.Parameters.Add(horaAlarma3);
-            //cmd.Parameters.Add(minutoAlarma3);
+            cmd.Parameters.Add(horaAlarma);
 
             try
             {
@@ -48,9 +34,9 @@ namespace DataAccessLayer
             return resultado;
         }
 
-        public NotificacionesDiarias GetAlarma(NotificacionesDiarias notificacionesDiarias)
+        public NotificacionesDiarias CuantasAlarmas(NotificacionesDiarias notificacionesDiarias)
         {
-            string query = @"select * from NotificacionesDiarias where Id = (select max(Id) from NotificacionesDiarias)";
+            string query = @"select * from Notificaciones";
 
             SqlCommand cmd = new SqlCommand(query, conexion);
 
@@ -61,8 +47,7 @@ namespace DataAccessLayer
 
                 if (reader.Read())
                 {
-                    notificacionesDiarias.HoraAlarma1 = reader["HoraAlarma1"].ToString();
-                    notificacionesDiarias.MinutoAlarma1 = reader["MinutoAlarma1"].ToString();
+                    _ = int.Parse(reader["CuantasAlarmas"].ToString());
                 }
                 reader.Close();
                 cmd.ExecuteNonQuery();

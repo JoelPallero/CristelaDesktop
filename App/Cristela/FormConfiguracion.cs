@@ -7,27 +7,40 @@ namespace Cristela
 {
     public partial class FormConfiguracion : Form
     {
+        #region instancias
 
-        private NegMovimientos _negMovimientos = new NegMovimientos();
-        private Movimientos _movimientos = new Movimientos();
-        private SaldosEstablecidos _saldosEstablecidos = new SaldosEstablecidos();
-        private NegSaldosEstablecidos _negSaldosEstablecidos = new NegSaldosEstablecidos();
-        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
-        private NotificacionesDiarias _notificacionesDiarias = new NotificacionesDiarias();
-        private NegnotificacionesDiarias _negnotificacionesDiarias = new NegnotificacionesDiarias();
-        private NotificacionesGTR _notificacionesGTR = new NotificacionesGTR();
+        private NegMovimientos _negMovimientos;
+        private Movimientos _movimientos;
+        private SaldosEstablecidos _saldosEstablecidos;
+        private NegSaldosEstablecidos _negSaldosEstablecidos;
+        private ActualizacionDeSaldoFinal _actualizacionDeSaldoFinal;
+        private NotificacionesDiarias _notificacionesDiarias;
+        private NegnotificacionesDiarias _negnotificacionesDiarias;
+        private NotificacionesGTR _notificacionesGTR;
 
         public event EventHandler<ActualizacionDeSaldo> NotificarCambios;
+        #endregion
 
+        #region Loading
         public FormConfiguracion()
         {
             InitializeComponent();
+            _negMovimientos = new NegMovimientos();
+            _movimientos = new Movimientos();
+            _saldosEstablecidos = new SaldosEstablecidos();
+            _negSaldosEstablecidos = new NegSaldosEstablecidos();
+            _actualizacionDeSaldoFinal = new ActualizacionDeSaldoFinal();
+            _notificacionesDiarias = new NotificacionesDiarias();
+            _negnotificacionesDiarias = new NegnotificacionesDiarias();
+            _notificacionesGTR = new NotificacionesGTR();
         }
 
         private void FormConfiguracion_Load(object sender, EventArgs e)
         {
             MostrarSaldos();
         }
+
+        #endregion
 
         #region Variables
 
@@ -38,6 +51,8 @@ namespace Cristela
         private bool TodosChecked;
 
         #endregion
+
+        #region Métodos
 
         private void MostrarSaldos()
         {
@@ -68,6 +83,37 @@ namespace Cristela
             TxtPermitido.Text = string.Empty;
             vacio = false;
         }
+
+        #endregion
+
+        #region Métodos Para actualizar en TR
+
+        private void ActualizacionDeSaldos()
+        {
+            _actualizacionDeSaldoFinal.GetSaldoActual();
+            _actualizacionDeSaldoFinal.GetSaldos();
+
+            var ActualizarSaldo = new ActualizacionDeSaldo()
+            {
+                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
+                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual,
+                SaldoDeEmergencia = _actualizacionDeSaldoFinal.Emergencia,
+                SaldoDeCritico = _actualizacionDeSaldoFinal.Critico,
+                SaldoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido
+            };
+
+            // Y luego disparas el evento
+            OnNotificarCambios(this, ActualizarSaldo);
+        }
+
+        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
+        {
+            NotificarCambios?.Invoke(sender, e);
+        }
+
+        #endregion
+
+        #region Eventos
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -169,37 +215,6 @@ namespace Cristela
             }            
         }
 
-        private void ActualizacionDeSaldos()
-        {
-            _actualizacionDeSaldoFinal.GetSaldoActual();
-            _actualizacionDeSaldoFinal.GetSaldos();
-
-            var ActualizarSaldo = new ActualizacionDeSaldo()
-            {
-                SaldoFinal = _actualizacionDeSaldoFinal.SaldoActual,
-                PermitidoFinal = _actualizacionDeSaldoFinal.PermitidoActual,
-                SaldoDeEmergencia = _actualizacionDeSaldoFinal.Emergencia,
-                SaldoDeCritico = _actualizacionDeSaldoFinal.Critico,
-                SaldoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido
-            };
-
-            // Y luego disparas el evento
-            OnNotificarCambios(this, ActualizarSaldo);
-        }
-
-        #region Notificar Cambio para Actualizar saldo
-
-        protected virtual void OnNotificarCambios(object sender, ActualizacionDeSaldo e)
-        {
-            NotificarCambios?.Invoke(sender, e);
-        }
-
-        #endregion
-
-        #region Notificaciones
-
-        #endregion
-
         private void RbNoti1_CheckedChanged(object sender, EventArgs e)
         {
             DtpAlarma1.Enabled = true;
@@ -223,38 +238,40 @@ namespace Cristela
 
         private void BtnEstablecerNotis_Click(object sender, EventArgs e)
         {
-            if (RbNoti1.Checked)
+            if (RbNoti3.Checked)
             {
-                _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString("00");
-                _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString("00");
+                InsertarAlarma1();
+                InsertarAlarma2();
+                InsertarAlarma3();
             }
             else
             {
                 if (RbNoti2.Checked)
                 {
-                    _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString();
-                    _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString();
-
-                    _notificacionesDiarias.HolaAlarma2 = DtpAlarma2.Value.Hour.ToString();
-                    _notificacionesDiarias.MinutoAlarma2 = DtpAlarma2.Value.Minute.ToString();
-
+                    InsertarAlarma1();
+                    InsertarAlarma2();
                 }
                 else
                 {
-                    _notificacionesDiarias.HoraAlarma1 = DtpAlarma1.Value.Hour.ToString();
-                    _notificacionesDiarias.MinutoAlarma1 = DtpAlarma1.Value.Minute.ToString();
-
-                    _notificacionesDiarias.HolaAlarma2 = DtpAlarma2.Value.Hour.ToString();
-                    _notificacionesDiarias.MinutoAlarma2 = DtpAlarma2.Value.Minute.ToString();
-
-                    _notificacionesDiarias.HolaAlarma3 = DtpAlarma3.Value.Hour.ToString();
-                    _notificacionesDiarias.MinutoAlarma3 = DtpAlarma3.Value.Minute.ToString();
-
-
+                    InsertarAlarma1();
                 }
             }
+        }
+
+        private void InsertarAlarma1()
+        {
+            _notificacionesDiarias.HoraAlarma = DtpAlarma1.Value;
             _negnotificacionesDiarias.InsertHoraAlarmas(_notificacionesDiarias);
-            _notificacionesGTR.ActivarTmrAlarma();
+        }
+        private void InsertarAlarma2()
+        {
+            _notificacionesDiarias.HoraAlarma = DtpAlarma2.Value;
+            _negnotificacionesDiarias.InsertHoraAlarmas(_notificacionesDiarias);
+        }
+        private void InsertarAlarma3()
+        {
+            _notificacionesDiarias.HoraAlarma = DtpAlarma3.Value;
+            _negnotificacionesDiarias.InsertHoraAlarmas(_notificacionesDiarias);
         }
 
         private void RbTodos_CheckedChanged(object sender, EventArgs e)
@@ -282,5 +299,7 @@ namespace Cristela
                 ChkDomingo.Checked = false;
             }
         }
+
+        #endregion
     }
 }
