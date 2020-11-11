@@ -59,3 +59,5 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bi
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bin\Debug\EntityFramework.xml
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bin\Debug\EntityFramework.SqlServer.xml
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bin\Debug\DataAccessLayer.dll.config
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bin\Debug\CircularProgressBar.dll
+F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Cristela\bin\Debug\CircularProgressBar.xml

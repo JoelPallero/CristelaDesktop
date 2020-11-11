@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Cristela.exe.manifest" size="10088">
+    <dependentAssembly dependencyType="install" codebase="Cristela.exe.manifest" size="10779">
       <assemblyIdentity name="Cristela.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1rbdDRTRDbwNEs+JoZA5y2yDf1bq356S+hd4RkmaUEM=</dsig:DigestValue>
+        <dsig:DigestValue>YnNDhjqTHNhM6/NVF/IDeLKiwmT+yDGkemAHllJywtA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -68,8 +68,8 @@ namespace Cristela
         #region Actualización de datos.
         private void FormSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
-            LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
-            LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            BarSaldoActual.Text = e.SaldoFinal.ToString();
+            BarGastoPermitido.Text = e.PermitidoFinal.ToString() + "/" + GastoPermitido.ToString();
             CambioDeColor();
             EnlistadoDTGV();
         }
@@ -79,8 +79,8 @@ namespace Cristela
             SaldoEmergencia = e.SaldoDeEmergencia;
             SaldoCritico = e.SaldoDeCritico;
             GastoPermitido = e.SaldoPermitido;
-            LblSaldoActual.Text = e.SaldoFinal.ToString("G29");
-            LblGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            BarSaldoActual.Text = e.SaldoFinal.ToString();
+            BarGastoPermitido.Text = e.PermitidoFinal.ToString() + "/" + GastoPermitido.ToString();
             CambioDeColor();
             EnlistadoDTGV();
         }
@@ -96,32 +96,29 @@ namespace Cristela
             SaldoEmergencia = _actualizacionDeSaldoFinal.Emergencia;
             SaldoCritico = _actualizacionDeSaldoFinal.Critico;
             GastoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido;
-            LblSaldoActual.Text = _actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
-            LblGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
+            BarSaldoActual.Text = string.Format("{0:n}", _actualizacionDeSaldoFinal.SaldoActual);
+            BarGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString() + "/" + GastoPermitido.ToString();
             CambioDeColor();
         }
 
         private void CambioDeColor()
         {
-            if (Convert.ToDecimal(LblSaldoActual.Text) > SaldoEmergencia)
+            if (Convert.ToDecimal(BarSaldoActual.Text) > SaldoEmergencia)
             {
-                LblSaldoActual.BackColor = Color.LawnGreen;
-                LblTituloSaldo.BackColor = Color.LawnGreen;
-                LblTituloSaldo.ForeColor = Color.Black;
+                BarSaldoActual.ProgressColor = Color.LawnGreen;
+                BarSaldoActual.OuterColor = Color.LawnGreen;
             }
             else
             {
-                if (Convert.ToDecimal(LblSaldoActual.Text) <= SaldoCritico)
+                if (Convert.ToDecimal(BarSaldoActual.Text) <= SaldoCritico)
                 {
-                    LblSaldoActual.BackColor = Color.Red;
-                    LblTituloSaldo.BackColor = Color.Red;
-                    LblTituloSaldo.ForeColor = Color.White;
+                    BarSaldoActual.ProgressColor = Color.Red;
+                    BarSaldoActual.OuterColor = Color.Red;
                 }
                 else
                 {
-                    LblSaldoActual.BackColor = Color.Orange;
-                    LblTituloSaldo.BackColor = Color.Orange;
-                    LblTituloSaldo.ForeColor = Color.Black;
+                    BarSaldoActual.ProgressColor = Color.Orange;
+                    BarSaldoActual.OuterColor = Color.Orange;
                 }
             }
         }
@@ -264,8 +261,6 @@ namespace Cristela
 
             AbrirFormHijo(formHijo: hijoConEvento);
             FormHided = false;
-
-
         }
 
         private void BtnNotas_Click(object sender, EventArgs e)
@@ -343,11 +338,7 @@ namespace Cristela
 
             _notificacionesGTR.ConsultaDeAlarma();
 
-            if (HoraActual == _notificacionesGTR.horas && MinutoACtual == _notificacionesGTR.minutos)
-            {
-                MostrarNotificacion();
-                TmrAlarma.Stop();
-            }
+            
         }
 
         private void MostrarNotificacion()
@@ -378,38 +369,10 @@ namespace Cristela
 
                 AbrirFormHijo(formHijo: hijoConEvento);
             }
-            ColorDeAviso();
+            CambioDeColor();
         }
 
-        private void ColorDeAviso()
-        {
-            if (_actualizacionDeSaldoFinal.SaldoActual > SaldoEmergencia)
-            {
-                LblSaldoActual.BackColor = Color.LawnGreen;
-            }
-            else
-            {
-                if (_actualizacionDeSaldoFinal.SaldoActual <= SaldoCritico)
-                {
-                    LblSaldoActual.BackColor = Color.Red;
-                }
-                else
-                {
-                    LblSaldoActual.BackColor = Color.Orange;
-                }
-            }
-        }
-
-        private void DtgMovFinal_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DtgMovFinal_MouseLeave(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void DtgMovFinal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ToString() != string.Empty)

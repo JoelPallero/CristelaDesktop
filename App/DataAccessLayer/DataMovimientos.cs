@@ -19,16 +19,15 @@ namespace DataAccessLayer
                                                      CantCuotas, 
                                                      Observaciones,
                                                      PagoFinalizado,
-                                                     SeId) " +
-                                                     "values (@Importe, " +
-                                                             "@TipoMovimiento, " +
-                                                             "@FechaRealizada, " +
-                                                             "@NumCuotaPaga, " +
-                                                             "@CantCuotas," +
-                                                             "@Observaciones, " +
-                                                             "@PagoFinalizado, " +
-                                                             "@SeId)"
-
+                                                     SeId) 
+                                                     values (@Importe, 
+                                                             @TipoMovimiento, 
+                                                             @FechaRealizada,
+                                                             @NumCuotaPaga, 
+                                                             @CantCuotas,
+                                                             @Observaciones,
+                                                             @PagoFinalizado,
+                                                             @SeId)"
             ;
 
             SqlParameter importe = new SqlParameter("@Importe", movimientos.Importe);
@@ -79,7 +78,6 @@ namespace DataAccessLayer
             SqlCommand cmd = new SqlCommand(orden, conexion);
             cmd.Parameters.Add(id_Mov);
 
-
             try
             {
                 Abrirconexion();
@@ -107,7 +105,7 @@ namespace DataAccessLayer
                                                      CantCuotas = @CantCuotas, 
                                                      Observaciones = @Observaciones,
                                                      PagoFinalizado = @pagoFinalizado
-                             Where Id_Mov = @Id_Mov"
+                                               Where Id_Mov = @Id_Mov"
             ;
 
             SqlParameter id_Mov = new SqlParameter("@Id_Mov", movimientos.Id_Mov);
@@ -120,6 +118,7 @@ namespace DataAccessLayer
             SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
+
             cmd.Parameters.Add(id_Mov);
             cmd.Parameters.Add(importe);
             cmd.Parameters.Add(tipoMovimiento);
@@ -385,7 +384,7 @@ namespace DataAccessLayer
         {
             int resultado = -1;
 
-            string query = @"update set Movimientos PagoFinalizado = @PagoFinalizado) where Id_Mov = @Id_Mov";
+            string query = @"update set Movimientos PagoFinalizado = @PagoFinalizado where Id_Mov = @Id_Mov";
 
             SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
             SqlCommand cmd = new SqlCommand(query, conexion);

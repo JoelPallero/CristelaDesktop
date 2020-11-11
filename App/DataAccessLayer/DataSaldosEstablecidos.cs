@@ -12,39 +12,41 @@ namespace DataAccessLayer
         {
             int resultado = -1;
 
-            try
-            {
-                Abrirconexion();
-                string orden = @"Insert into SaldosEstablecidos (SaldoEmergencia,
+            string orden = @"Insert into SaldosEstablecidos (SaldoEmergencia,
                                                                  SaldoCritico,
                                                                  GastoPermitido,
                                                                  Fecha) 
-                                values (@SaldoEmergencia, @SaldoCritico, @GastoPermitido, @Fecha)"
-                ;
+                                                         values (@SaldoEmergencia, 
+                                                                 @SaldoCritico, 
+                                                                 @GastoPermitido, 
+                                                                 @Fecha)"
+            ;
 
-                SqlParameter saldoEmergencia = new SqlParameter("@SaldoEmergencia", saldosEstablecidos.SaldoEmergencia);
-                SqlParameter saldoCritico = new SqlParameter("@SaldoCritico", saldosEstablecidos.SaldoCritico);
-                SqlParameter gastoPermitido = new SqlParameter("@GastoPermitido", saldosEstablecidos.GastoPermitido);
-                SqlParameter fecha = new SqlParameter("@Fecha", saldosEstablecidos.Fecha);
+            SqlParameter saldoEmergencia = new SqlParameter("@SaldoEmergencia", saldosEstablecidos.SaldoEmergencia);
+            SqlParameter saldoCritico = new SqlParameter("@SaldoCritico", saldosEstablecidos.SaldoCritico);
+            SqlParameter gastoPermitido = new SqlParameter("@GastoPermitido", saldosEstablecidos.GastoPermitido);
+            SqlParameter fecha = new SqlParameter("@Fecha", saldosEstablecidos.Fecha);
 
-                SqlCommand cmd = new SqlCommand(orden, conexion);
+            SqlCommand cmd = new SqlCommand(orden, conexion);
 
-                cmd.Parameters.Add(saldoEmergencia);
-                cmd.Parameters.Add(saldoCritico);
-                cmd.Parameters.Add(gastoPermitido);
-                cmd.Parameters.Add(fecha);
+            cmd.Parameters.Add(saldoEmergencia);
+            cmd.Parameters.Add(saldoCritico);
+            cmd.Parameters.Add(gastoPermitido);
+            cmd.Parameters.Add(fecha);
 
+            try
+            {
+                Abrirconexion();
                 resultado = cmd.ExecuteNonQuery();
-
             }
             catch (Exception e)
             {
-
                 throw new Exception("No se puede establecer los saldos", e);
             }
             finally
             {
                 Cerrarconexion();
+                cmd.Dispose();
             }
 
             return resultado;
@@ -55,15 +57,16 @@ namespace DataAccessLayer
         {
             SaldosEstablecidos saldosEstablecidos = new SaldosEstablecidos();
 
-            try
-            {
-                Abrirconexion();
-                string orden = @"Select *
+            string orden = @"Select *
                             From SaldosEstablecidos
                             where Id_SE = (select max (Id_SE) from SaldosEstablecidos)"
-                ;
+            ;
 
-                SqlCommand cmd = new SqlCommand(orden, conexion);
+            SqlCommand cmd = new SqlCommand(orden, conexion);
+
+            try
+            {
+                Abrirconexion();                
                 SqlDataReader readerSaldo = cmd.ExecuteReader();
 
                 if (readerSaldo.Read())
@@ -82,7 +85,6 @@ namespace DataAccessLayer
                 }
                 readerSaldo.Close();
                 cmd.ExecuteNonQuery();
-                cmd.Dispose();
             }
             catch (Exception e)
             {
@@ -91,6 +93,7 @@ namespace DataAccessLayer
             finally
             {
                 Cerrarconexion();
+                cmd.Dispose();
             }
             return saldosEstablecidos;
         }

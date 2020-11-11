@@ -33,6 +33,7 @@ namespace Cristela
             GetSaldos();
             SaldoActual = _objMovimientos.SaldoActual - _objSaldosEstablecidos.GastoPermitido;
             PermitidoActual = _objMovimientos.GastoPermitido;
+
         }
 
         public void GetSaldos()
@@ -47,6 +48,7 @@ namespace Cristela
         public void CargarListaDemovimientos()
         {
             DsTablaDeMovimientos = _objNegMovimientos.MovementsList(Buscar);
+            Buscar = string.Empty;
         }
 
         public void CargarMovAgendados()

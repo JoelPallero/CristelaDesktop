@@ -24,11 +24,10 @@ namespace DataAccessLayer
             try
             {
                 Abrirconexion();
-                cmd.ExecuteNonQuery();
+                resultado = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
-
                 throw new Exception("Error al guardar nueva nota", e);
             }
             finally
@@ -84,7 +83,6 @@ namespace DataAccessLayer
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally

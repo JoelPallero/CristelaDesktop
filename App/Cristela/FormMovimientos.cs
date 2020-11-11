@@ -24,10 +24,12 @@ namespace Cristela
             InitializeComponent();
             _objMovimientos = new Movimientos();
             _objNegMovimientos = new NegMovimientos();
+            EnlistadoDTGV();
         }
         private void FormMovimientos_Load(object sender, EventArgs e)
         {
             InhabilitarRadioButtom();
+            _actualizacionDeSaldoFinal.Buscar = "Registro";
             EnlistadoDTGV();
         }
 
@@ -42,6 +44,7 @@ namespace Cristela
         private decimal GastoPermitidoEstablecido;
         private decimal GastoPermitidoActual;
         private int NumDeCuota;
+
         #endregion
 
         #region Métodos
@@ -203,7 +206,6 @@ namespace Cristela
         private void EnlistadoDTGV()
         {
             DtgMovFinal.Rows.Clear();
-            _actualizacionDeSaldoFinal.Buscar = Buscar;
             _actualizacionDeSaldoFinal.CargarListaDemovimientos();
             if (_actualizacionDeSaldoFinal.DsTablaDeMovimientos.Tables[0].Rows.Count > 0)
             {

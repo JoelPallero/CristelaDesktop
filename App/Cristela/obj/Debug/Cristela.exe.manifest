@@ -50,7 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KqX0Xpj9O5WTgm5Lz5426O3tF6tdEDT9oXbMXs/Jt4w=</dsig:DigestValue>
+        <dsig:DigestValue>ro9APoF0F+i0LMZD2UWPoZQa62R2QCdVOSPQnbvgq/0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CircularProgressBar.dll" size="17408">
+      <assemblyIdentity name="CircularProgressBar" version="2.8.0.16" publicKeyToken="310FD07B25DF79B3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8tjGstT98CCmBQ3aU2UbOJXQzW/WoFfLgMukRsXrG5I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>25TfWDJBh9jR6YQFZTv3ez6hT+Tv8mvUcimQ8Zm+HvI=</dsig:DigestValue>
+        <dsig:DigestValue>GisVjJtsooSy9bqu53W2TZxz+UOCPSfxcF2xGYZcAp8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataAccessLayer.dll" size="23552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataAccessLayer.dll" size="24576">
       <assemblyIdentity name="DataAccessLayer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8VxKydo2BHrX03FvqQgeFOqdndWw0qnqwf3HHjFdaaI=</dsig:DigestValue>
+        <dsig:DigestValue>KWqSmiKUcokJv12cakh6+ilTrvyl1egldqBIcR4yalE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,7 +98,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>m7a0/yDwzVDX5C6KyoOjA1nq3fccZiYiaCFZ8+h1lnI=</dsig:DigestValue>
+        <dsig:DigestValue>hJjdGOTVGWRaGCJ+xIUe/TmU+ZPZ6a5RvTo6haM/A50=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
