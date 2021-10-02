@@ -1,6 +1,0 @@
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.FormPrincipal.resources
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.Properties.Resources.resources
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\UIForms.csproj.GenerateResource.cache
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\UIForms.csproj.CoreCompileInputs.cache
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.exe
-F:\Programación 2020\CristellaDesktop\CristellaDesktop\obj\Debug\CristellaDesktop.pdb
