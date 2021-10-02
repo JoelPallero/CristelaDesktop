@@ -82,6 +82,7 @@ namespace Cristela
 
         private void CargarMovimiento()
         {
+            _actualizacionDeSaldoFinal.GetSaldos();
             CalcularSaldoActual();
             _objMovimientos.Importe = IngresoSaldo;
             _objMovimientos.TipoMovimiento = Convert.ToString(cmbTransaccion.SelectedItem);
@@ -112,7 +113,6 @@ namespace Cristela
             }
             else
             {
-                _actualizacionDeSaldoFinal.GetSaldos();
                 CargarMovimiento();
             }
         }

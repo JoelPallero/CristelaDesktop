@@ -37,7 +37,7 @@ namespace DataAccessLayer
             SqlParameter cantCuotas = new SqlParameter("@CantCuotas", movimientos.CantCuotas);
             SqlParameter observaciones = new SqlParameter("@Observaciones", movimientos.Observaciones);
             SqlParameter pagoFinalizado = new SqlParameter("@PagoFinalizado", movimientos.PagoFinalizado);
-            //SqlParameter seId = new SqlParameter("@SeId", movimientos.SeId);
+            SqlParameter seId = new SqlParameter("@SeId", movimientos.SeId);
 
             SqlCommand cmd = new SqlCommand(orden, conexion);
             cmd.Parameters.Add(importe);
@@ -47,7 +47,7 @@ namespace DataAccessLayer
             cmd.Parameters.Add(cantCuotas);
             cmd.Parameters.Add(observaciones);
             cmd.Parameters.Add(pagoFinalizado);
-            //cmd.Parameters.Add(seId);
+            cmd.Parameters.Add(seId);
 
             try
             {
