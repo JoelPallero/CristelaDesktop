@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ro9APoF0F+i0LMZD2UWPoZQa62R2QCdVOSPQnbvgq/0=</dsig:DigestValue>
+        <dsig:DigestValue>z7gviruoeD0M12Zda6Ij98apcWGLWJDMmBUFH/uq0u4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,19 +74,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GisVjJtsooSy9bqu53W2TZxz+UOCPSfxcF2xGYZcAp8=</dsig:DigestValue>
+        <dsig:DigestValue>Vhw4m3bGry1CTVi4LoXaRrrmlGyHXB1OYCAkssX5dCY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataAccessLayer.dll" size="24576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataAccessLayer.dll" size="24064">
       <assemblyIdentity name="DataAccessLayer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KWqSmiKUcokJv12cakh6+ilTrvyl1egldqBIcR4yalE=</dsig:DigestValue>
+        <dsig:DigestValue>d+uOdJvtjwwyVnSmtlCgJuu37QxADTrqWJbT2Iv1CrI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -98,7 +98,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hJjdGOTVGWRaGCJ+xIUe/TmU+ZPZ6a5RvTo6haM/A50=</dsig:DigestValue>
+        <dsig:DigestValue>RXfxP5flKpzw6v5SrmXlY6L4aZLfsaq3ESBbc84XPwI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

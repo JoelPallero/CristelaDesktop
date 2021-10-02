@@ -12,25 +12,24 @@ CantCuotas int not null,
 Observaciones nvarchar (200) null,
 CodMovimiento int null,
 PagoFinalizado varchar(2) not null,
-check (TipoMovimiento in ('Agua', 
-'Cobro', 
-'Comida',
-'Compra',
-'Extraccion', 
-'Gas', 
-'Gasto Permitido',
-'Luz', 
-'Pago', 
-'Sueldo',
-'SuperMercado',
-'Transferencia', 
-'Venta dolares',
-'Otros')),
+SeId int not null,
+CHECK ([TipoMovimiento]='Transferencia' OR [TipoMovimiento]='SuperMercado' OR [TipoMovimiento]='Sueldo' OR [TipoMovimiento]='Pago' OR [TipoMovimiento]='Luz' OR [TipoMovimiento]='Gasto Permitido' OR [TipoMovimiento]='Gas' OR [TipoMovimiento]='Extraccion' OR [TipoMovimiento]='Compra' OR [TipoMovimiento]='Comida' OR [TipoMovimiento]='Cobro' OR [TipoMovimiento]='Agua' OR [TipoMovimiento]='Alquiler'),
 check (CantCuotas in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14',
 '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
 '31', '32', '33', '34', '35', '36'))
 )
-go
+
+select * from Movimientos
+
+
+alter table Movimientos
+add CONSTRAINT [FK_Movimientos_ToSaldosEstablecidos] FOREIGN KEY (SeId) REFERENCES [SaldosEstablecidos]([Id_SE])
+
+select * from Movimientos
+select * from SaldosEstablecidos
+insert into SaldosEstablecidos (SaldoEmergencia, SaldoCritico, GastoPermitido, Fecha) values (0, 0, 0, GETDATE())
+truncate table Movimientos
+delete SaldosEstablecidos
 
 create table SaldosEstablecidos(
 Id_SE int primary key identity not null,

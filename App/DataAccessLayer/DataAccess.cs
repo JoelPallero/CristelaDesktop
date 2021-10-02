@@ -7,12 +7,12 @@ namespace DataAccessLayer
     public class DataAccess
     {
         public SqlConnection conexion;
-        public string CadenaDeConexion = @"Data Source=(LocalDB)\MSSQLLocalDB;
-                                            AttachDbFilename=
-                                            ""F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\CristellaDesktop\SampleDatabaseWalkthrough\SampleDatabaseWalkthrough.mdf"";
-                                            Integrated Security=True"
-        ;
+        public string CadenaDeConexion = @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=AdministradorPersonal;Data Source=DESKTOP-94J33F0";
+        // BDD SSMS
+        //Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=AdministradorPersonal;Data Source=DESKTOP-S279OM7\SQLEXPRESS
 
+        //BDD Proyecto dentro de la solución
+        //Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\CristellaDesktop\SampleDatabaseWalkthrough\SampleDatabaseWalkthrough.mdf"";Integrated Security = True
         public DataAccess()
         {
             conexion = new SqlConnection(CadenaDeConexion);

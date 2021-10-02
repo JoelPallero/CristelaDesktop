@@ -68,8 +68,8 @@ namespace Cristela
         #region Actualización de datos.
         private void FormSaldosFinales_NotificarCambios(object sender, ActualizacionDeSaldo e)
         {
-            BarSaldoActual.Text = e.SaldoFinal.ToString();
-            BarGastoPermitido.Text = e.PermitidoFinal.ToString() + "/" + GastoPermitido.ToString();
+            BarSaldoActual.Text = e.SaldoFinal.ToString("G29");
+            BarGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
             CambioDeColor();
             EnlistadoDTGV();
         }
@@ -79,8 +79,8 @@ namespace Cristela
             SaldoEmergencia = e.SaldoDeEmergencia;
             SaldoCritico = e.SaldoDeCritico;
             GastoPermitido = e.SaldoPermitido;
-            BarSaldoActual.Text = e.SaldoFinal.ToString();
-            BarGastoPermitido.Text = e.PermitidoFinal.ToString() + "/" + GastoPermitido.ToString();
+            BarSaldoActual.Text = e.SaldoFinal.ToString("G29");
+            BarGastoPermitido.Text = e.PermitidoFinal.ToString("G29") + "/" + GastoPermitido.ToString("G29");
             CambioDeColor();
             EnlistadoDTGV();
         }
@@ -96,8 +96,8 @@ namespace Cristela
             SaldoEmergencia = _actualizacionDeSaldoFinal.Emergencia;
             SaldoCritico = _actualizacionDeSaldoFinal.Critico;
             GastoPermitido = _actualizacionDeSaldoFinal.SaldoPermitido;
-            BarSaldoActual.Text = string.Format("{0:n}", _actualizacionDeSaldoFinal.SaldoActual);
-            BarGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString() + "/" + GastoPermitido.ToString();
+            BarSaldoActual.Text = _actualizacionDeSaldoFinal.SaldoActual.ToString("G29");
+            BarGastoPermitido.Text = _actualizacionDeSaldoFinal.PermitidoActual.ToString("G29") + "/" + GastoPermitido.ToString("G29");
             CambioDeColor();
         }
 

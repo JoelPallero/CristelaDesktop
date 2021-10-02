@@ -34,3 +34,15 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bi
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.xml
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.SqlServer.xml
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.CopyComplete
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\Entities.dll.config
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\Entities.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\Entities.pdb
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.SqlServer.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.xml
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\bin\Debug\EntityFramework.SqlServer.xml
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.AssemblyReference.cache
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.csproj.CopyComplete
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\Entities\obj\Debug\Entities.pdb

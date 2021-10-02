@@ -44,6 +44,7 @@ namespace Cristela
         private decimal GastoPermitidoEstablecido;
         private decimal GastoPermitidoActual;
         private int NumDeCuota;
+        private int CuotasPagas;
 
         #endregion
 
@@ -170,6 +171,12 @@ namespace Cristela
                 case "Agua":
                     IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
                     break;
+                case "Alquiler":
+                    IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
+                    break;
+                case "Cobro":
+                    IngresoSaldo += Convert.ToDecimal(TxtImporte.Text);
+                    break;
                 case "Compra":
                     IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
                     break;
@@ -194,12 +201,6 @@ namespace Cristela
                 case "Transferencia":
                     IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
                     break;
-                case "Venta dolares":
-                    IngresoSaldo += Convert.ToDecimal(TxtImporte.Text);
-                    break;
-                case "Otros":
-                    IngresoSaldo -= Convert.ToDecimal(TxtImporte.Text);
-                    break;
             }
         }
 
@@ -218,11 +219,13 @@ namespace Cristela
 
         private void UpdateMovement()
         {
-            VerifyGastoPermitidoEstablecido();
-
-            if (cmbTransaccion.Text == "Gasto Permitido" && Establecido == false)
+            if (cmbTransaccion.Text == "Gasto Permitido")
             {
-                EstablecerGastoPermitido();
+                VerifyGastoPermitidoEstablecido();
+                if (Establecido != false)
+                {
+                    EstablecerGastoPermitido();
+                }
             }
             else
             {
@@ -244,12 +247,12 @@ namespace Cristela
                     if (Convert.ToInt32(cmbCuotas.SelectedItem) == 1)
                     {
                         _objMovimientos.PagoFinalizado = "Si";
-                        _objMovimientos.NumCuotaPaga = 1;
+                        _objMovimientos.NumCuotaPaga = CuotasPagas;
                     }
                     else
                     {
                         _objMovimientos.PagoFinalizado = "No";
-                        _objMovimientos.NumCuotaPaga = NumDeCuota;
+                        _objMovimientos.NumCuotaPaga = CuotasPagas;
                     }
 
                     _objNegMovimientos.UpdateMovement(_objMovimientos);
@@ -262,6 +265,7 @@ namespace Cristela
             TxtImporte.Text = DtgMovFinal.CurrentRow.Cells[1].Value.ToString();
             cmbTransaccion.SelectedItem = DtgMovFinal.CurrentRow.Cells[2].Value.ToString();
             dtpFecha.Value = Convert.ToDateTime(DtgMovFinal.CurrentRow.Cells[3].Value);
+            CuotasPagas = int.Parse(DtgMovFinal.CurrentRow.Cells[4].Value.ToString());
             cmbCuotas.SelectedItem = DtgMovFinal.CurrentRow.Cells[5].Value.ToString();
 
             if (DtgMovFinal.CurrentRow.Cells[5].Value.ToString() == "1")

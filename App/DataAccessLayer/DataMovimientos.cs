@@ -18,16 +18,16 @@ namespace DataAccessLayer
                                                      NumCuotaPaga, 
                                                      CantCuotas, 
                                                      Observaciones,
-                                                     PagoFinalizado,
-                                                     SeId) 
+                                                     PagoFinalizado
+                                                     ) 
                                                      values (@Importe, 
                                                              @TipoMovimiento, 
                                                              @FechaRealizada,
                                                              @NumCuotaPaga, 
                                                              @CantCuotas,
                                                              @Observaciones,
-                                                             @PagoFinalizado,
-                                                             @SeId)"
+                                                             @PagoFinalizado
+                                                             )"
             ;
 
             SqlParameter importe = new SqlParameter("@Importe", movimientos.Importe);

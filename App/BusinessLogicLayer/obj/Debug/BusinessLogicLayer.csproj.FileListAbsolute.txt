@@ -60,3 +60,21 @@ F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLog
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\Entities.dll.config
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.xml
 F:\Programación 2020\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll.config
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\Entities.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\Entities.pdb
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\Entities.dll.config
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.AssemblyReference.cache
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+G:\Programacion\GitHub\CristelaDesktop\App\CristelaDesktop\App\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
