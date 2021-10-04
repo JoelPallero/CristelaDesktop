@@ -3,6 +3,7 @@ using Entities;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Cristela
@@ -26,7 +27,6 @@ namespace Cristela
         private string Buscar;
 
         #endregion
-
 
         #region Confirmación de Nota Guardada
 
@@ -67,7 +67,9 @@ namespace Cristela
 
                 _objNegNotas.SaveNota(_objNotas);
                 EnlistarNotas();
+                ClearTxt();
             }
+
         }
 
         private void EnlistarNotas()
@@ -112,5 +114,10 @@ namespace Cristela
             TxtFiltro.Text = "Buscar";
         }
 
+        private void ClearTxt()
+        {
+            TxtTitulo.Clear();
+            TxtNota.Clear();
+        }
     }
 }

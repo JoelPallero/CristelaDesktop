@@ -42,10 +42,10 @@
             this.DTGVNotas = new System.Windows.Forms.DataGridView();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Transaccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtNota = new System.Windows.Forms.TextBox();
             this.MenuEdicion = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.EditarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.EliminarMovimiento = new System.Windows.Forms.ToolStripMenuItem();
+            this.TxtNota = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicFiltro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DTGVNotas)).BeginInit();
             this.MenuEdicion.SuspendLayout();
@@ -56,26 +56,29 @@
             this.TxtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtTitulo.Location = new System.Drawing.Point(14, 31);
+            this.TxtTitulo.Location = new System.Drawing.Point(19, 38);
+            this.TxtTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TxtTitulo.Name = "TxtTitulo";
-            this.TxtTitulo.Size = new System.Drawing.Size(378, 20);
+            this.TxtTitulo.Size = new System.Drawing.Size(503, 22);
             this.TxtTitulo.TabIndex = 0;
             // 
             // LblTitulo
             // 
             this.LblTitulo.AutoSize = true;
-            this.LblTitulo.Location = new System.Drawing.Point(17, 12);
+            this.LblTitulo.Location = new System.Drawing.Point(23, 15);
+            this.LblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTitulo.Name = "LblTitulo";
-            this.LblTitulo.Size = new System.Drawing.Size(38, 13);
+            this.LblTitulo.Size = new System.Drawing.Size(47, 17);
             this.LblTitulo.TabIndex = 3;
             this.LblTitulo.Text = "Título:";
             // 
             // LblNota
             // 
             this.LblNota.AutoSize = true;
-            this.LblNota.Location = new System.Drawing.Point(17, 61);
+            this.LblNota.Location = new System.Drawing.Point(23, 75);
+            this.LblNota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblNota.Name = "LblNota";
-            this.LblNota.Size = new System.Drawing.Size(33, 13);
+            this.LblNota.Size = new System.Drawing.Size(42, 17);
             this.LblNota.TabIndex = 4;
             this.LblNota.Text = "Nota:";
             // 
@@ -84,9 +87,10 @@
             this.BtnSave.BackColor = System.Drawing.SystemColors.Highlight;
             this.BtnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSave.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.BtnSave.Location = new System.Drawing.Point(397, 29);
+            this.BtnSave.Location = new System.Drawing.Point(529, 36);
+            this.BtnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(75, 40);
+            this.BtnSave.Size = new System.Drawing.Size(100, 49);
             this.BtnSave.TabIndex = 2;
             this.BtnSave.Text = "Guardar";
             this.BtnSave.UseVisualStyleBackColor = false;
@@ -97,11 +101,12 @@
             this.PicFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PicFiltro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.PicFiltro.Location = new System.Drawing.Point(17, 162);
-            this.PicFiltro.MaximumSize = new System.Drawing.Size(300, 2);
-            this.PicFiltro.MinimumSize = new System.Drawing.Size(234, 2);
+            this.PicFiltro.Location = new System.Drawing.Point(23, 199);
+            this.PicFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PicFiltro.MaximumSize = new System.Drawing.Size(400, 2);
+            this.PicFiltro.MinimumSize = new System.Drawing.Size(312, 2);
             this.PicFiltro.Name = "PicFiltro";
-            this.PicFiltro.Size = new System.Drawing.Size(234, 2);
+            this.PicFiltro.Size = new System.Drawing.Size(312, 2);
             this.PicFiltro.TabIndex = 34;
             this.PicFiltro.TabStop = false;
             // 
@@ -113,11 +118,12 @@
             this.TxtFiltro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.TxtFiltro.Location = new System.Drawing.Point(19, 141);
-            this.TxtFiltro.MaximumSize = new System.Drawing.Size(300, 20);
-            this.TxtFiltro.MinimumSize = new System.Drawing.Size(230, 20);
+            this.TxtFiltro.Location = new System.Drawing.Point(25, 174);
+            this.TxtFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtFiltro.MaximumSize = new System.Drawing.Size(400, 20);
+            this.TxtFiltro.MinimumSize = new System.Drawing.Size(307, 20);
             this.TxtFiltro.Name = "TxtFiltro";
-            this.TxtFiltro.Size = new System.Drawing.Size(230, 15);
+            this.TxtFiltro.Size = new System.Drawing.Size(307, 19);
             this.TxtFiltro.TabIndex = 3;
             this.TxtFiltro.Text = "Buscar notas";
             this.TxtFiltro.Enter += new System.EventHandler(this.TxtFiltro_Enter);
@@ -146,6 +152,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DTGVNotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DTGVNotas.ColumnHeadersHeight = 29;
             this.DTGVNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DTGVNotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Importe,
@@ -160,15 +167,17 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DTGVNotas.DefaultCellStyle = dataGridViewCellStyle4;
             this.DTGVNotas.EnableHeadersVisualStyles = false;
-            this.DTGVNotas.Location = new System.Drawing.Point(12, 171);
+            this.DTGVNotas.Location = new System.Drawing.Point(16, 210);
+            this.DTGVNotas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DTGVNotas.MultiSelect = false;
             this.DTGVNotas.Name = "DTGVNotas";
             this.DTGVNotas.ReadOnly = true;
             this.DTGVNotas.RowHeadersVisible = false;
+            this.DTGVNotas.RowHeadersWidth = 51;
             this.DTGVNotas.RowTemplate.ReadOnly = true;
             this.DTGVNotas.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.DTGVNotas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DTGVNotas.Size = new System.Drawing.Size(460, 229);
+            this.DTGVNotas.Size = new System.Drawing.Size(613, 282);
             this.DTGVNotas.TabIndex = 35;
             this.DTGVNotas.TabStop = false;
             // 
@@ -180,6 +189,7 @@
             dataGridViewCellStyle2.NullValue = "0";
             this.Importe.DefaultCellStyle = dataGridViewCellStyle2;
             this.Importe.HeaderText = "Titulo";
+            this.Importe.MinimumWidth = 6;
             this.Importe.Name = "Importe";
             this.Importe.ReadOnly = true;
             this.Importe.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -192,50 +202,52 @@
             dataGridViewCellStyle3.NullValue = "Otros";
             this.Transaccion.DefaultCellStyle = dataGridViewCellStyle3;
             this.Transaccion.HeaderText = "Nota";
+            this.Transaccion.MinimumWidth = 6;
             this.Transaccion.Name = "Transaccion";
             this.Transaccion.ReadOnly = true;
             this.Transaccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Transaccion.Width = 310;
+            // 
+            // MenuEdicion
+            // 
+            this.MenuEdicion.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuEdicion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditarMovimiento,
+            this.EliminarMovimiento});
+            this.MenuEdicion.Name = "MenuEdicion";
+            this.MenuEdicion.Size = new System.Drawing.Size(133, 52);
+            // 
+            // EditarMovimiento
+            // 
+            this.EditarMovimiento.Name = "EditarMovimiento";
+            this.EditarMovimiento.Size = new System.Drawing.Size(132, 24);
+            this.EditarMovimiento.Text = "Editar";
+            // 
+            // EliminarMovimiento
+            // 
+            this.EliminarMovimiento.Name = "EliminarMovimiento";
+            this.EliminarMovimiento.Size = new System.Drawing.Size(132, 24);
+            this.EliminarMovimiento.Text = "Eliminar";
             // 
             // TxtNota
             // 
             this.TxtNota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtNota.Location = new System.Drawing.Point(14, 77);
+            this.TxtNota.Location = new System.Drawing.Point(19, 96);
             this.TxtNota.Multiline = true;
             this.TxtNota.Name = "TxtNota";
-            this.TxtNota.Size = new System.Drawing.Size(458, 58);
-            this.TxtNota.TabIndex = 1;
-            // 
-            // MenuEdicion
-            // 
-            this.MenuEdicion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditarMovimiento,
-            this.EliminarMovimiento});
-            this.MenuEdicion.Name = "MenuEdicion";
-            this.MenuEdicion.Size = new System.Drawing.Size(118, 48);
-            // 
-            // EditarMovimiento
-            // 
-            this.EditarMovimiento.Name = "EditarMovimiento";
-            this.EditarMovimiento.Size = new System.Drawing.Size(117, 22);
-            this.EditarMovimiento.Text = "Editar";
-            // 
-            // EliminarMovimiento
-            // 
-            this.EliminarMovimiento.Name = "EliminarMovimiento";
-            this.EliminarMovimiento.Size = new System.Drawing.Size(117, 22);
-            this.EliminarMovimiento.Text = "Eliminar";
+            this.TxtNota.Size = new System.Drawing.Size(610, 71);
+            this.TxtNota.TabIndex = 36;
             // 
             // FormNotas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(484, 411);
+            this.ClientSize = new System.Drawing.Size(645, 506);
             this.Controls.Add(this.TxtNota);
             this.Controls.Add(this.DTGVNotas);
             this.Controls.Add(this.PicFiltro);
@@ -244,8 +256,9 @@
             this.Controls.Add(this.LblNota);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.TxtTitulo);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(500, 450);
+            this.MinimumSize = new System.Drawing.Size(661, 543);
             this.Name = "FormNotas";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -268,9 +281,9 @@
         private System.Windows.Forms.DataGridView DTGVNotas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Transaccion;
-        private System.Windows.Forms.TextBox TxtNota;
         private System.Windows.Forms.ContextMenuStrip MenuEdicion;
         private System.Windows.Forms.ToolStripMenuItem EditarMovimiento;
         private System.Windows.Forms.ToolStripMenuItem EliminarMovimiento;
+        private System.Windows.Forms.TextBox TxtNota;
     }
 }
